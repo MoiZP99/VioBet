@@ -1,0 +1,102 @@
+.img-hover-zoom {
+    overflow: hidden;
+}
+
+.img-hover-zoom img {
+    transition: transform .5s ease;
+}
+
+.img-hover-zoom:hover img {
+    transform: scale(1.3);
+}
+
+#arrow-icon {
+    transition: transform 0.3s ease;
+}
+
+#link-places:hover #arrow-icon {
+    transform: translateX(10px);
+}
+
+.hover {
+    transition: 0.3s ease;
+}
+
+.hover:hover {
+    box-shadow: rgba(19, 112, 28, 0.3) 0px 1px 2px 0px, rgba(19, 112, 28, 0.10) 0px 1px 3px 1px;
+}
+
+.owl-theme .card {
+    margin-left: 2px;
+    margin-right: 2px;
+}
+
+
+@media only screen and (min-width: 768px) {
+    .owl-prev {
+        left: -50px;
+    }
+
+    .owl-next {
+        right: -50px;
+    }
+
+    .owl-prev,
+    .owl-next {
+        position: absolute;
+        top: 90px;
+    }
+
+    .owl-prev span,
+    .owl-next span {
+        font-size: 80px;
+        color: #000;
+    }
+
+    .owl-theme .owl-nav button.owl-next,
+    .owl-theme .owl-nav button.owl-prev {
+        background-color: #FFFFFF;
+        border: rgb(0, 0, 0, 0.8);
+        transition: opacity 0.3s;
+        transition: background-color 0.3s ease;
+    }
+    
+    .owl-theme,
+    owl-nav[class*="owl-"]:hover {
+        background: transparent;
+    }
+}
+
+@media only screen and (min-width: 600px) and (max-width: 767px) {
+    .owl-prev {
+        left: -35px;
+    }
+
+    .owl-next {
+        right: -35px;
+    }
+
+    .owl-prev,
+    .owl-next {
+        position: absolute;
+        top: 90px;
+    }
+
+    .owl-prev span,
+    .owl-next span {
+        font-size: 80px;
+        color: #000;
+    }
+
+    .owl-theme,
+    owl-nav[class*="owl-"]:hover {
+        background: transparent;
+    }
+}
+
+@media only screen and (max-width: 599px) {
+    .owl-prev span,
+    .owl-next span {
+        display: none;
+    }
+}
