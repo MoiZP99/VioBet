@@ -3,20 +3,15 @@
 namespace Controllers;
 
 use MVC\Router;
-use Model\Place;
-use Model\Space;
-use Model\Cate_Place;
+use Model\Animal;
 use Intervention\Image\ImageManagerStatic as Image;
-use Model\Dayl;
-use Model\Dayll;
-use Model\StatePlace;
 
-class PlaceController
+class AnimalController
 {
     public static function index(Router $router)
     {
-        $lugares = Place::innerJoin();
-        $lugarSolicitud = Place::innerJoinSolicitud();
+        $lugares = Animal::innerJoin();
+        $lugarSolicitud = Animal::innerJoinSolicitud();
 
         $router->render('/places/index', [
             'lugares' => $lugares,
@@ -28,30 +23,26 @@ class PlaceController
     {
         session_start();
 
-        $lugar = new Place;
-        $resultadodiasl = Dayl::allDias();
-        $resultadodiasll = Dayll::allDias();
-        $resultadoespacio = Space::allTipoEspacio();
-        $resultadocategoria = Cate_Place::allCategoriaLugar();
-        $resultadoestado = StatePlace::all();
-        $errores = Place::getErrores();
-        $ErrNombPer = Place::getErrNombPer();
-        $ErrContacto = Place::getErrContacto();
-        $ErrDescrip = Place::getErrDescrip();
-        $ErrLugar = Place::getErrLugar();
-        $ErrHoraI = Place::getErrHoraI();
-        $ErrHoraF = Place::getErrHoraF();
-        $ErrDiaI = Place::getErrDiaI();
-        $ErrDiaF = Place::getErrDiaF();
-        $ErrImg = Place::getErrImg();
-        $ErrCorreo = Place::getErrCorreo();
-        $ErrUbi = Place::getErrUbi();
-        $ErrCate = Place::getErrCate();
-        $ErrEstado = Place::getErrEstado();
+        $lugar = new Animal();
+        // $resultadoestado = Pasture::all();
+        $errores = Animal::getErrores();
+        $ErrNombPer = Animal::getErrNombPer();
+        $ErrContacto = Animal::getErrContacto();
+        $ErrDescrip = Animal::getErrDescrip();
+        $ErrLugar = Animal::getErrLugar();
+        $ErrHoraI = Animal::getErrHoraI();
+        $ErrHoraF = Animal::getErrHoraF();
+        $ErrDiaI = Animal::getErrDiaI();
+        $ErrDiaF = Animal::getErrDiaF();
+        $ErrImg = Animal::getErrImg();
+        $ErrCorreo = Animal::getErrCorreo();
+        $ErrUbi = Animal::getErrUbi();
+        $ErrCate = Animal::getErrCate();
+        $ErrEstado = Animal::getErrEstado();
 
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
-            $lugar = new Place($_POST['lugar']);
+            $lugar = new Animal($_POST['lugar']);
 
             $nombreImagen = md5(uniqid(rand(), true));
             // $rutaImagen = CARPETA_IMAGENES . $nombreImagen;
