@@ -5,7 +5,7 @@ namespace Model;
 class Animal
 {
   protected static $db;
-  protected static $columnasDB = ['IdAnimal', 'Nombre', 'Tipo', 'Raza', 'Edad', 'Sexo', 'Peso'];
+  protected static $columnasDB = ['IdAnimal', 'Nombre', 'Tipo', 'Raza', 'Edad', 'Sexo', 'Peso', 'Numero'];
 
   public static $errores;
   public static $ErrNomb;
@@ -14,6 +14,7 @@ class Animal
   public static $ErrEdad;
   public static $ErrSexo;
   public static $ErrPeso;
+  public static $ErrNum;
   public static $ErrFKFinca;
 
   public $IdAnimal;
@@ -23,6 +24,7 @@ class Animal
   public $Sexo;
   public $Edad;
   public $Peso;
+  public $Numero;
   public $FKFinca;
 
   public function __construct($args = [])
@@ -33,6 +35,7 @@ class Animal
     $this->Raza = $args['Raza'] ?? '';
     $this->Sexo = $args['Sexo'] ?? '';
     $this->Peso = $args['Peso'] ?? '';
+    $this->Numero = $args['Numero'] ?? '';
   }
 
   public static function setDB($database)
@@ -174,6 +177,16 @@ class Animal
     return self::$ErrPeso;
   }
 
+  public static function getErrNum()
+  {
+    return self::$ErrNum;
+  }
+
+  public static function getErrFKFinca()
+  {
+    return self::$ErrFKFinca;
+  }
+
   public function validaNombre()
   {
     if (!preg_match("/^[a-zA-ZáéíóúÁÉÍÓÚÑñ\s]*$/", $this->Nombre)) {
@@ -232,12 +245,23 @@ class Animal
   public function validaPeso()
   {
     if (!preg_match("/^(\d+|\d+\.\d+)$/", $this->Peso)) {
-      self::$ErrPeso = '<div style="padding-inline: 12px;"><strong>Error!</strong> Solo letras, acentos y espacios son permitidos.</div>';
+      self::$ErrPeso = '<div style="padding-inline: 12px;"><strong>Error!</strong> Solo números son permitidos.</div>';
     } elseif (empty($this->Peso)) {
       self::$ErrPeso = '<div style="padding-inline: 12px;"><strong>Error!</strong> Este campo es requerido.</div>';
     }
 
     return self::$ErrPeso;
+  }
+
+  public function validaNum()
+  {
+    if (!preg_match("/^([0-9])*$/", $this->Numero)) {
+      self::$ErrFKFinca = '<div style="padding-inline: 12px;"><strong>Error!</strong> Solo números son permitidos.</div>';
+    } elseif (empty($this->Numero)) {
+      self::$ErrFKFinca = '<div style="padding-inline: 12px;"><strong>Error!</strong> Este campo es requerido.</div>';
+    }
+
+    return self::$ErrFKFinca;
   }
 
   public function validaFinca()
@@ -253,7 +277,8 @@ class Animal
   {
     if ((!preg_match("/^[a-zA-ZáéíóúÁÉÍÓÚÑñ\s]*$/", $this->Nombre)) || (!preg_match("/^([0-9])*$/", $this->Edad))
       || (!preg_match("/^[a-zA-ZáéíóúÁÉÍÓÚÑñ\s]*$/", $this->Tipo)) || (!preg_match("/^[a-zA-ZáéíóúÁÉÍÓÚÑñ\s]*$/", $this->Raza))
-      || (!preg_match("/^[a-zA-ZáéíóúÁÉÍÓÚÑñ\s]*$/", $this->Sexo)) || (!preg_match("/^(\d+|\d+\.\d+)$/", $this->Peso)) || (!$this->FKFinca)
+      || (!preg_match("/^[a-zA-ZáéíóúÁÉÍÓÚÑñ\s]*$/", $this->Sexo)) || (!preg_match("/^(\d+|\d+\.\d+)$/", $this->Peso))
+      || (!preg_match("/^([0-9])*$/", $this->Numero)) || (!$this->FKFinca)
     ) {
       self::$errores = '<strong>Advertencia!</strong> Verifique que los datos ingresados sean correctos.';
     }
@@ -304,49 +329,39 @@ class Animal
 
   public static function innerJoin()
   {
-    $query = "SELECT DISTINCT lt.Id, lt.Nombre_Lugar, lt.Numero_Contacto, lt.Descripcion, lt.Correo, lt.Imagen, 
-              te.Espacio, lt.Hora_apertura, lt.Hora_clausura, lt.Ubicacion, cl.categoria_turismo, 
-              dl.Nombre_Dial, dll.Nombre_Diall, cl.categoria_turismo, e.Estado
-              FROM lugar_turistico lt
-              INNER JOIN categoria_lugar cl
-              ON lt.categoria_Id = cl.Id
-              INNER JOIN tipo_espacio te
-              ON lt.TipoEspacio_Id = te.Id
-              INNER JOIN dias_lugar_l dl
-              ON lt.DiaApertura_Id = dl.Id
-              INNER JOIN dias_lugar_ll dll
-              ON lt.DiaClausura_Id = dll.Id
-              INNER JOIN estado e
-              ON lt.FK_Estado = e.Id
-              WHERE e.Estado = 'Activo' OR e.Estado = 'Inactivo'";
+    $query = "SELECT DISTINCT a.IdAnimal, a.Nombre, a.Tipo, a.Raza, a.Edad, a.Sexo, a.Peso, a.Numero,
+                              f.Nombre, f.Ubicacion
+              FROM animal a
+              INNER JOIN finca f
+              ON a.IdAnimal = f.IdFinca";
 
     $resultado = self::consultarSQL($query);
 
     return $resultado;
   }
 
-  public static function innerJoinSolicitud()
-  {
-    $query = "SELECT DISTINCT lt.Id, lt.Nombre_Lugar, lt.Numero_Contacto, lt.Descripcion, lt.Correo, lt.Imagen, 
-              te.Espacio, lt.Hora_apertura, lt.Hora_clausura, lt.Ubicacion, cl.categoria_turismo, 
-              dl.Nombre_Dial, dll.Nombre_Diall, cl.categoria_turismo, e.Estado
-              FROM lugar_turistico lt
-              INNER JOIN categoria_lugar cl
-              ON lt.categoria_Id = cl.Id
-              INNER JOIN tipo_espacio te
-              ON lt.TipoEspacio_Id = te.Id
-              INNER JOIN dias_lugar_l dl
-              ON lt.DiaApertura_Id = dl.Id
-              INNER JOIN dias_lugar_ll dll
-              ON lt.DiaClausura_Id = dll.Id
-              INNER JOIN estado e
-              ON lt.FK_Estado = e.Id
-              WHERE e.Estado = 'Solicitud'";
+  // public static function innerJoinSolicitud()
+  // {
+  //   $query = "SELECT DISTINCT lt.Id, lt.Nombre_Lugar, lt.Numero_Contacto, lt.Descripcion, lt.Correo, lt.Imagen, 
+  //             te.Espacio, lt.Hora_apertura, lt.Hora_clausura, lt.Ubicacion, cl.categoria_turismo, 
+  //             dl.Nombre_Dial, dll.Nombre_Diall, cl.categoria_turismo, e.Estado
+  //             FROM lugar_turistico lt
+  //             INNER JOIN categoria_lugar cl
+  //             ON lt.categoria_Id = cl.Id
+  //             INNER JOIN tipo_espacio te
+  //             ON lt.TipoEspacio_Id = te.Id
+  //             INNER JOIN dias_lugar_l dl
+  //             ON lt.DiaApertura_Id = dl.Id
+  //             INNER JOIN dias_lugar_ll dll
+  //             ON lt.DiaClausura_Id = dll.Id
+  //             INNER JOIN estado e
+  //             ON lt.FK_Estado = e.Id
+  //             WHERE e.Estado = 'Solicitud'";
 
-    $resultado = self::consultarSQL($query);
+  //   $resultado = self::consultarSQL($query);
 
-    return $resultado;
-  }
+  //   return $resultado;
+  // }
 
   public static function innerPDF()
   {
@@ -378,11 +393,9 @@ class Animal
 
   public static function find($Id)
   {
-    $query = "SELECT DISTINCT lt.Id, lt.Nombre_Lugar, lt.Numero_Contacto, lt.Descripcion, lt.Correo, lt.Imagen, 
-              lt.TipoEspacio_Id, lt.Hora_apertura, lt.Hora_clausura, lt.Ubicacion, lt.categoria_Id, 
-              lt.DiaApertura_Id, lt.DiaClausura_Id
-              FROM lugar_turistico lt 
-              WHERE Id = $Id";
+    $query = "SELECT DISTINCT IdAnimal, Nombre, Tipo, Raza, Edad, Sexo, Peso, Numero
+              FROM animal
+              WHERE IdAnimal = $Id";
 
     $resultado = self::consultarSQL($query);
 

@@ -4,7 +4,6 @@ namespace Controllers;
 
 use MVC\Router;
 use Model\Animal;
-use Intervention\Image\ImageManagerStatic as Image;
 
 class AnimalController
 {
@@ -13,7 +12,7 @@ class AnimalController
         $lugares = Animal::innerJoin();
         $lugarSolicitud = Animal::innerJoinSolicitud();
 
-        $router->render('/places/index', [
+        $router->render('/animal/index', [
             'lugares' => $lugares,
             'lugarSolicitud' => $lugarSolicitud
         ]);
