@@ -14,17 +14,17 @@ $router = new Router();
 $router->get('/principal/index', [PrincipalController::class, 'index']);
 
 //PLACES
-$router->get('/places/index', [AnimalController::class, 'index']);
-$router->post('/animal/index', [AnimalController::class, 'index']);
-$router->get('/places/create', [AnimalController::class, 'create']);
-$router->post('/places/create', [AnimalController::class, 'create']);
-$router->get('/places/update', [AnimalController::class, 'update']);
-$router->post('/places/update', [AnimalController::class, 'update']);
-$router->get('/places/details', [AnimalController::class, 'details']);
-$router->get('/places/delete', [AnimalController::class, 'delete']);
-$router->post('/places/delete/delete_partial', [AnimalController::class, 'delete_partial']);
-$router->post('/places/report_excel', [AnimalController::class, 'report_excel']);
-$router->post('/places/report_pdf', [AnimalController::class, 'report_pdf']);
+$router->get('/animal/index', [AnimalController::class, 'index']);
+// $router->post('/animal/index', [AnimalController::class, 'index']);
+$router->get('/animal/create', [AnimalController::class, 'create']);
+$router->post('/animal/create', [AnimalController::class, 'create']);
+$router->get('/animal/update', [AnimalController::class, 'update']);
+$router->post('/animal/update', [AnimalController::class, 'update']);
+$router->get('/animal/details', [AnimalController::class, 'details']);
+$router->get('/animal/delete', [AnimalController::class, 'delete']);
+$router->post('/animal/delete/delete_partial', [AnimalController::class, 'delete_partial']);
+$router->post('/animal/report_excel', [AnimalController::class, 'report_excel']);
+$router->post('/animal/report_pdf', [AnimalController::class, 'report_pdf']);
 
 
 //PAGES

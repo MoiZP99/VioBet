@@ -21,8 +21,8 @@ class Animal
   public $Nombre;
   public $Tipo;
   public $Raza;
-  public $Sexo;
   public $Edad;
+  public $Sexo;
   public $Peso;
   public $Numero;
   public $FKFinca;
@@ -33,6 +33,7 @@ class Animal
     $this->Nombre = $args['Nombre'] ?? '';
     $this->Tipo = $args['Tipo'] ?? '';
     $this->Raza = $args['Raza'] ?? '';
+    $this->Edad = $args['Edad'] ?? '';
     $this->Sexo = $args['Sexo'] ?? '';
     $this->Peso = $args['Peso'] ?? '';
     $this->Numero = $args['Numero'] ?? '';
@@ -88,7 +89,7 @@ class Animal
 
     $query = "UPDATE animal SET ";
     $query .=  join(', ', $valores);
-    $query .= " WHERE Id = '" . self::$db->escape_string($this->IdAnimal) . "' ";
+    $query .= " WHERE IdAnimal = '" . self::$db->escape_string($this->IdAnimal) . "' ";
     $query .= " LIMIT 1 ";
 
     $resultado = self::$db->query($query);
@@ -97,18 +98,16 @@ class Animal
   }
 
 
-  // public static function get($limite)
-  // {
-  //   $query = "SELECT DISTINCT Id, Nombre_Lugar, Numero_Contacto, Descripcion, Correo, Imagen, 
-  //             Hora_apertura, Hora_clausura, Ubicacion, FK_Estado
-  //             FROM lugar_turistico
-  //             WHERE FK_Estado = 1
-  //             LIMIT $limite";
+  public static function get($limite)
+  {
+    $query = "SELECT DISTINCT IdAnimal, Nombre, Tipo, Raza, Edad, Sexo, Peso, Numero
+              FROM animal
+              LIMIT $limite";
 
-  //   $resultado = self::consultarSQL($query);
+    $resultado = self::consultarSQL($query);
 
-  //   return $resultado;
-  // }
+    return $resultado;
+  }
 
   public function atributos()
   {

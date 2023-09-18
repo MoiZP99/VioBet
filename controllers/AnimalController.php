@@ -9,12 +9,13 @@ class AnimalController
 {
     public static function index(Router $router)
     {
-        $lugares = Animal::innerJoin();
-        $lugarSolicitud = Animal::innerJoinSolicitud();
+        $animal = Animal::innerJoin();
+        // $lugarSolicitud = Animal::innerJoinSolicitud();
 
         $router->render('/animal/index', [
-            'lugares' => $lugares,
-            'lugarSolicitud' => $lugarSolicitud
+            'animal' => $animal
+            // ,
+            // 'lugarSolicitud' => $lugarSolicitud
         ]);
     }
 
@@ -22,272 +23,168 @@ class AnimalController
     {
         session_start();
 
-        $lugar = new Animal();
+        $animal = new Animal();
         // $resultadoestado = Pasture::all();
         $errores = Animal::getErrores();
-        $ErrNombPer = Animal::getErrNombPer();
-        $ErrContacto = Animal::getErrContacto();
-        $ErrDescrip = Animal::getErrDescrip();
-        $ErrLugar = Animal::getErrLugar();
-        $ErrHoraI = Animal::getErrHoraI();
-        $ErrHoraF = Animal::getErrHoraF();
-        $ErrDiaI = Animal::getErrDiaI();
-        $ErrDiaF = Animal::getErrDiaF();
-        $ErrImg = Animal::getErrImg();
-        $ErrCorreo = Animal::getErrCorreo();
-        $ErrUbi = Animal::getErrUbi();
-        $ErrCate = Animal::getErrCate();
-        $ErrEstado = Animal::getErrEstado();
+        $ErrNomb = Animal::getErrNomb();
+        $ErrTipo = Animal::getErrTipo();
+        $ErrRaza = Animal::getErrRaza();
+        $ErrEdad = Animal::getErrEdad();
+        $ErrSexo = Animal::getErrSexo();
+        $ErrPeso = Animal::getErrPeso();
+        $ErrNum = Animal::getErrNum();
+        $ErrFKFinca = Animal::getErrFKFinca();
 
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
-            $lugar = new Animal($_POST['lugar']);
+            $animal = new Animal($_POST['animal']);
 
-            $nombreImagen = md5(uniqid(rand(), true));
-            // $rutaImagen = CARPETA_IMAGENES . $nombreImagen;
+            $errores = $animal->validar();
+            $ErrNomb = $animal->validaNombre();
+            $ErrTipo = $animal->validaTipo();
+            $ErrRaza = $animal->validaRaza();
+            $ErrEdad = $animal->validaEdad();
+            $ErrSexo = $animal->validaSexo();
+            $ErrPeso = $animal->validaPeso();
+            $ErrNum = $animal->validaNum();
+            $ErrFKFinca = $animal->validaFinca();
 
-            if ($_FILES['lugar']['tmp_name']['Imagen']) {
-                $extension = $_FILES['lugar']['type']['Imagen'];
-
-                // Lista de extensiones permitidas
-                $extensionesPermitidas = array('image/jpeg', 'image/jpg');
-
-                // Verificar si la extensión es .jpg o .jpeg
-                if (in_array($extension, $extensionesPermitidas)) {
-                    // Cargar la imagen utilizando Intervention Image
-                    $image = Image::make($_FILES['lugar']['tmp_name']['Imagen']);
-
-                    // Redimensionar la imagen a la resolución deseada y agrandar si es necesario
-                    $image->resize(794, 595, function ($constraint) {
-                        $constraint->aspectRatio();
-                        $constraint->upsize();
-                    });
-
-                    // Convertir la imagen a formato WebP
-                    $image->encode('webp');
-
-                    // Guardar la imagen temporalmente en el directorio de destino
-                    $rutaImagen = CARPETA_IMAGENES . $nombreImagen . '.webp';
-                    $image->save($rutaImagen);
-
-                    $lugar->setImagen($nombreImagen . '.webp');
-                }
-            }
-
-            $errores = $lugar->validar();
-            $ErrNombPer = $lugar->validaNombre();
-            $ErrContacto = $lugar->validaContacto();
-            $ErrDescrip = $lugar->validaDescrip();
-            $ErrLugar = $lugar->validaLugar();
-            $ErrHoraI = $lugar->validaHoraI();
-            $ErrHoraF = $lugar->validaHoraF();
-            $ErrDiaI = $lugar->validaDiaI();
-            $ErrDiaF = $lugar->validaDiaF();
-            $ErrImg = $lugar->validaImg();
-            $ErrCorreo = $lugar->validaCorreo();
-            $ErrUbi = $lugar->validaUbi();
-            $ErrCate = $lugar->validaCate();
-            $ErrEstado = $lugar->validaEstado();
-
-            if (empty(($ErrNombPer) || ($ErrContacto) || ($ErrDescrip) || ($ErrLugar) || ($ErrHoraI) || ($ErrHoraF) || ($ErrDiaI)
-                || ($ErrDiaF) || ($ErrImg) || ($ErrCorreo) || ($ErrUbi) || ($ErrCate) || ($errores) || ($ErrEstado))) {
-
-                if (!is_dir(CARPETA_IMAGENES)) {
-                    mkdir(CARPETA_IMAGENES);
-                }
-
-                $lugar->guardar();
-                rename($rutaImagen, CARPETA_IMAGENES . $nombreImagen . '.webp');
-                if ($lugar) {
-                    $_SESSION['success_message'] = ['title' => '¡Éxito! Lugar Turístico guardado exitosamente'];
-                    header('Location: /places/create');
+            if (empty(($ErrNomb) || ($ErrTipo) || ($ErrRaza) || ($ErrEdad) || ($ErrSexo) || ($ErrPeso) || ($ErrNum) || ($ErrFKFinca))) {
+                $animal->guardar();
+                if ($animal) {
+                    $_SESSION['success_message'] = ['title' => '¡Éxito! Datos del animal guardados exitosamente'];
+                    header('Location: /animal/create');
                     exit;
                 }
             }
         }
 
-        $router->render('/places/create', [
+        $router->render('/animal/create', [
             'errores' => $errores,
-            'ErrNombPer' => $ErrNombPer,
-            'ErrContacto' => $ErrContacto,
-            'ErrDescrip' => $ErrDescrip,
-            'ErrLugar' => $ErrLugar,
-            'ErrHoraI' => $ErrHoraI,
-            'ErrHoraF' => $ErrHoraF,
-            'ErrDiaI' => $ErrDiaI,
-            'ErrDiaF' => $ErrDiaF,
-            'ErrImg' => $ErrImg,
-            'ErrCorreo' => $ErrCorreo,
-            'ErrUbi' => $ErrUbi,
-            'ErrCate' => $ErrCate,
-            'ErrEstado' => $ErrEstado,
-            'lugar' => $lugar,
-            'resultadodiasl' => $resultadodiasl,
-            'resultadodiasll' => $resultadodiasll,
-            'resultadoespacio' => $resultadoespacio,
-            'resultadocategoria' => $resultadocategoria,
-            'resultadoestado' => $resultadoestado
+            'ErrNomb' => $ErrNomb,
+            'ErrTipo' => $ErrTipo,
+            'ErrRaza' => $ErrRaza,
+            'ErrEdad' => $ErrEdad,
+            'ErrSexo' => $ErrSexo,
+            'ErrPeso' => $ErrPeso,
+            'ErrNum' => $ErrNum,
+            'ErrFKFinca' => $ErrFKFinca,
+            'animal' => $animal
+            // ,'resultadodiasl' => $resultadodiasl,
         ]);
     }
 
 
     public static function update(Router $router)
     {
-        $Id = validarORedireccionar('/places/index');
+        $Id = validarORedireccionar('/animal/index');
 
-        $lugar = Place::find($Id);
+        $animal = Animal::find($Id);
 
 
-        $resultadodiasl = Dayl::allDias();
-        $resultadodiasll = Dayll::allDias();
-        $resultadoespacio = Space::allTipoEspacio();
-        $resultadocategoria = Cate_Place::allCategoriaLugar();
-        $resultadoestado = StatePlace::all();
+        // $resultadodiasl = Dayl::allDias();
 
-        $errores = Place::getErrores();
-        $ErrNombPer = Place::getErrNombPer();
-        $ErrContacto = Place::getErrContacto();
-        $ErrDescrip = Place::getErrDescrip();
-        $ErrLugar = Place::getErrLugar();
-        $ErrHoraI = Place::getErrHoraI();
-        $ErrHoraF = Place::getErrHoraF();
-        $ErrDiaI = Place::getErrDiaI();
-        $ErrDiaF = Place::getErrDiaF();
-        $ErrCorreo = Place::getErrCorreo();
-        $ErrUbi = Place::getErrUbi();
-        $ErrCate = Place::getErrCate();
-        $ErrEstado = Place::getErrEstado();
+        $errores = Animal::getErrores();
+        $ErrNomb = Animal::getErrNomb();
+        $ErrTipo = Animal::getErrTipo();
+        $ErrRaza = Animal::getErrRaza();
+        $ErrEdad = Animal::getErrEdad();
+        $ErrSexo = Animal::getErrSexo();
+        $ErrPeso = Animal::getErrPeso();
+        $ErrNum = Animal::getErrNum();
+        $ErrFKFinca = Animal::getErrFKFinca();
 
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-            $args = $_POST['lugar'];
+            $args = $_POST['animal'];
 
-            $lugar->sincronizar($args);
+            $animal->sincronizar($args);
 
-            $errores = $lugar->validar();
-            $ErrNombPer = $lugar->validaNombre();
-            $ErrContacto = $lugar->validaContacto();
-            $ErrDescrip = $lugar->validaDescrip();
-            $ErrLugar = $lugar->validaLugar();
-            $ErrHoraI = $lugar->validaHoraI();
-            $ErrHoraF = $lugar->validaHoraF();
-            $ErrDiaI = $lugar->validaDiaI();
-            $ErrDiaF = $lugar->validaDiaF();
-            $ErrCorreo = $lugar->validaCorreo();
-            $ErrUbi = $lugar->validaUbi();
-            $ErrCate = $lugar->validaCate();
-            $ErrEstado = $lugar->validaEstado();
+            $errores = $animal->validar();
+            $ErrNomb = $animal->validaNombre();
+            $ErrTipo = $animal->validaTipo();
+            $ErrRaza = $animal->validaRaza();
+            $ErrEdad = $animal->validaEdad();
+            $ErrSexo = $animal->validaSexo();
+            $ErrPeso = $animal->validaPeso();
+            $ErrNum = $animal->validaNum();
+            $ErrFKFinca = $animal->validaFinca();
 
-            $nombreImagen = md5(uniqid(rand(), true)) . ".jpg";
-
-            if ($_FILES['lugar']['tmp_name']['Imagen']) {
-                $image = Image::make($_FILES['lugar']['tmp_name']['Imagen']);
-                $lugar->setImagen($nombreImagen);
-            }
-
-            if (empty(($ErrNombPer) || ($ErrContacto) || ($ErrDescrip) || ($ErrLugar) || ($ErrHoraI) || ($ErrHoraF) || ($ErrDiaI)
-                || ($ErrDiaF) || ($ErrCorreo) || ($ErrUbi) || ($ErrCate) || ($errores) || ($ErrEstado))) {
-
-                if ($_FILES['lugar']['tmp_name']['Imagen']) {
-                    $image->save(CARPETA_IMAGENES . $nombreImagen);
-                }
-
-                $lugar->guardar();
+            if (empty(($ErrNomb) || ($ErrTipo) || ($ErrRaza) || ($ErrEdad) || ($ErrSexo) || ($ErrPeso) || ($ErrNum) || ($ErrFKFinca))) {
+                $animal->guardar();
             }
         }
 
-        $router->render('/places/update', [
-            'ErrNombPer' => $ErrNombPer,
-            'ErrContacto' => $ErrContacto,
-            'ErrDescrip' => $ErrDescrip,
-            'ErrLugar' => $ErrLugar,
-            'ErrHoraI' => $ErrHoraI,
-            'ErrHoraF' => $ErrHoraF,
-            'ErrDiaI' => $ErrDiaI,
-            'ErrDiaF' => $ErrDiaF,
-            'ErrCorreo' => $ErrCorreo,
-            'ErrUbi' => $ErrUbi,
-            'ErrCate' => $ErrCate,
-            'ErrEstado' => $ErrEstado,
-            'lugar' => $lugar,
-            'resultadodiasl' => $resultadodiasl,
-            'resultadodiasll' => $resultadodiasll,
-            'resultadoespacio' => $resultadoespacio,
-            'resultadocategoria' => $resultadocategoria,
-            'resultadoestado' => $resultadoestado,
-            'errores' => $errores
+        $router->render('/animal/update', [
+            'errores' => $errores,
+            'ErrNomb' => $ErrNomb,
+            'ErrTipo' => $ErrTipo,
+            'ErrRaza' => $ErrRaza,
+            'ErrEdad' => $ErrEdad,
+            'ErrSexo' => $ErrSexo,
+            'ErrPeso' => $ErrPeso,
+            'ErrNum' => $ErrNum,
+            'ErrFKFinca' => $ErrFKFinca,
+            'animal' => $animal
+            // ,'resultadodiasl' => $resultadodiasl,
         ]);
     }
 
 
     public static function details(Router $router)
     {
-        $Id = validarORedireccionar('/places/index');
+        $Id = validarORedireccionar('/animal/index');
 
-        $lugar = Place::find($Id);
+        $animal = Animal::find($Id);
 
-        $resultadodiasl = Dayl::allDias();
-        $resultadodiasll = Dayll::allDias();
-        $resultadoespacio = Space::allTipoEspacio();
-        $resultadocategoria = Cate_Place::allCategoriaLugar();
-        $resultadoestado = StatePlace::all();
+        // $resultadodiasl = Dayl::allDias();
 
-        $router->render('/places/details', [
-            'lugar' => $lugar,
-            'resultadodiasl' => $resultadodiasl,
-            'resultadodiasll' => $resultadodiasll,
-            'resultadoespacio' => $resultadoespacio,
-            'resultadocategoria' => $resultadocategoria,
-            'resultadoestado' => $resultadoestado
+        $router->render('/animal/details', [
+            'animal' => $animal
+            // ,
+            // 'resultadodiasl' => $resultadodiasl
         ]);
     }
 
     public static function delete(Router $router)
     {
-        $Id = validarORedireccionar('/places/index');
+        $Id = validarORedireccionar('/animal/index');
 
-        $lugar = Place::find($Id);
+        $animal = Animal::find($Id);
 
-        $resultadodiasl = Dayl::allDias();
-        $resultadodiasll = Dayll::allDias();
-        $resultadoespacio = Space::allTipoEspacio();
-        $resultadocategoria = Cate_Place::allCategoriaLugar();
-        $resultadoestado = StatePlace::all();
+        // $resultadodiasl = Dayl::allDias();
 
-        $router->render('/places/delete', [
-            'lugar' => $lugar,
-            'resultadodiasl' => $resultadodiasl,
-            'resultadodiasll' => $resultadodiasll,
-            'resultadoespacio' => $resultadoespacio,
-            'resultadocategoria' => $resultadocategoria,
-            'resultadoestado' => $resultadoestado
+        $router->render('/animal/delete', [
+            'animal' => $animal
+            // ,
+            // 'resultadodiasl' => $resultadodiasl
         ]);
     }
 
     public static function delete_partial(Router $router)
     {
-        $Id = $_POST['Id'];
+        $Id = $_POST['IdAnimal'];
 
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
             $Id = filter_var($Id, FILTER_VALIDATE_INT);
             if ($Id) {
-                $categoria = place::find($Id);
-                $categoria->eliminar();
+                $animal = Animal::find($Id);
+                $animal->eliminar();
             }
         }
 
-        $router->render('/places/delete/delete_partial', [
-            'categoria' => $categoria
+        $router->render('/animal/delete/delete_partial', [
+            'animal' => $animal
         ]);
     }
 
 
     public static function report_excel(Router $router)
     {
-        $lugares = Place::innerJoin();
+        $animal = Animal::innerJoin();
 
-        $router->render('places/report_excel', [
-            'lugares' => $lugares
+        $router->render('animal/report_excel', [
+            'animal' => $animal
         ]);
     }
 
@@ -295,9 +192,9 @@ class AnimalController
     {
         $opcion = isset($_POST['opcion']) ? $_POST['opcion'] : 'todo';
 
-        $reportPDF = Place::innerPDF($opcion);
+        $reportPDF = Animal::innerPDF($opcion);
 
-        $router->render('places/report_pdf', [
+        $router->render('animal/report_pdf', [
             'reportPDF' => $reportPDF
         ]);
     }

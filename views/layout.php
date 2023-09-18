@@ -61,9 +61,9 @@
                         <a class="nav-link dropdown-toggle my-2" href="#" id="navbarLightDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">Usuario</a>
 
                         <ul class="dropdown-menu dropdown-menu-light" aria-labelledby="navbarLightDropdownMenuLink">
-                            <li><a class="dropdown-item" href="Login.php">Iniciar sesión</a></li>
+                            <li><a class="dropdown-item" href="login">Iniciar sesión</a></li>
 
-                            <li><a class="dropdown-item" href="contact.html">Registrarse</a></li>
+                            <li><a class="dropdown-item" href="login">Registrarse</a></li>
                         </ul>
                     </li>
                     </ul>

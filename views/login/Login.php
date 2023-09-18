@@ -1,11 +1,12 @@
 <!DOCTYPE html>
-<html lang="en" >
+<html lang="es" >
 <head>
   <meta charset="UTF-8">
   <title>BioVet</title>
   <link rel='stylesheet' href='https://use.fontawesome.com/releases/v5.2.0/css/all.css'>
   <link rel='stylesheet' href='https://use.fontawesome.com/releases/v5.2.0/css/fontawesome.css'>
-  <link rel="stylesheet" href="public/build/assets/css/style.css">
+  <link rel="stylesheet" href="/public/build/assets/css/style.css">
+  <link href="/public/build/assets/css/bootstrap.min.css" rel="stylesheet">
 
 </head>
 <body>

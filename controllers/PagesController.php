@@ -19,16 +19,17 @@ use Model\Cate_Gastronomy;
 use Model\Cate_Entrepreneur;
 use Model\Fair_Entrepreneur;
 use Intervention\Image\ImageManagerStatic as Image;
+use Model\Animal;
 
 class PagesController
 {
     public static function index(Router $router)
     {
-        $lugar = Place::get(5);
-        $emprendedores = Entrepreneur::get(5);
+        $animal = Animal::get(5);
+        // $emprendedores = Entrepreneur::get(5);
 
         $router->renderPages('/paginas/index', [
-            'lugar' => $lugar,
+            'animal' => $animal,
             'emprendedores' => $emprendedores
         ]);
     }
