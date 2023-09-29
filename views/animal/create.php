@@ -32,7 +32,7 @@ include_once 'public/build/Sidebar.php';
 <body class="hold-transition sidebar-mini">
   <div class="wrapper">
     <div class="content-wrapper">
-      <section class="content-header bg-gradient-gray mb-3">
+      <section class="content-header mb-3" style="background-color: #80D0C7;">
         <div class="container-fluid">
           <div class="row mb-2">
             <div class="col-sm-6">
@@ -46,8 +46,8 @@ include_once 'public/build/Sidebar.php';
         <div class="container-fluid">
           <div class="row">
             <div class="col-md-12">
-              <div class="card card-success" style="border-radius: 7px; background: #F8F8FF;">
-                <div class="card-header" style="background: #13701C;">
+              <div class="card" style="border-radius: 7px; background: #F8F8FF;">
+                <div class="card-header" style="background-color: #D6EAF8;">
                   <h2 class="card-title" style="font-size: 23px;"><strong>Ingresar:</strong> Nuevo animal</h2>
                 </div>
                 <div class="card-body">
@@ -69,7 +69,7 @@ include_once 'public/build/Sidebar.php';
                           <div class="mb-3">
                             <label class="form-label" for="tipo">Tipo de animal</label>
                             <select required class="form-select" autofocus name="animal[Tipo]" id="tipo">
-                              <option disabled selected>Seleccione aquí</option>
+                              <option value="selected">Seleccione aquí</option>
                               <option value="Vaca">Vaca</option>
                               <option value="Toro">Toro</option>
                               <option value="Caballo">Caballo</option>
@@ -97,7 +97,7 @@ include_once 'public/build/Sidebar.php';
                           <div class="mb-3">
                             <label class="form-label" for="sexo">Sexo del animal</label>
                             <select required class="form-select" name="animal[Sexo]" id="sexo">
-                              <option disabled selected>Seleccione aquí</option>
+                              <option value="selected">Seleccione aquí</option>
                               <option value="Macho">Macho</option>
                               <option value="Hembra">Hembra</option>
                             </select>
@@ -156,7 +156,7 @@ include_once 'public/build/Sidebar.php';
                           <div class="mb-3">
                             <label class="form-label" for="finca">Finca</label>
                             <select required class="form-select" name="animal[FKFinca]" id="finca">
-                              <option selected disabled>Seleccione aquí</option>
+                              <option value="selected">Seleccione aquí</option>
                               <?php foreach ($resultFkFinca as $finca) : ?>
                                 <option <?php echo $animal->IdAnimal === $finca->IdFinca ? 'selected' : ''; ?> value="<?php echo s($finca->IdFinca); ?>"> <?php echo s($finca->FKFinca); ?> </option>
                               <?php endforeach; ?>
@@ -175,7 +175,7 @@ include_once 'public/build/Sidebar.php';
                 <div class="card-footer">
                   <div class="row">
                     <div class="btn-spinner">
-                      <a class="btn btn-outline-danger col-auto me-2 col-xl-2 col-lg-2 col-md-2 col-sm-2 mt-1 mb-1" href="/animal/index"> <i class="fas fa-times-circle"></i> <b>Cerrar</b> </a>
+                      <button type="button" class="btn btn-outline-danger col-auto me-2 col-xl-2 col-lg-2 col-md-2 col-sm-2 mt-1 mb-1" id="cerrarPagina"> <i class="fas fa-times-circle"></i> <b>Cerrar</b> </button>
                       <button class="btn btn-outline-dark col-auto col-xl-2 col-lg-2 col-md-2 col-sm-2 mt-1 mb-1" type="button" id="submit_data" onclick="enviarFormulario()"> <b>Guardar</b> <i class="fas fa-save"></i> </button>
                     </div>
                   </div>
@@ -237,6 +237,49 @@ include_once 'public/build/Sidebar.php';
 
       return false; // Evita el envío automático del form y permite que el envío lo realice la función
     }
+  </script>
+
+  <script>
+    document.addEventListener("DOMContentLoaded", function() {
+      var formulario = document.getElementById("regiration_form");
+      var botonCerrar = document.getElementById("cerrarPagina");
+
+      botonCerrar.addEventListener("click", function() {
+        var nombre = formulario.elements["nombre"].value;
+        var tipo = formulario.elements["tipo"].value;
+        var raza = formulario.elements["raza"].value;
+        var sexo = formulario.elements["sexo"].value;
+        var edad = formulario.elements["edad"].value;
+        var peso = formulario.elements["peso"].value;
+        var numero = formulario.elements["numero"].value;
+        var finca = formulario.elements["finca"].value;
+
+        if (nombre !== '' || tipo !== 'selected' || raza !== '' || sexo !== 'selected' || edad !== '' || peso !== '' || numero !== '' || finca !== 'selected') {
+          Swal.fire({
+            title: '¿Cancelar proceso?',
+            text: '¿Desea cancelar el proceso?',
+            icon: 'warning',
+            showCancelButton: true,
+            allowOutsideClick: false,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: '<i class="fas fa-check"></i> Cerrar',
+            cancelButtonText: '<i class="fas fa-times"></i> Cancelar',
+            buttonsStyling: false,
+            customClass: {
+              confirmButton: 'btn btn-outline-danger mx-2',
+              cancelButton: 'btn btn-outline-secondary'
+            }
+          }).then((result) => {
+            if (result.isConfirmed) {
+              window.location.href = '/animal/index';
+            }
+          });
+        } else {
+          window.location.href = '/animal/index';
+        }
+      });
+    });
   </script>
 </body>
 

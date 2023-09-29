@@ -8,7 +8,7 @@ include_once 'public/build/Sidebar.php';
 <body class="hold-transition sidebar-mini">
     <div class="wrapper">
         <div class="content-wrapper">
-            <section class="content-header bg-gradient-gray mb-3">
+            <section class="content-header mb-3" style="background-color: #80D0C7;">
                 <div class="container-fluid">
                     <div class="row mb-2">
                         <div class="col-sm-6">
@@ -23,7 +23,7 @@ include_once 'public/build/Sidebar.php';
                     <div class="row">
                         <div class="col-12">
                             <div class="card">
-                                <section class="content-header bg-gradient-success mb-2">
+                                <section class="content-header mb-2" style="background-color: #D6EAF8;">
                                     <div class="container-fluid">
                                         <div class="row mb-2">
                                             <div class="col-sm-6">
