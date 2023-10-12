@@ -5,6 +5,8 @@ include_once __DIR__. '/includes/app.php';
 use MVC\Router;
 use Controllers\AnimalController;
 use Controllers\PagesController;
+use Controllers\UsuarioController;
+use Controllers\FincaController;
 use Controllers\LoginController;
 use Controllers\PrincipalController;
 
