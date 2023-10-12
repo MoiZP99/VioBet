@@ -253,7 +253,7 @@ class Finca
   public static function innerJoin()
   {
     $query = "SELECT DISTINCT f.IdFinca, f.Nombre, f.Ubicacion, f.Tamano
-              FROM finca f
+              FROM finca f";
 
     $resultado = self::consultarSQL($query);
 
