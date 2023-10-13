@@ -178,8 +178,8 @@ class Finca
 
   public function validaTama()
   {
-    if (!preg_match("/^[a-zA-ZáéíóúÁÉÍÓÚÑñ\s]*$/", $this->Tamano)) {
-      self::$ErrTama = '<div style="padding-inline: 12px;"><strong>Error!</strong> Solo letras, acentos y espacios son permitidos.</div>';
+    if (!preg_match("/^\d*\.?\d+$/", $this->Tamano)) {
+      self::$ErrTama = '<div style="padding-inline: 12px;"><strong>Error!</strong> números son permitidos.</div>';
     } elseif (empty($this->Tamano)) {
       self::$ErrTama = '<div style="padding-inline: 12px;"><strong>Error!</strong> Este campo es requerido.</div>';
     }
