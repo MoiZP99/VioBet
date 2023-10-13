@@ -135,15 +135,15 @@
               <a href="#" class="nav-link ">
                 <i class="nav-icon fas fa-arrow-circle-right"></i>
                 <p>
-                  Módulo Actividades
+                  Módulo Fincas
                   <i class="right fas fa-angle-left"></i>
                 </p>
               </a>
               <ul class="nav nav-treeview">
                 <li class="nav-item">
-                  <a href="/activities/index" class="nav-link">
+                  <a href="/finca/index" class="nav-link">
                     <i class="far fa-edit nav-icon"></i>
-                    <p>Actividades</p>
+                    <p>Finca</p>
                   </a>
                 </li>
               </ul>
@@ -171,7 +171,6 @@
                 </li>
               </ul>
             </li>
-            <?php if ($_SESSION['rol']) : ?>
             <li class="nav-item">
               <a href="#" class="nav-link">
                 <i class="nav-icon fas fa-arrow-circle-right"></i>
@@ -189,7 +188,6 @@
                 </li>
               </ul>
             </li>
-            <?php endif; ?>
           </ul>
         </nav>
       </div>

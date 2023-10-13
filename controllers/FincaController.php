@@ -5,7 +5,7 @@ namespace Controllers;
 use MVC\Router;
 use Model\Finca;
 
-class AnimalController
+class FincaController
 {
     public static function index(Router $router)
     {

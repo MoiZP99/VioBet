@@ -60,7 +60,7 @@ include_once 'public/build/Sidebar.php';
                             title: '¡Se encontraron errores en el formulario!',
                             text: 'Debe corregir el error señalado.',
                             showConfirmButton: false,
-                            timer: 6000
+                            timer: 2000
                           });
                         </script>
                       <?php endif; ?>

@@ -28,6 +28,18 @@ $router->post('/animal/delete/delete_partial', [AnimalController::class, 'delete
 $router->post('/animal/report_excel', [AnimalController::class, 'report_excel']);
 $router->post('/animal/report_pdf', [AnimalController::class, 'report_pdf']);
 
+//FINCA
+$router->get('/finca/index', [FincaController::class, 'index']);
+$router->get('/finca/create', [FincaController::class, 'create']);
+$router->post('/finca/create', [FincaController::class, 'create']);
+$router->get('/finca/update', [FincaController::class, 'update']);
+$router->post('/finca/update', [FincaController::class, 'update']);
+$router->get('/finca/details', [FincaController::class, 'details']);
+$router->get('/finca/delete', [FincaController::class, 'delete']);
+$router->post('/finca/delete/delete_partial', [FincaController::class, 'delete_partial']);
+$router->post('/finca/report_excel', [FincaController::class, 'report_excel']);
+$router->post('/finca/report_pdf', [FincaController::class, 'report_pdf']);
+
 
 //PAGES
 $router->get('/', [PagesController::class, 'index']);
