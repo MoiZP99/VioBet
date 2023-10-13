@@ -8,7 +8,7 @@ session_start();
 <body class="hold-transition sidebar-mini">
     <div class="wrapper">
         <div class="content-wrapper">
-            <section class="content-header bg-gradient-gray mb-3">
+            <section class="content-header mb-3" style="background-color: #80D0C7;">
                 <div class="container-fluid">
                     <div class="row mb-2">
                         <div class="col-sm-6">
@@ -22,11 +22,11 @@ session_start();
                 <div class="container-fluid">
                     <div class="row">
                         <section class="col-12">
-                            <div class="card bg-gradient-success">
+                            <div class="card" style="background-color: #D6EAF8;">
                                 <div class="card-header border-0">
                                     <h3 class="card-title">
                                         <i class="far fa-calendar-alt"></i>
-                                        Vista total de información almacenada y solicitudes ingresadas
+                                        Vista total de información almacenada.
                                     </h3>
                                 </div>
                             </div>
@@ -34,86 +34,42 @@ session_start();
                     </div>
 
                     <div class="row">
-                        <div class="col-lg-6 col-12">
-                            <div class="small-box bg-gradient-warning">
-                                <?php if (count($emprendeSolicitud) > 0) : ?>
-                                    <div class="inner">
-                                        <div class="d-flex justify-content-between">
-                                            <h3 style="color: #FFFFFF;"><?php echo count($emprendeSolicitud) ?> <sup style="font-size: 20px">Solicitudes ingresadas</sup></h3>
-                                            <i style="color: #2E5857; margin-top: 10px;" class="fas fa-bell"> <span style="font-size: 10px; color: #DB4437;"><?php echo count($emprendeSolicitud) ?></span> </i>
-                                        </div>
-                                        <p style="color: #FFFFFF;">Solicitudes para emprendedores</p>
-                                    </div>
-                                <?php elseif (count($emprendeSolicitud) === 0) : ?>
-                                    <div class="inner">
-                                        <h3 style="color: #FFFFFF;">0 <sup style="font-size: 20px">Solicitudes ingresadas</sup></h3>
-                                        <p style="color: #FFFFFF;">Solicitudes para emprendedores</p>
-                                    </div>
-                                <?php endif ?>
-                                <div class="icon">
-                                    <i class="ion ion-stats-bars"></i>
-                                </div>
-                                <a href="/entrepreneurs/index" class="small-box-footer">Ir a la tabla <i class="fas fa-arrow-circle-right"></i></a>
-                            </div>
-                        </div>
-                        <div class="col-lg-6 col-12">
-                            <div class="small-box bg-gradient-warning">
-                                <?php if (count($lugarSolicitud) > 0) : ?>
-                                    <div class="inner">
-                                        <div class="d-flex justify-content-between">
-                                            <h3 style="color: #FFFFFF;"><?php echo count($lugarSolicitud) ?> <sup style="font-size: 20px">Solicitudes ingresadas</sup></h3>
-                                            <i style="color: #2E5857; margin-top: 10px;" class="fas fa-bell"> <span style="font-size: 10px; color: #DB4437;"><?php echo count($lugarSolicitud) ?></span> </i>
-                                        </div>
-                                        <p style="color: #FFFFFF;">Solicitudes para emprendedores</p>
-                                    </div>
-                                <?php elseif (count($lugarSolicitud) === 0) : ?>
-                                    <div class="inner">
-                                        <h3 style="color: #FFFFFF;">0 <sup style="font-size: 20px">Solicitudes ingresadas</sup></h3>
-                                        <p style="color: #FFFFFF;">Solicitudes para lugares turísticos</p>
-                                    </div>
-                                <?php endif ?>
-                                <div class="icon">
-                                    <i class="ion ion-stats-bars"></i>
-                                </div>
-                                <a href="/places/index" class="small-box-footer">Ir a la tabla <i class="fas fa-arrow-circle-right"></i></a>
-                            </div>
-                        </div>
                         <div class="col-lg-4 col-12">
                             <div class="small-box bg-gradient-info">
-                                <?php if (count($lugares) > 0) : ?>
+                                <?php if (count($animal) > 0) : ?>
                                     <div class="inner">
-                                        <h3><?php echo count($lugares) ?> <sup style="font-size: 20px">Registros totales</sup></h3>
-                                        <p>Lugares Turísticos</p>
+                                        <h3><?php echo count($animal) ?> <sup style="font-size: 20px">Registros totales</sup></h3>
+                                        <p>Animales</p>
                                     </div>
-                                <?php elseif (count($lugares) === 0) : ?>
+                                <?php elseif (count($animal) === 0) : ?>
                                     <div class="inner">
                                         <h3>0 <sup style="font-size: 20px">Registros totales</sup></h3>
-                                        <p>Lugares Turísticos</p>
+                                        <p>Animales</p>
                                     </div>
                                 <?php endif ?>
                                 <div class="icon">
                                     <i class="ion ion-stats-bars"></i>
                                 </div>
-                                <a href="/places/index" class="small-box-footer">Ir a la tabla <i class="fas fa-arrow-circle-right"></i></a>
+                                <a href="/animal/index" class="small-box-footer pt-3 pb-3">Ir a la tabla <i class="fas fa-arrow-circle-right"></i></a>
                             </div>
                         </div>
                         <div class="col-lg-4 col-12">
                             <div class="small-box bg-gradient-success">
-                                <?php if (count($gastronomias) > 0) : ?>
+                                <?php if (count($finca) > 0) : ?>
                                     <div class="inner">
-                                        <h3><?php echo count($gastronomias) ?> <sup style="font-size: 20px">Registros totales</sup></h3>
-                                        <p>Gastronomías</p>
+                                        <h3><?php echo count($finca) ?> <sup style="font-size: 20px">Registros totales</sup></h3>
+                                        <p>Finca</p>
                                     </div>
-                                <?php elseif (count($gastronomias) === 0) : ?>
+                                <?php elseif (count($finca) === 0) : ?>
                                     <div class="inner">
                                         <h3>0 <sup style="font-size: 20px">Registros totales</sup></h3>
-                                        <p>Gastronomías</p>
+                                        <p>Finca</p>
                                     </div>
                                 <?php endif ?>
                                 <div class="icon">
                                     <i class="ion ion-stats-bars"></i>
                                 </div>
-                                <a href="/gastronomies/index" class="small-box-footer">Ir a la tabla <i class="fas fa-arrow-circle-right"></i></a>
+                                <a href="/finca/index" class="small-box-footer pt-3 pb-3">Ir a la tabla <i class="fas fa-arrow-circle-right"></i></a>
                             </div>
                         </div>
                         <?php if ($_SESSION['rol']) : ?>
