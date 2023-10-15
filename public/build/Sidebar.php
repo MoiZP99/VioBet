@@ -112,29 +112,6 @@
               <a href="#" class="nav-link ">
                 <i class="nav-icon fas fa-arrow-circle-right"></i>
                 <p>
-                  Módulo Gastronomía
-                  <i class="right fas fa-angle-left"></i>
-                </p>
-              </a>
-              <ul class="nav nav-treeview">
-                <li class="nav-item">
-                  <a href="/gastronomies/index" class="nav-link">
-                    <i class="far fa-edit nav-icon"></i>
-                    <p>Gastronomía</p>
-                  </a>
-                </li>
-                <li class="nav-item">
-                  <a href="/cate_gastronomies/index" class="nav-link">
-                    <i class="far fa-edit nav-icon"></i>
-                    <p>Categoría</p>
-                  </a>
-                </li>
-              </ul>
-            </li>
-            <li class="nav-item menu-open">
-              <a href="#" class="nav-link ">
-                <i class="nav-icon fas fa-arrow-circle-right"></i>
-                <p>
                   Módulo Fincas
                   <i class="right fas fa-angle-left"></i>
                 </p>
@@ -144,29 +121,6 @@
                   <a href="/finca/index" class="nav-link">
                     <i class="far fa-edit nav-icon"></i>
                     <p>Finca</p>
-                  </a>
-                </li>
-              </ul>
-            </li>
-            <li class="nav-item menu-open">
-              <a href="#" class="nav-link">
-                <i class="nav-icon fas fa-arrow-circle-right"></i>
-                <p>
-                  Módulo Feria
-                  <i class="right fas fa-angle-left"></i>
-                </p>
-              </a>
-              <ul class="nav nav-treeview">
-                <li class="nav-item">
-                  <a href="/entrepreneurs/index" class="nav-link">
-                    <i class="far fa-edit nav-icon"></i>
-                    <p>Emprendedores</p>
-                  </a>
-                </li>
-                <li class="nav-item">
-                  <a href="/cate_entrepreneurs/index" class="nav-link">
-                    <i class="far fa-edit nav-icon"></i>
-                    <p>Categoría</p>
                   </a>
                 </li>
               </ul>

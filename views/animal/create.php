@@ -47,11 +47,11 @@ include_once 'public/build/Sidebar.php';
           <div class="row">
             <div class="col-md-12">
               <div class="card" style="border-radius: 7px; background: #F8F8FF;">
-                <div class="card-header" style="background-color: #D6EAF8;">
-                  <h2 class="card-title" style="font-size: 23px;"><strong>Ingresar:</strong> Nuevo animal</h2>
-                </div>
-                <div class="card-body">
-                  <form method="POST" action="create" id="regiration_form">
+                <form method="POST" action="create" id="regiration_form">
+                  <div class="card-header" style="background-color: #D6EAF8;">
+                    <h2 class="card-title" style="font-size: 23px;"><strong>Ingresar:</strong> Nuevo animal</h2>
+                  </div>
+                  <div class="card-body">
                     <fieldset>
                       <?php if ($errores) : ?>
                         <script>
@@ -170,16 +170,16 @@ include_once 'public/build/Sidebar.php';
                         </div>
                       </div>
                     </fieldset>
-                  </form>
-                </div>
-                <div class="card-footer">
-                  <div class="row">
-                    <div class="btn-spinner">
-                      <button type="button" class="btn btn-outline-danger col-auto me-2 col-xl-2 col-lg-2 col-md-2 col-sm-2 mt-1 mb-1" id="cerrarPagina"> <i class="fas fa-times-circle"></i> <b>Cerrar</b> </button>
-                      <button class="btn btn-outline-dark col-auto col-xl-2 col-lg-2 col-md-2 col-sm-2 mt-1 mb-1" type="button" id="submit_data" onclick="enviarFormulario()"> <b>Guardar</b> <i class="fas fa-save"></i> </button>
+                  </div>
+                  <div class="card-footer">
+                    <div class="row">
+                      <div class="btn-spinner">
+                        <button type="button" class="btn btn-outline-danger col-auto me-2 col-xl-2 col-lg-2 col-md-2 col-sm-2 mt-1 mb-1" id="cerrarPagina"> <i class="fas fa-times-circle"></i> <b>Cerrar</b> </button>
+                        <button class="btn btn-outline-dark col-auto col-xl-2 col-lg-2 col-md-2 col-sm-2 mt-1 mb-1" type="button" id="submit_data" onclick="enviarFormulario()"> <b>Guardar</b> <i class="fas fa-save"></i> </button>
+                      </div>
                     </div>
                   </div>
-                </div>
+                </form>
               </div>
             </div>
           </div>
