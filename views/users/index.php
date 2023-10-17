@@ -48,18 +48,18 @@ include_once 'public/build/Sidebar.php';
                       </tr>
                     </thead>
                     <tbody>
-                      <?php foreach ($usuarios as $usuario) : ?>
+                      <?php foreach ($usuario as $usuario) : ?>
                         <tr>
-                          <?php if ($usuario->Rol_Id == '3') : ?>
-                            <td style="color: red;"><b><?php echo $usuario->Id ?></b></td>
+                          <?php if ($usuario->IdRol == '3') : ?>
+                            <td style="color: red;"><b><?php echo $usuario->IdRol ?></b></td>
                           <?php else : ?>
-                            <td><b><?php echo $usuario->Id ?></b></td>
+                            <td><b><?php echo $usuario->IdRol ?></b></td>
                           <?php endif; ?>
                           <td><?php echo $usuario->Nombre . ' ' . $usuario->Apellido1 . ' ' . $usuario->Apellido2 ?></td>
-                          <td><?php echo $usuario->Nombre_Rol ?></td>
+                          <td><?php echo $usuario->Nombre ?></td>
                           <td>
                             <?php if ($usuario->Estado == 'Activo') {
-                              if ($usuario->Rol_Id == 3) {
+                              if ($usuario->IdRol == 3) {
                                 echo '<span class="badge badge-success"> <i class="fas fa-lock-open"></i> Activo por defecto</span>';
                               } else {
                                 echo '<span class="badge badge-success"> <i class="fas fa-lock-open"></i> Activo</span>';
@@ -68,7 +68,7 @@ include_once 'public/build/Sidebar.php';
                               echo '<span class="badge badge-danger"> <i class="fas fa-lock"></i> Inactivo</span>';
                             } ?>
                           </td>
-                          <?php if ($usuario->Rol_Id == 3) : ?>
+                          <?php if ($usuario->IdRol == 3) : ?>
                             <td>
                               <div class="d-grid gap-2 d-inline-flex d-none"></div>
                             </td>

@@ -7,7 +7,7 @@ class User
 
   //Base de datos
   protected static $db;
-  protected static $tblUsuario = ['Id', 'Nombre', 'Apellido1', 'Rol_Id', 'Password', 'Email', 'Apellido2', 'FK_Estado', 'Motivo'];
+  protected static $tblUsuario = ['IdUsuario', 'Nombre', 'Apellido1', 'Rol_Id', 'Contrasena', 'Email', 'Apellido2', 'FK_Estado', 'Motivo'];
 
   //Errores
   public static $errores;
@@ -22,12 +22,12 @@ class User
   // Alertas y Mensajes
   public static $alertas = [];
 
-  public $Id;
+  public $IdUsuario;
   public $Nombre;
   public $Apellido1;
   public $Apellido2;
   public $Rol_Id;
-  public $Password;
+  public $Contrasena;
   public $Email;
   public $Password2;
   public $FK_Estado;
@@ -37,11 +37,11 @@ class User
 
   public function __construct($args = [])
   {
-    $this->Id = $args['Id'] ?? null;
+    $this->IdUsuario = $args['IdUsuario'] ?? null;
     $this->Nombre = $args['Nombre'] ?? '';
     $this->Apellido1 = $args['Apellido1'] ?? '';
     $this->Rol_Id = $args['Rol_Id'] ?? '';
-    $this->Password = $args['Password'] ?? '';
+    $this->Contrasena = $args['Contrasena'] ?? '';
     $this->Password2 = $args['Password2'] ?? '';
     $this->Email = $args['Email'] ?? '';
     $this->Apellido2 = $args['Apellido2'] ?? '';
@@ -60,7 +60,7 @@ class User
 
   public function guardar()
   {
-    if (!is_null($this->Id)) {
+    if (!is_null($this->IdUsuario)) {
       // actualizar
       $this->actualizar();
     } else {
@@ -90,7 +90,7 @@ class User
     // $query = " INSERT INTO lugar_turistico (Nombre_Lugar, Numero_Contacto, Descripcion, Correo, Imagen, TipoEspacio_Id, Hora_apertura, Hora_clausura, DiaApertura_Id, DiaClausura_Id, Ubicacion, categoria_Id) 
     // VALUES ('$this->Nombre_Lugar', '$this->Numero_Contacto', '$this->Descripcion', '$this->Correo', '$this->Imagen', '$this->TipoEspacio_Id', '$this->Hora_apertura', '$this->Hora_clausura', '$this->DiaApertura_Id', '$this->DiaClausura_Id','$this->Ubicacion', '$this->categoria_Id')";
 
-    $query = " INSERT INTO usuarios ( ";
+    $query = " INSERT INTO usuario ( ";
     $query .= join(', ', array_keys($atributos));
     $query .= " ) VALUES (' ";
     $query .= join("', '", array_values($atributos));
@@ -113,9 +113,9 @@ class User
       $valores[] = "{$key}='{$value}'";
     }
 
-    $query = "UPDATE usuarios SET ";
+    $query = "UPDATE usuario SET ";
     $query .=  join(', ', $valores);
-    $query .= " WHERE Id = '" . self::$db->escape_string($this->Id) . "' ";
+    $query .= " WHERE IdUsuario = '" . self::$db->escape_string($this->IdUsuario) . "' ";
     $query .= " LIMIT 1 ";
 
     $resultado = self::$db->query($query);
@@ -160,7 +160,7 @@ class User
   public function eliminar()
   {
     // Eliminar el registro
-    $query = "DELETE FROM usuarios WHERE Id = " . self::$db->escape_string($this->Id) . " LIMIT 1";
+    $query = "DELETE FROM usuario WHERE IdUsuario = " . self::$db->escape_string($this->IdUsuario) . " LIMIT 1";
     $resultado = self::$db->query($query);
 
     return $resultado;
@@ -258,13 +258,13 @@ class User
 
   public function validaContraseña()
   {
-    if ($this->Password != $this->Password2) {
+    if ($this->Contrasena != $this->Password2) {
       self::$ErrContraseña = '<div style="padding-inline: 12px;"><strong>Error!</strong> Las contrasñas no coinciden.</div>';
-    } elseif (empty($this->Password)) {
+    } elseif (empty($this->Contrasena)) {
       self::$ErrContraseña = '<div style="padding-inline: 12px;"><strong>Error!</strong> Este campo no debe ir en blanco.</div>';
     } elseif (empty($this->Password2)) {
       self::$ErrContraseña = '<div style="padding-inline: 12px;"><strong>Error!</strong> Este campo no debe ir en blanco.</div>';
-    } elseif (!preg_match("/^(?=.*[A-Z])(?=.*[a-z].*[a-z].*[a-z])(?=.*\d.*\d.*\d.*\d)(?=.*[*#@])[A-Za-z\d*#@]{8,16}$/", $this->Password)) {
+    } elseif (!preg_match("/^(?=.*[A-Z])(?=.*[a-z].*[a-z].*[a-z])(?=.*\d.*\d.*\d.*\d)(?=.*[*#@])[A-Za-z\d*#@]{8,16}$/", $this->Contrasena)) {
       self::$ErrContraseña = '<div style="padding-inline: 12px;"><strong>Error!</strong> La contraseña no cumple con los requisitos.</div>';
     }
 
@@ -343,7 +343,7 @@ class User
   //listar todos Lugares
   public static function all()
   {
-    $query = "SELECT * FROM usuarios";
+    $query = "SELECT * FROM usuario";
 
     $resultado = self::consultarSQL($query);
 
@@ -354,7 +354,7 @@ class User
   // Busqueda Where con Columna 
   public static function where($columna, $valor)
   {
-    $query = "SELECT * FROM usuarios WHERE ${columna} = '${valor}'";
+    $query = "SELECT * FROM usuario WHERE ${columna} = '${valor}'";
     $resultado = self::consultarSQL($query);
     return array_shift(
       $resultado
@@ -375,10 +375,10 @@ class User
 
   public static function innerJoin()
   {
-    $query = "SELECT DISTINCT u.Id, u.Nombre, u.Apellido1, u.Apellido2, u.Email, u.`Password`, u.Rol_Id , r.Nombre_Rol, e.Estado
-              FROM usuarios u
+    $query = "SELECT DISTINCT u.IdUsuario, u.Nombre, u.Apellido1, u.Apellido2, u.Email, u.Contrasena, u.Rol_Id , r.Nombre_Rol, e.Estado
+              FROM usuario u
               INNER JOIN rol r 
-              on u.Rol_Id = r.Id
+              on u.Rol_Id = r.IdRol
               INNER JOIN estado_emprendedor e
               ON u.FK_Estado = e.Id";
 
@@ -392,8 +392,8 @@ class User
     $query = "SELECT COUNT(*) AS total_datos
               FROM (
                   SELECT DISTINCT 
-                      u.Id, u.Nombre, u.Apellido1, u.Apellido2, u.Email, u.`Password`, r.Nombre_Rol, e.Estado
-                  FROM usuarios u
+                      u.Id, u.Nombre, u.Apellido1, u.Apellido2, u.Email, u.Contraseña, r.Nombre_Rol, e.Estado
+                  FROM usuario u
                   INNER JOIN rol r ON u.Rol_Id = r.Id
                   INNER JOIN estado_emprendedor e ON u.FK_Estado = e.Id
               ) AS subconsulta";
@@ -405,9 +405,9 @@ class User
 
 
   // Busca un lugar por su id
-  public static function find($Id)
+  public static function find($IdUsuario)
   {
-    $query = "SELECT * FROM usuarios WHERE Id = ${Id}";
+    $query = "SELECT * FROM usuarios WHERE Id = ${IdUsuario}";
 
     $resultado = self::consultarSQL($query);
 
@@ -417,6 +417,6 @@ class User
 
   public function hashPassword(): void
   {
-    $this->Password = password_hash($this->Password, PASSWORD_BCRYPT);
+    $this->Contrasena = password_hash($this->Contrasena, PASSWORD_BCRYPT);
   }
 }

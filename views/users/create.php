@@ -104,7 +104,7 @@ include_once 'public/build/Sidebar.php';
                                                         <select class="form-select" name="usuario[Rol_Id]" id="rol">
                                                             <option disabled selected>Seleccione aquí</option>
                                                             <?php foreach ($resultadorol as $rol) : ?>
-                                                                <option <?php echo $usuario->Rol_Id === $rol->Id ? 'selected' : ''; ?> value="<?php echo s($rol->Id); ?>"> <?php echo s($rol->Nombre_Rol); ?> </option>
+                                                                <option <?php echo $usuario->Rol_Id === $rol->IdRol ? 'selected' : ''; ?> value="<?php echo s($rol->Id); ?>"> <?php echo s($rol->Nombre); ?> </option>
                                                             <?php endforeach; ?>
                                                         </select>
                                                         <?php if ($ErrRol) : ?>
@@ -135,7 +135,7 @@ include_once 'public/build/Sidebar.php';
                                                 <div class="col col-xxl-6 col-xl-6 col-lg-6 col-sm-12 col-md-6 col-12">
                                                     <div class="mb-3">
                                                         <label class="form-label" for="ctrs1">Contraseña</label>
-                                                        <input class="form-control password1" type="password" id="ctrs1" name="usuario[Password]" maxlength="16" onKeyUp="javascript:validatePass('ctrs1')" placeholder="Escriba en este espacio" value="<?php echo s($usuario->Password); ?>">
+                                                        <input class="form-control password1" type="password" id="ctrs1" name="usuario[Password]" maxlength="16" onKeyUp="javascript:validatePass('ctrs1')" placeholder="Escriba en este espacio" value="<?php echo s($usuario->Contrasena); ?>">
                                                         <span class="fa fa-fw fa-eye password-icon show-password"></span>
                                                         <span class="form-text" id="contador">De 8 a 16 caracteres.<small style="color:red;"><b>*</b></small> </span>
                                                         <span class="form-text" id="contador">Mínimo 1 letra mayúscula.<small style="color:red;"><b>*</b></small> </span>
