@@ -5,26 +5,30 @@ namespace Model;
 class Finca
 {
   protected static $db;
-  protected static $columnasDB = ['IdFinca', 'Nombre' ,'Ubicacion', 'Tamano'];
+  protected static $columnasDB = ['IdFinca', 'NombreFinca' ,'Ubicacion', 'Tamano', 'FKUsuario'];
 
   public static $errores;
   public static $ErrNomb;
   public static $ErrUbi;
   public static $ErrTama;
   public static $ErrFKFinca;
+  public static $ErrFKUsuario;
 
   public $IdFinca;
-  public $Nombre;
+  public $NombreFinca;
   public $Tamano;
   public $Ubicacion;
-  public $FKFinca;
+  public $FKUsuario;
+  public $NombreUser; //join
+
 
   public function __construct($args = [])
   {
     $this->IdFinca = $args['IdFinca'] ?? null;
-    $this->Nombre = $args['Nombre'] ?? '';
+    $this->NombreFinca = $args['NombreFinca'] ?? '';
     $this->Ubicacion = $args['Ubicacion'] ?? '';
     $this->Tamano = $args['Tamano'] ?? '';
+    $this->FKUsuario = $args['FKUsuario'] ?? '';
   }
 
   public static function setDB($database)
@@ -88,7 +92,7 @@ class Finca
 
   public static function get($limite)
   {
-    $query = "SELECT DISTINCT IdAnimal, Nombre, Ubicacion, Tamano
+    $query = "SELECT DISTINCT IdAnimal, NombreFinca, Ubicacion, Tamano, FKUsuario
               FROM finca
               LIMIT $limite";
 
@@ -149,16 +153,16 @@ class Finca
     return self::$ErrTama;
   }
 
-  public static function getErrFKFinca()
+  public static function getErrFKUsuario()
   {
-    return self::$ErrFKFinca;
+    return self::$ErrFKUsuario;
   }
 
   public function validaNombre()
   {
-    if (!preg_match("/^[a-zA-ZáéíóúÁÉÍÓÚÑñ\s]*$/", $this->Nombre)) {
+    if (!preg_match("/^[a-zA-ZáéíóúÁÉÍÓÚÑñ\s]*$/", $this->NombreFinca)) {
       self::$ErrNomb = '<div style="padding-inline: 12px;"><strong>Error!</strong> Solo letras, acentos y espacios son permitidos.</div>';
-    } elseif (empty($this->Nombre)) {
+    } elseif (empty($this->NombreFinca)) {
       self::$ErrNomb = '<div style="padding-inline: 12px;"><strong>Error!</strong> Este campo es requerido.</div>';
     }
 
@@ -187,21 +191,21 @@ class Finca
     return self::$ErrTama;
   }
 
-  public function validaFinca()
+  public function validaFKUsuario()
   {
-    if (empty($this->FKFinca)) {
-      self::$ErrFKFinca = '<div style="padding-inline: 12px;"><strong>Error!</strong> Este campo es requerido.</div>';
+    if (empty($this->FKUsuario)) {
+      self::$ErrFKUsuario = '<div style="padding-inline: 12px;"><strong>Error!</strong> Este campo es requerido.</div>';
     }
 
-    return self::$ErrFKFinca;
+    return self::$ErrFKUsuario;
   }
 
   public function validar()
   {
-    if ((!preg_match("/^[a-zA-ZáéíóúÁÉÍÓÚÑñ\s]*$/", $this->Nombre)) ||
+    if ((!preg_match("/^[a-zA-ZáéíóúÁÉÍÓÚÑñ\s]*$/", $this->NombreFinca)) ||
         (!preg_match("/^[a-zA-ZáéíóúÁÉÍÓÚÑñ\s]*$/", $this->Ubicacion)) ||
-        (!preg_match("/^[a-zA-ZáéíóúÁÉÍÓÚÑñ\s]*$/", $this->Tamano)) ||
-        (!$this->FKFinca)
+        (!preg_match("/^\d*\.?\d+$/", $this->Tamano)) ||
+        (!$this->FKUsuario)
     ) {
       self::$errores = '<strong>Advertencia!</strong> Verifique que los datos ingresados sean correctos.';
     }
@@ -238,21 +242,9 @@ class Finca
     return $array;
   }
 
-  // public static function all()
-  // {
-  //   $query = "SELECT lt.Id, lt.Nombre_Lugar, lt.Numero_Contacto, lt.Descripcion, lt.Correo, lt.Imagen, 
-  //             lt.TipoEspacio_Id, lt.Hora_apertura, lt.Hora_clausura, lt.Ubicacion, lt.categoria_Id, 
-  //             lt.DiaApertura_Id, lt.DiaClausura_Id
-  //             FROM lugar_turistico lt";
-
-  //   $resultado = self::consultarSQL($query);
-
-  //   return $resultado;
-  // }
-
-  public static function innerJoin()
+  public static function all()
   {
-    $query = "SELECT DISTINCT f.IdFinca, f.Nombre, f.Ubicacion, f.Tamano
+    $query = "SELECT DISTINCT f.IdFinca, f.NombreFinca, f.Ubicacion, f.Tamano, f.FKUsuario
               FROM finca f";
 
     $resultado = self::consultarSQL($query);
@@ -260,38 +252,21 @@ class Finca
     return $resultado;
   }
 
-  public static function innerPDF()
+  public static function innerJoin()
   {
-    $opcion = isset($_POST['opcion']) ? $_POST['opcion'] : 'todo';
+    $query = "SELECT DISTINCT f.IdFinca, f.NombreFinca, f.Ubicacion, f.Tamano, f.FKUsuario
+              FROM finca f";
 
-    $query = "SELECT DISTINCT lt.Id, lt.Nombre_Lugar, lt.Numero_Contacto, lt.Correo,
-              te.Espacio, lt.Ubicacion, cl.categoria_turismo, e.Estado
-              FROM lugar_turistico lt
-              INNER JOIN tipo_espacio te
-              ON lt.TipoEspacio_Id = te.Id
-              INNER JOIN categoria_lugar cl
-              ON lt.categoria_Id = cl.Id
-              INNER JOIN estado e
-              ON lt.FK_Estado = e.Id";
+    $resultado = self::consultarSQL($query);
 
-    if ($opcion === 'activo') {
-      $query .= " WHERE e.Estado = 'Activo'";
-    } elseif ($opcion === 'inactivo') {
-      $query .= " WHERE e.Estado = 'Inactivo'";
-    } elseif ($opcion === 'todo') {
-      $query .= " WHERE e.Estado = 'Activo' OR e.Estado = 'Inactivo'";
-    }
-
-    $reportPDF = self::consultarSQL($query);
-
-    return $reportPDF;
+    return $resultado;
   }
   
-  public static function find($Id)
+  public static function find($IdFinca)
   {
-    $query = "SELECT DISTINCT IdFinca, Nombre, Ubicacion, Tamano
+    $query = "SELECT DISTINCT IdFinca, NombreFinca, Ubicacion, Tamano, FKUsuario
               FROM finca 
-              WHERE IdFinca = $Id";
+              WHERE IdFinca = $IdFinca";
 
     $resultado = self::consultarSQL($query);
 

@@ -68,29 +68,27 @@ include_once 'public/build/Sidebar.php';
                                     <table id="example1" class="table table-bordered table-hover">
                                         <thead>
                                             <tr>
-                                                <th>ID</th>
                                                 <th>Nombre</th>
                                                 <th>Tipo</th>
                                                 <th>Raza</th>
                                                 <th>Número en arete</th>
+                                                <th>Finca</th>
                                                 <th>Acciones</th>
                                             </tr>
                                         </thead>
                                         <tbody>
                                             <?php foreach ($animal as $animal) : ?>
                                                 <tr>
-                                                    <td><b><?php echo $animal->IdAnimal ?></b></td>
                                                     <td><?php echo $animal->Nombre ?></td>
                                                     <td><?php echo $animal->Tipo ?></td>
                                                     <td><?php echo $animal->Raza ?></td>
-                                                    <td><?php echo $animal->Número ?></td>
+                                                    <td><?php echo $animal->Numero ?></td>
+                                                    <td><?php echo $animal->NombreFinca ?></td>
                                                     <td>
                                                         <div class="d-grid gap-2 d-inline-flex">
                                                             <a href="/animal/details?IdAnimal=<?php echo $animal->IdAnimal ?>" class="fa-regular fa-eye btn btn-outline-info" title="Detalles"></a>
-                                                            <?php if ($_SESSION['rol']) : ?>
                                                                 <a href="/animal/update?IdAnimal=<?php echo $animal->IdAnimal ?>" class="fa-regular fa-pen-to-square btn btn-outline-warning" title="Actualizar"></a>
                                                                 <a href="/animal/delete?IdAnimal=<?php echo $animal->IdAnimal ?>" class="fa-solid fa-trash-can btn btn-outline-danger" title="Eliminar"></a>
-                                                            <?php endif; ?>
                                                         </div>
                                                     </td>
                                                 </tr>

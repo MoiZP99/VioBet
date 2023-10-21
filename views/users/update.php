@@ -18,7 +18,7 @@ include_once 'public/build/Sidebar.php';
 <body class="hold-transition sidebar-mini">
     <div class="wrapper">
         <div class="content-wrapper">
-            <section class="content-header">
+            <section class="content-header mb-3" style="background-color: #80D0C7;">
                 <div class="container-fluid">
                     <div class="row mb-2">
                         <div class="col-sm-6">
@@ -32,26 +32,52 @@ include_once 'public/build/Sidebar.php';
                 <div class="container-fluid">
                     <div class="row">
                         <div class="col-md-12">
-                            <div class="card card-success" style="border-radius: 7px; background: #F8F8FF;">
-                                <div class="card-header" style="background-color: #13701C;">
+                            <div class="card" style="border-radius: 7px; background: #F8F8FF;">
+                                <div class="card-header" style="background-color: #D6EAF8;">
                                     <h2 class="card-title" style="font-size: 23px;"><strong>Actualizar:</strong> Datos Personales</h2>
                                 </div>
-                                <div class="card-body">
-                                    <form class="form" method="POST" id="regiration_form">
+                                <form class="form" method="POST" id="regiration_form">
+                                    <div class="card-body">
                                         <fieldset>
-                                            <div class="mb-3">
-                                                <label class="form-label" for="nombre"><strong>Nombre</strong></label>
-                                                <input class="form-control" type="text" id="nombre" name="usuario[Nombre]" onKeyUp="javascript:validateText('nombre')" placeholder="Esriba en este espacio" value="<?php echo s($usuario->Nombre); ?>">
-                                                <?php if ($ErrNomb) : ?>
-                                                    <div class="alert alert-danger mt-1 p-0" role="alert">
-                                                        <?php echo $ErrNomb ?>
+                                            <div class="row">
+                                                <div class="col col-xxl-4 col-xl-4 col-lg-4 col-sm-12 col-md-6 col-12">
+                                                    <div class="mb-3">
+                                                        <label class="form-label" for="nombre">Nombre</label>
+                                                        <input class="form-control" autofocus type="text" id="nombre" name="usuario[NombreUser]" onKeyUp="javascript:validateText('nombre')" placeholder="Esriba en este espacio" value="<?php echo s($usuario->NombreUser); ?>">
+                                                        <?php if ($ErrNomb) : ?>
+                                                            <div class="alert alert-danger mt-1 p-0" role="alert">
+                                                                <?php echo $ErrNomb ?>
+                                                            </div>
+                                                        <?php endif; ?>
                                                     </div>
-                                                <?php endif; ?>
+                                                </div>
+                                                <div class="col col-xxl-4 col-xl-4 col-lg-4 col-sm-12 col-md-6 col-12">
+                                                    <div class="mb-3">
+                                                        <label class="form-label" for="correo">Correo electrónico</label>
+                                                        <input class="form-control" type="email" id="correo" name="usuario[Email]" placeholder="Escriba en este espacio" value="<?php echo s($usuario->Email); ?>">
+                                                        <?php if ($ErrEmail) : ?>
+                                                            <div class="alert alert-danger mt-1 p-0" role="alert">
+                                                                <?php echo $ErrEmail ?>
+                                                            </div>
+                                                        <?php endif; ?>
+                                                    </div>
+                                                </div>
+                                                <div class="col col-xxl-4 col-xl-4 col-lg-4 col-sm-12 col-md-6 col-12">
+                                                    <div class="mb-3">
+                                                        <label class="form-label" for="telefono">Teléfono</label>
+                                                        <input class="form-control" type="tel" id="telefono" name="usuario[Telefono]" placeholder="Escriba en este espacio" value="<?php echo s($usuario->Telefono); ?>">
+                                                        <?php if ($ErrTelefono) : ?>
+                                                            <div class="alert alert-danger mt-1 p-0" role="alert">
+                                                                <?php echo $ErrTelefono ?>
+                                                            </div>
+                                                        <?php endif; ?>
+                                                    </div>
+                                                </div>
                                             </div>
                                             <div class="row">
                                                 <div class="col col-xxl-6 col-xl-6 col-lg-6 col-sm-12 col-md-6 col-12">
                                                     <div class="mb-3">
-                                                        <label class="form-label" for="apell1"><strong>Primer apellido</strong></label>
+                                                        <label class="form-label" for="apell1">Primer apellido</label>
                                                         <input class="form-control" type="text" id="apell1" name="usuario[Apellido1]" onKeyUp="javascript:validateText('apell1')" placeholder="Escriba en este espacio" value="<?php echo s($usuario->Apellido1); ?>">
                                                         <?php if ($ErrApel) : ?>
                                                             <div class="alert alert-danger mt-1 p-0" role="alert">
@@ -62,7 +88,7 @@ include_once 'public/build/Sidebar.php';
                                                 </div>
                                                 <div class="col col-xxl-6 col-xl-6 col-lg-6 col-sm-12 col-md-6 col-12">
                                                     <div class="mb-3">
-                                                        <label class="form-label" for="apell2"><strong>Segundo apellido</strong></label>
+                                                        <label class="form-label" for="apell2">Segundo apellido</label>
                                                         <input class="form-control" type="text" id="apell2" name="usuario[Apellido2]" onKeyUp="javascript:validateText('apell2')" placeholder="Escriba en este espacio" value="<?php echo s($usuario->Apellido2); ?>">
                                                         <?php if ($ErrApell) : ?>
                                                             <div class="alert alert-danger mt-1 p-0" role="alert">
@@ -72,72 +98,15 @@ include_once 'public/build/Sidebar.php';
                                                     </div>
                                                 </div>
                                             </div>
-                                            <div class="row">
-                                                <div class="col col-7 col-xxl-4 col-xl-4 col-lg-4 col-md-4 col-sm-4">
-                                                    <div class="mb-3">
-                                                        <label class="form-label" for="rol"><strong>Rol de usuario</strong></label>
-                                                        <select class="form-select" name="usuario[Rol_Id]" id="rol">
-                                                            <option disabled selected>Seleccione aquí</option>
-                                                            <?php foreach ($resultadorol as $rol) : ?>
-                                                                <option <?php echo $usuario->Rol_Id === $rol->Id ? 'selected' : ''; ?> value="<?php echo s($rol->Id); ?>"> <?php echo s($rol->Nombre_Rol); ?> </option>
-                                                            <?php endforeach; ?>
-                                                        </select>
-                                                        <?php if ($ErrRol) : ?>
-                                                            <div class="alert alert-danger mt-1 p-0" role="alert">
-                                                                <?php echo $ErrRol ?>
-                                                            </div>
-                                                        <?php endif; ?>
-                                                    </div>
-                                                </div>
-                                                <div class="col col-5 col-sm-3 col-md-4 col-lg-4 col-xl-4 col-xxl-4">
-                                                    <div class="mb-3">
-                                                        <label class="form-label" for="estado"><strong>Estado</strong><span style="color:blue;"> *</span></label>
-                                                        <select id="estado" name="usuario[FK_Estado]" class="form-select">
-                                                            <option selected disabled>Seleccione aquí</option>
-                                                            <?php foreach ($resultadoestado as $estado) : ?>
-                                                                <option <?php echo $usuario->FK_Estado === $estado->Id ? 'selected' : ''; ?> value="<?php echo s($estado->Id); ?>" data-inactivo="<?php echo $estado->Estado === 'Inactivo' ? 'true' : 'false'; ?>">
-                                                                    <?php echo s($estado->Estado); ?>
-                                                                </option>
-                                                            <?php endforeach; ?>
-                                                        </select>
-                                                        <?php if ($ErrEstado) : ?>
-                                                            <div class="alert alert-danger mt-1 p-0" role="alert">
-                                                                <?php echo $ErrEstado ?>
-                                                            </div>
-                                                        <?php endif; ?>
-                                                    </div>
-                                                </div>
-                                                <div class="col col-12 col-sm-5 col-md-4 col-lg-4 col-xl-4 col-xxl-4">
-                                                    <div class="mb-3">
-                                                        <label class="form-label" for="motivo"><strong>Motivo de inactibidad</strong><span style="color:blue;"> *</span></label>
-                                                        <textarea class="form-control" id="motivo" rows="3" maxlength="100" style="overflow: hidden; resize: none;" name="usuario[Motivo]" onKeyUp="javascript:validateText('motivo')" placeholder="Escriba el motivo aquí"><?php echo s($usuario->Motivo); ?></textarea>
-                                                        <span class="form-text">(Área obligatória para "Estado" Inactivo). <small style="color:red;">*</small> </span>
-                                                        <?php if ($ErrMotivo) : ?>
-                                                            <div class="alert alert-danger mt-1 p-0" role="alert">
-                                                                <?php echo $ErrMotivo ?>
-                                                            </div>
-                                                        <?php endif; ?>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="col col-xxl-12 col-xl-12 col-lg-12 col-sm-6 col-md-12 col-12">
-                                                <div class="mb-3">
-                                                    <label class="form-label" for="correo"><strong>Correo electrónico</strong></label>
-                                                    <input class="form-control" type="email" id="correo" name="usuario[Email]" placeholder="Escriba en este espacio" value="<?php echo s($usuario->Email); ?>">
-                                                    <?php if ($ErrEmail) : ?>
-                                                        <div class="alert alert-danger mt-1 p-0" role="alert">
-                                                            <?php echo $ErrEmail ?>
-                                                        </div>
-                                                    <?php endif; ?>
-                                                </div>
-                                            </div>
-                                            <hr style="background-color: green;">
-                                            <a class="btn btn-outline-danger col-auto col-xl-auto col-lg-auto col-md-auto col-sm-auto mt-2" href="/users/index"> <i class="fas fa-times-circle"></i> <b>Cerrar</b> </a>
-                                            <button type="submit" class="btn btn-outline-dark col-auto col-xl-auto col-lg-auto col-md-auto col-sm-auto mt-2" id="submit_data"> <b>Guardar</b> <i class="fas fa-save"></i> </button>
                                         </fieldset>
-                                    </form>
-                                </div>
-                                <div class="card-footer"></div>
+                                    </div>
+                                    <div class="card-footer">
+                                        <div class="btn-spinner">
+                                            <a type="button" class="btn btn-outline-danger col-auto me-2 col-xl-2 col-lg-2 col-md-2 col-sm-3 mt-1 mb-1" href="/users/index"> <i class="fas fa-times-circle"></i> <b>Cerrar</b> </a>
+                                            <button type="submit" class="btn btn-outline-dark col-auto me-2 col-xl-2 col-lg-2 col-md-2 col-sm-3 mt-1 mb-1" id="submit_data"> <b>Guardar</b> <i class="fas fa-save"></i> </button>
+                                        </div>
+                                    </div>
+                                </form>
                             </div>
                         </div>
                     </div>
@@ -172,37 +141,7 @@ include_once 'public/build/Sidebar.php';
                 }
             })
         });
-        //-----VER CONTRASEÑA fin-----------------------------------------------------------|
-        //-----CAMBIO DE ESTADO inicio-----------------------------------------------------------|
-        document.addEventListener('DOMContentLoaded', () => {
-            // Obtener los elementos HTML
-            const estadoSelect = document.querySelector('#estado');
-            const motivoTextarea = document.querySelector('#motivo');
-            const motivoInput = document.querySelector('#motivo');
-
-            // Función que cambia el estado del campo del motivo
-            function actualizarMotivo() {
-                // Verificar si el estado anterior era "Inactivo" y el estado actual es "Activo"
-                if (estadoSelect.previousValue === '2' && estadoSelect.value === '1') {
-                    motivoTextarea.value = ''; // Borrar el contenido del textarea (pone en blanco)
-                }
-
-                motivoTextarea.readOnly = estadoSelect.value === '1';
-                motivoTextarea.required = estadoSelect.value === '2';
-                motivoTextarea.value = estadoSelect.value === '1' ? motivoInput.value : '<?php echo s($usuario->Motivo); ?>';
-
-                // Guarda el valor actual del estado
-                estadoSelect.previousValue = estadoSelect.value;
-            }
-
-            // Configura el evento de cambio de estado
-            estadoSelect.addEventListener('change', actualizarMotivo);
-
-            // Actualiza el estado del campo de motivo al cargar la página
-            estadoSelect.previousValue = estadoSelect.value;
-            actualizarMotivo();
-        });
-        //-----CAMBIO DE ESTADO fin-----------------------------------------------------------|
+        //-----VER CONTRASEÑA fin-----------------------------------------------------------|y
         const btnGuardar = document.getElementById('submit_data');
         const formulario = document.getElementById('regiration_form');
 
@@ -225,7 +164,7 @@ include_once 'public/build/Sidebar.php';
 
                         setTimeout(() => {
                             resolve();
-                        }, 2000);
+                        }, 1000);
                     });
                 },
             }).then((result) => {

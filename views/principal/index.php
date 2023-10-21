@@ -477,7 +477,7 @@ session_start();
                             </div>
                         </div>
                         <div class="col-lg-4 col-12">
-                            <div class="small-box">
+                            <div class="small-box text-blue">
                                 <?php if (count($usuarios) > 0) : ?>
                                     <div class="inner">
                                         <h3><?php echo count($usuarios) ?> <sup style="font-size: 20px">Registros totales</sup></h3>
@@ -520,7 +520,7 @@ session_start();
                                         </g>
                                     </svg>
                                 </div>
-                                <a href="/user/index" class="small-box-footer pt-3 pb-3 bg-gradient-info">Ir a la tabla <i class="fas fa-arrow-circle-right"></i></a>
+                                <a href="/users/index" class="small-box-footer pt-3 pb-3 bg-gradient-info">Ir a la tabla <i class="fas fa-arrow-circle-right"></i></a>
                             </div>
                         </div>
                     </div>

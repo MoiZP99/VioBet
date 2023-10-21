@@ -5,7 +5,7 @@ namespace Model;
 class Animal
 {
   protected static $db;
-  protected static $columnasDB = ['IdAnimal', 'Nombre', 'Tipo', 'Raza', 'Edad', 'Sexo', 'Peso', 'Numero'];
+  protected static $columnasDB = ['IdAnimal', 'Nombre', 'Tipo', 'Raza', 'Edad', 'Sexo', 'Peso', 'Numero', 'FKFinca'];
 
   public static $errores;
   public static $ErrNomb;
@@ -26,6 +26,7 @@ class Animal
   public $Peso;
   public $Numero;
   public $FKFinca;
+  public $NombreFinca;
 
   public function __construct($args = [])
   {
@@ -37,6 +38,7 @@ class Animal
     $this->Sexo = $args['Sexo'] ?? '';
     $this->Peso = $args['Peso'] ?? '';
     $this->Numero = $args['Numero'] ?? '';
+    $this->FKFinca = $args['FKFinca'] ?? '';
   }
 
   public static function setDB($database)
@@ -265,7 +267,7 @@ class Animal
 
   public function validaFinca()
   {
-    if (empty($this->FKFinca)) {
+    if (!($this->FKFinca)) {
       self::$ErrFKFinca = '<div style="padding-inline: 12px;"><strong>Error!</strong> Este campo es requerido.</div>';
     }
 
@@ -314,25 +316,23 @@ class Animal
     return $array;
   }
 
-  // public static function all()
-  // {
-  //   $query = "SELECT lt.Id, lt.Nombre_Lugar, lt.Numero_Contacto, lt.Descripcion, lt.Correo, lt.Imagen, 
-  //             lt.TipoEspacio_Id, lt.Hora_apertura, lt.Hora_clausura, lt.Ubicacion, lt.categoria_Id, 
-  //             lt.DiaApertura_Id, lt.DiaClausura_Id
-  //             FROM lugar_turistico lt";
+  public static function all()
+  {
+    $query = "SELECT IdAnimal, Nombre, Tipo, Raza, Edad, Sexo, Peso, Numero, FKFinca
+              FROM animal";
 
-  //   $resultado = self::consultarSQL($query);
+    $resultado = self::consultarSQL($query);
 
-  //   return $resultado;
-  // }
+    return $resultado;
+  }
 
   public static function innerJoin()
   {
-    $query = "SELECT DISTINCT a.IdAnimal, a.Nombre, a.Tipo, a.Raza, a.Edad, a.Sexo, a.Peso, a.Numero,
-                              f.Nombre, f.Ubicacion
+    $query = "SELECT DISTINCT a.IdAnimal, a.Nombre, a.Tipo, a.Raza, a.Edad, a.Sexo, a.Peso, a.Numero, a.FKFinca,
+                              f.NombreFinca, f.Ubicacion
               FROM animal a
               INNER JOIN finca f
-              ON a.IdAnimal = f.IdFinca";
+              ON a.FKFinca = f.IdFinca";
 
     $resultado = self::consultarSQL($query);
 

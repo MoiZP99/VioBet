@@ -5,7 +5,7 @@ include_once __DIR__. '/includes/app.php';
 use MVC\Router;
 use Controllers\AnimalController;
 use Controllers\PagesController;
-use Controllers\UsuarioController;
+use Controllers\UserController;
 use Controllers\FincaController;
 use Controllers\LoginController;
 use Controllers\PrincipalController;
@@ -37,9 +37,16 @@ $router->post('/finca/update', [FincaController::class, 'update']);
 $router->get('/finca/details', [FincaController::class, 'details']);
 $router->get('/finca/delete', [FincaController::class, 'delete']);
 $router->post('/finca/delete/delete_partial', [FincaController::class, 'delete_partial']);
-$router->post('/finca/report_excel', [FincaController::class, 'report_excel']);
-$router->post('/finca/report_pdf', [FincaController::class, 'report_pdf']);
 
+//USERS
+$router->get('/users/index', [UserController::class, 'index']);
+$router->get('/users/create', [UserController::class, 'create']);
+$router->post('/users/create', [UserController::class, 'create']);
+$router->get('/users/update', [UserController::class, 'update']);
+$router->post('/users/update', [UserController::class, 'update']);
+$router->get('/users/update-pass', [UserController::class, 'update_pass']);
+$router->post('/users/update-pass', [UserController::class, 'update_pass']);
+$router->post('/users/delete', [UserController::class, 'delete']);
 
 //PAGES
 $router->get('/', [PagesController::class, 'index']);

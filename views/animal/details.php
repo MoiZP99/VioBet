@@ -32,7 +32,7 @@ include_once 'public/build/Sidebar.php';
 <body class="hold-transition sidebar-mini">
   <div class="wrapper">
     <div class="content-wrapper">
-      <section class="content-header bg-gradient-gray mb-3">
+      <section class="content-header mb-3" style="background-color: #80D0C7;">
         <div class="container-fluid">
           <div class="row mb-2">
             <div class="col-sm-6">
@@ -46,87 +46,88 @@ include_once 'public/build/Sidebar.php';
         <div class="container-fluid">
           <div class="row">
             <div class="col-md-12">
-              <div class="card card-success" style="border-radius: 7px; background: #F8F8FF;">
-                <div class="card-header" style="background: #13701C;">
-                </div>
-                <div class="card-body">
-                  <form method="POST" action="create" id="regiration_form">
+              <div class="card" style="border-radius: 7px; background: #F8F8FF;">
+              <form id="regiration_form">
+                  <div class="card-header" style="background-color: #D6EAF8;">
+                    <h2 class="card-title" style="font-size: 23px;"><strong>Detalles:</strong> Datos del animal</h2>
+                  </div>
+                  <div class="card-body">
                     <fieldset>
                       <div class="row">
                         <div class="col col-xxl-6 col-xl-6 col-lg-6 col-sm-6 col-md-6 col-12">
                           <div class="mb-3">
                             <label class="form-label" for="tipo">Tipo de animal</label>
-                            <select readonly class="form-select" name="animal[Tipo]" id="tipo">
-                              <option disabled selected>Seleccione aquí</option>
-                              <option value="Vaca">Vaca</option>
-                              <option value="Toro">Toro</option>
-                              <option value="Caballo">Caballo</option>
-                              <option value="Yegua">Yegua</option>
+                            <select disabled class="form-control" autofocus name="animal[Tipo]" id="tipo">
+                              <option disabled>Seleccione aquí</option>
+                              <option value="Vaca" <?php echo ($animal->Tipo === 'Vaca') ? 'selected' : ''; ?>>Vaca</option>
+                              <option value="Toro" <?php echo ($animal->Tipo === 'Toro') ? 'selected' : ''; ?>>Toro</option>
+                              <option value="Caballo" <?php echo ($animal->Tipo === 'Caballo') ? 'selected' : ''; ?>>Caballo</option>
+                              <option value="Yegua" <?php echo ($animal->Tipo === 'Yegua') ? 'selected' : ''; ?>>Yegua</option>
                             </select>
                           </div>
                         </div>
                         <div class="col col-xxl-6 col-xl-6 col-lg-6 col-sm-6 col-md-6 col-12">
                           <div class="mb-3">
                             <label class="form-label" for="raza">Raza del animal</label>
-                            <input readonly class="form-control" type="text" id="raza" value="<?php echo s($animal->Raza); ?>">
+                            <input disabled class="form-control" type="text" id="raza" name="animal[Raza]" onKeyUp="javascript:validateTextUbi('raza')" placeholder="Escriba aquí la raza" value="<?php echo s($animal->Raza); ?>">
                           </div>
                         </div>
                         <div class="col col-xxl-6 col-xl-6 col-lg-6 col-md-6 col-12">
                           <div class="mb-3">
                             <label class="form-label" for="sexo">Sexo del animal</label>
-                            <select readonly class="form-select" id="sexo">
-                              <option disabled selected>Seleccione aquí</option>
-                              <option value="Macho">Macho</option>
-                              <option value="Hembra">Hembra</option>
+                            <select disabled class="form-control" name="animal[Sexo]" id="sexo">
+                              <option disabled>Seleccione aquí</option>
+                              <option value="Macho" <?php echo ($animal->Sexo === 'Macho') ? 'selected' : ''; ?>>Macho</option>
+                              <option value="Hembra" <?php echo ($animal->Sexo === 'Hembra') ? 'selected' : ''; ?>>Hembra</option>
                             </select>
                           </div>
                         </div>
                         <div class="col col-xxl-6 col-xl-6 col-lg-6 col-md-6 col-12">
                           <div class="mb-3">
                             <label class="form-label" for="nombre">Nombre del animal</label>
-                            <input readonly class="form-control" type="text" id="nombre" value="<?php echo s($animal->Nombre); ?>">
+                            <input disabled class="form-control" type="text" id="nombre" name="animal[Nombre]" onKeyUp="javascript:validateText('nombre')" placeholder="Esriba aquí el nombre" value="<?php echo s($animal->Nombre); ?>">
                           </div>
                         </div>
                         <div class="col col-xxl-6 col-xl-6 col-lg-6 col-md-6 col-12">
                           <div class="mb-3">
                             <label class="form-label" for="edad">Edad del animal</label>
-                            <input readonly class="form-control" type="int" id="edad" value="<?php echo s($animal->Edad); ?>">
+                            <input disabled class="form-control" type="int" id="edad" name="animal[Edad]" onKeyUp="javascript:validateTextUbi('edad')" placeholder="Escriba aquí la edad" value="<?php echo s($animal->Edad); ?>">
                           </div>
                         </div>
                         <div class="col col-xxl-6 col-xl-6 col-lg-6 col-md-6 col-12">
                           <div class="mb-3">
                             <label class="form-label" for="peso">Peso del animal (Kg)</label>
-                            <input readonly class="form-control" type="int" id="peso" value="<?php echo s($animal->Peso); ?>">
+                            <input disabled class="form-control" type="int" id="peso" name="animal[Peso]" onKeyUp="javascript:validateTextUbi('peso')" placeholder="Escriba aquí el peso" value="<?php echo s($animal->Peso); ?>">
                           </div>
                         </div>
                         <div class="col col-xxl-6 col-xl-6 col-lg-6 col-md-6 col-12">
                           <div class="mb-3">
                             <label class="form-label" for="numero">Número en arete del animal</label>
-                            <input readonly class="form-control" type="int" id="numero" value="<?php echo s($animal->Numero); ?>">
+                            <input disabled class="form-control" type="int" id="numero" name="animal[Numero]" onKeyUp="javascript:validateTextUbi('numero')" placeholder="Escriba aquí el número" value="<?php echo s($animal->Numero); ?>">
                           </div>
                         </div>
                         <div class="col col-xxl-6 col-xl-6 col-lg-6 col-md-6 col-12">
                           <div class="mb-3">
                             <label class="form-label" for="finca">Finca</label>
-                            <select readonly class="form-select" id="finca">
-                              <option selected disabled>Seleccione aquí</option>
-                              <?php foreach ($resultFkFinca as $finca) : ?>
-                                <option <?php echo $animal->IdAnimal === $finca->IdFinca ? 'selected' : ''; ?> value="<?php echo s($finca->IdFinca); ?>"> <?php echo s($finca->FKFinca); ?> </option>
+                            <select disabled class="form-control" name="animal[FKFinca]" id="finca">
+                              <option disabled>Seleccione aquí</option>
+                              <?php foreach ($finca as $finca) : ?>
+                                <option <?php echo $animal->FKFinca === $finca->IdFinca ? 'selected' : ''; ?> value="<?php echo s($finca->IdFinca); ?>"> <?php echo s($finca->NombreFinca); ?> </option>
                               <?php endforeach; ?>
                             </select>
                           </div>
                         </div>
                       </div>
                     </fieldset>
-                  </form>
-                </div>
-                <div class="card-footer">
-                  <div class="row">
-                    <div class="btn-spinner">
-                      <a class="btn btn-outline-danger col-auto me-2 col-xl-2 col-lg-2 col-md-2 col-sm-2 mt-1 mb-1" href="/animal/index"> <i class="fas fa-times-circle"></i> <b>Cerrar</b> </a>
+                  </div>
+                  <div class="card-footer">
+                    <div class="row">
+                      <div class="btn-spinner">
+                        <a href="/animal/index" class="btn btn-outline-danger col-auto me-2 col-xl-2 col-lg-2 col-md-2 col-sm-2 mt-1 mb-1"> <i class="fas fa-times-circle"></i> <b>Cerrar</b> </a>
+                      </div>
                     </div>
                   </div>
-                </div>
+                </form>
               </div>
             </div>
           </div>

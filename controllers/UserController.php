@@ -2,10 +2,8 @@
 
 namespace Controllers;
 
-use Model\Role;
 use Model\User;
 use MVC\Router;
-use Model\StateUser;
 
 class UserController
 {
@@ -26,14 +24,11 @@ class UserController
         $ErrNomb = User::getErrNomb();
         $ErrApel = User::getErrApel();
         $ErrApell = User::getErrApell();
-        $ErrRol = User::getErrRol();
         $ErrContraseña = User::geterrContraseña();
         $ErrEmail = User::getErrEmail();
-        $ErrEstado = User::getErrEstado();
+        $ErrTelefono = User::getErrTel();
 
         $usuario = new User;
-        $resultadorol = Role::all();
-        $resultadoestado = StateUser::all();
 
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
@@ -42,16 +37,18 @@ class UserController
             $ErrNomb = $usuario->validaNombre();
             $ErrApel = $usuario->validaApel();
             $ErrApell = $usuario->validaApell();
-            $ErrRol = $usuario->validaRol();
             $ErrContraseña = $usuario->validaContraseña();
             $ErrEmail = $usuario->validaEmail();
-            $ErrEstado = $usuario->validaEstado();
+            $ErrTelefono = $usuario->validaTelefono();
+
+            // debuguear($usuario);
 
             // $existeUsuario = User::where('email', $usuario->Email);
 
-            if (empty(($ErrNomb) || ($ErrApel) || ($ErrApell) || ($ErrRol) || ($ErrContraseña) || ($ErrEmail) || ($ErrEstado))) {
+            if (empty(($ErrNomb) || ($ErrApel) || ($ErrApell) || ($ErrContraseña) || ($ErrEmail) || ($ErrTelefono))) {
 
                 $usuario->hashPassword();
+                
                 $usuario->guardar();
 
                 if ($usuario) {
@@ -66,32 +63,25 @@ class UserController
             'ErrNomb' => $ErrNomb,
             'ErrApel' => $ErrApel,
             'ErrApell' => $ErrApell,
-            'ErrRol' => $ErrRol,
             'ErrContraseña' => $ErrContraseña,
             'ErrEmail' => $ErrEmail,
-            'ErrEstado' => $ErrEstado,
-            'usuario' => $usuario,
-            'resultadorol' => $resultadorol,
-            'resultadoestado' => $resultadoestado
+            'ErrTelefono' => $ErrTelefono,
+            'usuario' => $usuario
         ]);
     }
 
 
     public static function update(Router $router)
     {
-        $Id = validarORedireccionar('/users/index');
+        $IdUsuario = validarORedireccionarUser('/users/index');
 
-        $usuario = User::find($Id);
-        $resultadorol = Role::all();
-        $resultadoestado = StateUser::all();
+        $usuario = User::find($IdUsuario);
 
         $ErrNomb = User::getErrNomb();
         $ErrApel = User::getErrApel();
         $ErrApell = User::getErrApell();
-        $ErrRol = User::getErrRol();
         $ErrEmail = User::getErrEmail();
-        $ErrEstado = User::getErrEstado();
-        $ErrMotivo = User::getErrMotivo();
+        $ErrTelefono = User::getErrTel();
 
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $args = $_POST['usuario'];
@@ -101,12 +91,10 @@ class UserController
             $ErrNomb = $usuario->validaNombre();
             $ErrApel = $usuario->validaApel();
             $ErrApell = $usuario->validaApell();
-            $ErrRol = $usuario->validaRol();
-            $ErrEmail = $usuario->validaEmail();
-            $ErrEstado = $usuario->validaEstado();
-            $ErrMotivo = $usuario->validaMotivo();
+            $ErrEmail = $usuario->validaEmailUpdate();
+            $ErrTelefono = $usuario->validaTelefono();
 
-            if (empty(($ErrNomb) || ($ErrApel) || ($ErrApell) || ($ErrRol) || ($ErrEmail) || ($ErrEstado) || ($ErrMotivo))) {
+            if (empty(($ErrNomb) || ($ErrApel) || ($ErrApell) || ($ErrEmail) || ($ErrTelefono))) {
 
                 $usuario->guardar();
             }
@@ -114,24 +102,21 @@ class UserController
 
         $router->render('/users/update', [
             'usuario' => $usuario,
-            'resultadorol' => $resultadorol,
-            'resultadoestado' => $resultadoestado,
             'ErrNomb' => $ErrNomb,
             'ErrApel' => $ErrApel,
             'ErrApell' => $ErrApell,
-            'ErrRol' => $ErrRol,
             'ErrEmail' => $ErrEmail,
-            'ErrEstado' => $ErrEstado,
-            'ErrMotivo' => $ErrMotivo,
+            'ErrTelefono' => $ErrTelefono,
+            
         ]);
     }
 
 
     public static function update_pass(Router $router)
     {
-        $Id = validarORedireccionar('/users/index');
+        $IdUsuario = validarORedireccionarUser('/users/index');
 
-        $usuario = User::find($Id);
+        $usuario = User::find($IdUsuario);
 
         $ErrContraseña = User::getErrContraseña();
 

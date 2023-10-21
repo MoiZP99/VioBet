@@ -67,10 +67,10 @@ include_once 'public/build/Sidebar.php';
                       <div class="col col-12">
                         <div class="mb-3">
                           <label class="form-label" for="raza">Nombre de la finca</label>
-                          <input required class="form-control" type="text" id="nombre" name="finca[Nombre]" autofocus onKeyUp="javascript:validateTextUbi('nombre')" placeholder="Escriba aquí el nombre de la finca" value="<?php echo s($finca->nombre); ?>">
-                          <?php if ($ErrNombre) : ?>
+                          <input required class="form-control" type="text" id="nombre" name="finca[NombreFinca]" autofocus onKeyUp="javascript:validateTextUbi('nombre')" placeholder="Escriba aquí el nombre de la finca" value="<?php echo s($finca->NombreFinca); ?>">
+                          <?php if ($ErrNomb) : ?>
                             <div class="alert alert-danger mt-1 p-0" role="alert">
-                              <?php echo $ErrNombre ?>
+                              <?php echo $ErrNomb ?>
                             </div>
                           <?php endif; ?>
                         </div>
@@ -97,6 +97,21 @@ include_once 'public/build/Sidebar.php';
                           <?php endif; ?>
                         </div>
                       </div>
+                      <div class="col col-xxl-6 col-xl-6 col-lg-6 col-md-6 col-12">
+                          <div class="mb-3">
+                            <label class="form-label" for="usuario">Usuario</label>
+                            <select required class="form-control" name="finca[FKUsuario]" id="usuario">
+                              <?php foreach ($usuario as $usuario) : ?>
+                                <option <?php echo $finca->FKUsuario === $usuario->IdUsuario ? 'selected' : ''; ?> value="<?php echo s($usuario->IdUsuario); ?>"> <?php echo s($usuario->NombreUser); ?> </option>
+                              <?php endforeach; ?>
+                            </select>
+                            <?php if ($ErrFKFinca) : ?>
+                              <div class="alert alert-danger mt-1 p-0" role="alert">
+                                <?php echo $ErrFKFinca ?>
+                              </div>
+                            <?php endif; ?>
+                          </div>
+                        </div>
                     </fieldset>
                   </div>
                   <div class="card-footer">

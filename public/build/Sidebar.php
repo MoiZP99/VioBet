@@ -63,7 +63,7 @@
     </nav>
     <aside class="main-sidebar sidebar-dark-primary elevation-4">
       <a style="text-decoration: none;" class="brand-link">
-      <i class="bi-back brand-image"></i>
+        <i class="bi-back brand-image"></i>
         <span class="img-circle elevation-3">Nomb Finca</span>
       </a>
 
@@ -150,7 +150,7 @@
     <aside class="control-sidebar control-sidebar-dark">
     </aside>
   </div>
-  
+
   <script src="/public/build/assets/js/jquery-3.3.1.min.js"></script>
   <script src="/public/build/assets/js/sweetalert2.js"></script>
   <script src="/public/build/assets/js/bootstrap.bundle.min.js"></script>
@@ -185,59 +185,24 @@
     $(function() {
       $("#example1").DataTable({
         "responsive": true,
-        "lengthChange": false,
+        "lengthChange": true,
         "autoWidth": false,
-        // "buttons": ["excel", "pdf", "print"]
       }).buttons().container().appendTo('#example1_wrapper .col-md-6:eq(0)');
-      $("#example3").DataTable({
-        "responsive": true,
-        "lengthChange": false,
-        "autoWidth": false,
-        // "buttons": ["excel", "pdf", "print"]
-      }).buttons().container().appendTo('#example1_wrapper .col-md-6:eq(0)');
-      $('#example2').DataTable({
-        "paging": true,
-        "lengthChange": false,
-        "searching": false,
-        "ordering": true,
-        "info": true,
-        "autoWidth": false,
-        "responsive": true,
-      });
     });
 
-    $(function() {
-      $("#example2").DataTable({
-        "responsive": true,
-        "lengthChange": false,
-        "autoWidth": false,
-        // "buttons": ["excel", "pdf", "print"]
-      }).buttons().container().appendTo('#example1_wrapper .col-md-6:eq(0)');
-      $('#example2').DataTable({
-        "paging": true,
-        "lengthChange": false,
-        "searching": false,
-        "ordering": true,
-        "info": true,
-        "autoWidth": false,
-        "responsive": true,
-      });
-    });
-
-    // ------IDIOMA DE LA TABLA - Español--------
     $.extend(true, $.fn.dataTable.defaults, {
       "language": {
         "decimal": ",",
         "thousands": ".",
-        "info": "Mostrando registros del _START_ al _END_ de un total de 10 registros paginados.",
-        "infoEmpty": "Mostrando registros del 0 al 0 de un total de 0 registros",
+        "info": "Mostrando registros del _START_ al _END_ de un total de _MAX_ registros.",
+        "infoEmpty": "No hay registros disponibles",
         "infoPostFix": "",
         "infoFiltered": "(filtrado de un total de _MAX_ registros)",
         "loadingRecords": "Cargando...",
-        "lengthMenu": "Mostrar _MENU_ registros",
+        "lengthMenu": 'Mostrar _MENU_ registros por página',
         "paginate": {
-          "first": "Primero",
-          "last": "Último",
+          "first": "<i class='fa fa-angle-double-left'></i>",
+          "last": "<i class='fa fa-angle-double-right'></i>",
           "next": "Siguiente",
           "previous": "Anterior"
         },
@@ -250,20 +215,6 @@
           "sortAscending": ": Activar para ordenar la columna de manera ascendente",
           "sortDescending": ": Activar para ordenar la columna de manera descendente"
         },
-        //only works for built-in buttons, not for custom buttons
-        "buttons": {
-          "create": "Nuevo",
-          "edit": "Cambiar",
-          "remove": "Borrar",
-          "copy": "Copiar",
-          "csv": "fichero CSV",
-          "excel": "tabla Excel",
-          "pdf": "documento PDF",
-          "print": "Imprimir",
-          "colvis": "Visibilidad columnas",
-          "collection": "Colección",
-          "upload": "Seleccione fichero...."
-        },
         "select": {
           "rows": {
             _: '%d filas seleccionadas',
@@ -271,7 +222,8 @@
             1: 'una fila seleccionada'
           }
         }
-      }
+      },
+      "pagingType": "full_numbers"
     });
 
 

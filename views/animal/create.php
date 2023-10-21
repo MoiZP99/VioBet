@@ -69,7 +69,7 @@ include_once 'public/build/Sidebar.php';
                           <div class="mb-3">
                             <label class="form-label" for="tipo">Tipo de animal</label>
                             <select required class="form-select" autofocus name="animal[Tipo]" id="tipo">
-                              <option value="selected">Seleccione aquí</option>
+                              <option selected disabled>Seleccione aquí</option>
                               <option value="Vaca">Vaca</option>
                               <option value="Toro">Toro</option>
                               <option value="Caballo">Caballo</option>
@@ -97,7 +97,7 @@ include_once 'public/build/Sidebar.php';
                           <div class="mb-3">
                             <label class="form-label" for="sexo">Sexo del animal</label>
                             <select required class="form-select" name="animal[Sexo]" id="sexo">
-                              <option value="selected">Seleccione aquí</option>
+                              <option selected disabled>Seleccione aquí</option>
                               <option value="Macho">Macho</option>
                               <option value="Hembra">Hembra</option>
                             </select>
@@ -156,9 +156,9 @@ include_once 'public/build/Sidebar.php';
                           <div class="mb-3">
                             <label class="form-label" for="finca">Finca</label>
                             <select required class="form-select" name="animal[FKFinca]" id="finca">
-                              <option value="selected">Seleccione aquí</option>
-                              <?php foreach ($resultFkFinca as $finca) : ?>
-                                <option <?php echo $animal->IdAnimal === $finca->IdFinca ? 'selected' : ''; ?> value="<?php echo s($finca->IdFinca); ?>"> <?php echo s($finca->FKFinca); ?> </option>
+                              <option selected disabled>Seleccione aquí</option>
+                              <?php foreach ($finca as $finca) : ?>
+                                <option <?php echo $animal->FKFinca === $finca->IdFinca ? 'selected' : ''; ?> value="<?php echo s($finca->IdFinca); ?>"> <?php echo s($finca->NombreFinca); ?> </option>
                               <?php endforeach; ?>
                             </select>
                             <?php if ($ErrFKFinca) : ?>

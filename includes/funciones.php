@@ -78,3 +78,35 @@ function validarORedireccionar(string $url) {
 
     return $Id;
 }
+function validarORedireccionarUser(string $url) {
+    $IdUsuario = $_GET['IdUsuario'];
+    $IdUsuario = filter_var($IdUsuario, FILTER_VALIDATE_INT);
+
+    if(!$IdUsuario) {
+        header("Location: $url " );
+    }
+
+    return $IdUsuario;
+}
+
+function validarORedireccionarFinca(string $url) {
+    $IdFinca = $_GET['IdFinca'];
+    $IdFinca = filter_var($IdFinca, FILTER_VALIDATE_INT);
+
+    if(!$IdFinca) {
+        header("Location: $url " );
+    }
+
+    return $IdFinca;
+}
+
+function validarORedireccionarAnimal(string $url) {
+    $IdAnimal = $_GET['IdAnimal'];
+    $IdAnimal = filter_var($IdAnimal, FILTER_VALIDATE_INT);
+
+    if(!$IdAnimal) {
+        header("Location: $url " );
+    }
+
+    return $IdAnimal;
+}

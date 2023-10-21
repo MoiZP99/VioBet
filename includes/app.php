@@ -11,11 +11,9 @@ $db = conectarDB();
 use Model\Animal;
 use Model\Finca;
 use Model\User;
-use Model\Role;
 use Model\Login;
 
 Animal::setDB($db);
 Finca::setDB($db);
 User::setDB($db);
-Role::setDB($db);
 Login::setDB($db);

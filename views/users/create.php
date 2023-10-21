@@ -43,7 +43,7 @@ include_once 'public/build/Sidebar.php';
 <body class="hold-transition sidebar-mini">
     <div class="wrapper">
         <div class="content-wrapper">
-            <section class="content-header">
+            <section class="content-header mb-3" style="background-color: #80D0C7;">
                 <div class="container-fluid">
                     <div class="row mb-2">
                         <div class="col-sm-6">
@@ -57,21 +57,47 @@ include_once 'public/build/Sidebar.php';
                 <div class="container-fluid">
                     <div class="row">
                         <div class="col-md-12">
-                            <div class="card card-success" style="border-radius: 7px; background: #F8F8FF;">
-                                <div class="card-header" style="background-color: #13701C;">
+                            <div class="card" style="border-radius: 7px; background: #F8F8FF;">
+                                <div class="card-header" style="background-color: #D6EAF8;">
                                     <h2 class="card-title" style="font-size: 23px;"><strong>Crear:</strong> Usuario</h2>
                                 </div>
-                                <div class="card-body">
-                                    <form method="POST" action="create" id="regiration_form" enctype="multipart/form-data">
+                                <form method="POST" action="create" id="regiration_form">
+                                    <div class="card-body">
                                         <fieldset>
-                                            <div class="mb-3">
-                                                <label class="form-label" for="nombre">Nombre</label>
-                                                <input class="form-control" autofocus type="text" id="nombre" name="usuario[Nombre]" onKeyUp="javascript:validateText('nombre')" placeholder="Esriba en este espacio" value="<?php echo s($usuario->Nombre); ?>">
-                                                <?php if ($ErrNomb) : ?>
-                                                    <div class="alert alert-danger mt-1 p-0" role="alert">
-                                                        <?php echo $ErrNomb ?>
+                                            <div class="row">
+                                                <div class="col col-xxl-4 col-xl-4 col-lg-4 col-sm-12 col-md-6 col-12">
+                                                    <div class="mb-3">
+                                                        <label class="form-label" for="nombre">Nombre</label>
+                                                        <input class="form-control" autofocus type="text" id="nombre" name="usuario[NombreUser]" onKeyUp="javascript:validateText('nombre')" placeholder="Esriba en este espacio" value="<?php echo s($usuario->NombreUser); ?>">
+                                                        <?php if ($ErrNomb) : ?>
+                                                            <div class="alert alert-danger mt-1 p-0" role="alert">
+                                                                <?php echo $ErrNomb ?>
+                                                            </div>
+                                                        <?php endif; ?>
                                                     </div>
-                                                <?php endif; ?>
+                                                </div>
+                                                <div class="col col-xxl-4 col-xl-4 col-lg-4 col-sm-12 col-md-6 col-12">
+                                                    <div class="mb-3">
+                                                        <label class="form-label" for="correo">Correo electrónico</label>
+                                                        <input class="form-control" type="email" id="correo" name="usuario[Email]" placeholder="Escriba en este espacio" value="<?php echo s($usuario->Email); ?>">
+                                                        <?php if ($ErrEmail) : ?>
+                                                            <div class="alert alert-danger mt-1 p-0" role="alert">
+                                                                <?php echo $ErrEmail ?>
+                                                            </div>
+                                                        <?php endif; ?>
+                                                    </div>
+                                                </div>
+                                                <div class="col col-xxl-4 col-xl-4 col-lg-4 col-sm-12 col-md-6 col-12">
+                                                    <div class="mb-3">
+                                                        <label class="form-label" for="telefono">Teléfono</label>
+                                                        <input class="form-control" type="tel" id="telefono" name="usuario[Telefono]" placeholder="Escriba en este espacio" value="<?php echo s($usuario->Telefono); ?>">
+                                                        <?php if ($ErrTelefono) : ?>
+                                                            <div class="alert alert-danger mt-1 p-0" role="alert">
+                                                                <?php echo $ErrTelefono ?>
+                                                            </div>
+                                                        <?php endif; ?>
+                                                    </div>
+                                                </div>
                                             </div>
                                             <div class="row">
                                                 <div class="col col-xxl-6 col-xl-6 col-lg-6 col-sm-12 col-md-6 col-12">
@@ -98,44 +124,10 @@ include_once 'public/build/Sidebar.php';
                                                 </div>
                                             </div>
                                             <div class="row">
-                                                <div class="col col-6">
-                                                    <div class="mb-3">
-                                                        <label class="form-label" for="rol">Rol de usuario</label>
-                                                        <select class="form-select" name="usuario[Rol_Id]" id="rol">
-                                                            <option disabled selected>Seleccione aquí</option>
-                                                            <?php foreach ($resultadorol as $rol) : ?>
-                                                                <option <?php echo $usuario->Rol_Id === $rol->IdRol ? 'selected' : ''; ?> value="<?php echo s($rol->Id); ?>"> <?php echo s($rol->Nombre); ?> </option>
-                                                            <?php endforeach; ?>
-                                                        </select>
-                                                        <?php if ($ErrRol) : ?>
-                                                            <div class="alert alert-danger mt-1 p-0" role="alert">
-                                                                <?php echo $ErrRol ?>
-                                                            </div>
-                                                        <?php endif; ?>
-                                                    </div>
-                                                </div>
-                                                <div class="col col-6">
-                                                    <div class="mb-3">
-                                                        <label class="form-label" for="estado">Estado</label>
-                                                        <select class="form-select" name="usuario[FK_Estado]" id="estado">
-                                                            <option disabled selected>Seleccione aquí</option>
-                                                            <?php foreach ($resultadoestado as $estado) : ?>
-                                                                <option <?php echo $usuario->FK_Estado === $estado->Id ? 'selected' : ''; ?> value="<?php echo s($estado->Id); ?>"> <?php echo s($estado->Estado); ?> </option>
-                                                            <?php endforeach; ?>
-                                                        </select>
-                                                        <?php if ($ErrEstado) : ?>
-                                                            <div class="alert alert-danger mt-1 p-0" role="alert">
-                                                                <?php echo $ErrEstado ?>
-                                                            </div>
-                                                        <?php endif; ?>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="row">
                                                 <div class="col col-xxl-6 col-xl-6 col-lg-6 col-sm-12 col-md-6 col-12">
                                                     <div class="mb-3">
                                                         <label class="form-label" for="ctrs1">Contraseña</label>
-                                                        <input class="form-control password1" type="password" id="ctrs1" name="usuario[Password]" maxlength="16" onKeyUp="javascript:validatePass('ctrs1')" placeholder="Escriba en este espacio" value="<?php echo s($usuario->Contrasena); ?>">
+                                                        <input class="form-control password1" type="password" id="ctrs1" name="usuario[Contrasena]" maxlength="16" onKeyUp="javascript:validatePass('ctrs1')" placeholder="Escriba en este espacio" value="<?php echo s($usuario->Contrasena); ?>">
                                                         <span class="fa fa-fw fa-eye password-icon show-password"></span>
                                                         <span class="form-text" id="contador">De 8 a 16 caracteres.<small style="color:red;"><b>*</b></small> </span>
                                                         <span class="form-text" id="contador">Mínimo 1 letra mayúscula.<small style="color:red;"><b>*</b></small> </span>
@@ -160,26 +152,15 @@ include_once 'public/build/Sidebar.php';
                                                     </div>
                                                 </div>
                                             </div>
-                                            <div class="col col-xxl-12 col-xl-12 col-lg-12 col-sm-6 col-md-12 col-12">
-                                                <div class="mb-3">
-                                                    <label class="form-label" for="correo">Correo electrónico</label>
-                                                    <input class="form-control" type="email" id="correo" name="usuario[Email]" placeholder="Escriba en este espacio" value="<?php echo s($usuario->Email); ?>">
-                                                    <?php if ($ErrEmail) : ?>
-                                                        <div class="alert alert-danger mt-1 p-0" role="alert">
-                                                            <?php echo $ErrEmail ?>
-                                                        </div>
-                                                    <?php endif; ?>
-                                                </div>
-                                            </div>
-                                            <hr style="background-color: green;">
-                                            <div class="btn-spinner">
-                                                <a class="btn btn-outline-danger col-auto col-xl-auto col-lg-auto col-md-auto col-sm-auto mt-2" href="/users/index"> <i class="fas fa-times-circle"></i> <b>Cerrar</b> </a>
-                                                <button class="btn btn-outline-dark col-auto col-xl-auto col-lg-auto col-md-auto col-sm-auto mt-2" type="button" id="submit_data" onclick="enviarFormulario()"> <b>Guardar</b> <i class="fas fa-save"></i> </button>
-                                            </div>
                                         </fieldset>
-                                    </form>
-                                </div>
-                                <div class="card-footer"></div>
+                                    </div>
+                                    <div class="card-footer">
+                                        <div class="btn-spinner">
+                                            <a type="button" class="btn btn-outline-danger col-auto me-2 col-xl-2 col-lg-2 col-md-2 col-sm-3 mt-1 mb-1" href="/users/index"> <i class="fas fa-times-circle"></i> <b>Cerrar</b> </a>
+                                            <button class="btn btn-outline-dark col-auto col-xl-2 col-lg-2 col-md-2 col-sm-3 mt-1 mb-1" type="button" id="submit_data" onclick="enviarFormulario()"> <b>Guardar</b> <i class="fas fa-save"></i> </button>
+                                        </div>
+                                    </div>
+                                </form>
                             </div>
                         </div>
                     </div>

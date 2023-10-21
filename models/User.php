@@ -7,47 +7,37 @@ class User
 
   //Base de datos
   protected static $db;
-  protected static $tblUsuario = ['IdUsuario', 'Nombre', 'Apellido1', 'Rol_Id', 'Contrasena', 'Email', 'Apellido2', 'FK_Estado', 'Motivo'];
+  protected static $tblUsuario = ['IdUsuario', 'NombreUser', 'Apellido1', 'Apellido2', 'Telefono', 'Email', 'Contrasena'];
 
   //Errores
   public static $errores;
   public static $ErrNomb;
   public static $ErrApel;
   public static $ErrApell;
-  public static $ErrRol;
   public static $ErrContraseña;
-  public static $ErrEmail;
-  public static $ErrEstado;
-  public static $ErrMotivo;
-  // Alertas y Mensajes
+  public static $ErrTelefono;
+  public static $ErrEmail;  // Alertas y Mensajes
   public static $alertas = [];
 
   public $IdUsuario;
-  public $Nombre;
+  public $NombreUser;
   public $Apellido1;
   public $Apellido2;
-  public $Rol_Id;
+  public $Telefono;
   public $Contrasena;
   public $Email;
   public $Password2;
-  public $FK_Estado;
-  public $Motivo;
-  public $Nombre_Rol; //join
-  public $Estado; //join
-
+  
   public function __construct($args = [])
   {
     $this->IdUsuario = $args['IdUsuario'] ?? null;
-    $this->Nombre = $args['Nombre'] ?? '';
+    $this->NombreUser = $args['NombreUser'] ?? '';
     $this->Apellido1 = $args['Apellido1'] ?? '';
-    $this->Rol_Id = $args['Rol_Id'] ?? '';
+    $this->Apellido2 = $args['Apellido2'] ?? '';
+    $this->Telefono = $args['Telefono'] ?? '';
     $this->Contrasena = $args['Contrasena'] ?? '';
     $this->Password2 = $args['Password2'] ?? '';
     $this->Email = $args['Email'] ?? '';
-    $this->Apellido2 = $args['Apellido2'] ?? '';
-    $this->Apellido2 = $args['Apellido2'] ?? '';
-    $this->FK_Estado = $args['FK_Estado'] ?? '';
-    $this->Motivo = $args['Motivo'] ?? '';
   }
 
 
@@ -130,7 +120,7 @@ class User
     //De esta manera los atributos se va a ir mapeando con las columnas de la BDs
     $atributos = [];
     foreach (self::$tblUsuario as $columna) {
-      if ($columna === 'Id') continue;
+      if ($columna === 'IdUsuario') continue;
       $atributos[$columna] = $this->$columna;
     }
 
@@ -187,10 +177,10 @@ class User
   {
     return self::$ErrApell;
   }
-
-  public static function getErrRol()
+  
+  public static function getErrTel()
   {
-    return self::$ErrRol;
+    return self::$ErrTelefono;
   }
 
   public static function getErrContraseña()
@@ -203,23 +193,13 @@ class User
     return self::$ErrEmail;
   }
   
-  public static function getErrEstado()
-  {
-    return self::$ErrEstado;
-  }
-  
-  public static function getErrMotivo()
-  {
-    return self::$ErrMotivo;
-  }
-
 
   public function validaNombre()
   {
-    if (!preg_match("/^[a-zA-ZáéíóúÁÉÍÓÚÑñ\s]*$/", $this->Nombre)) {
+    if (!preg_match("/^[a-zA-ZáéíóúÁÉÍÓÚÑñ\s]*$/", $this->NombreUser)) {
       self::$ErrNomb = '<div style="padding-inline: 12px;"><strong>Error!</strong> Solo letras, acentos y espacios son permitidos.</div>';
-    } elseif (empty($this->Nombre)) {
-      self::$ErrNomb = '<div style="padding-inline: 12px;"><strong>Error!</strong> "Nombre" no debe estar en blanco.</div>';
+    } elseif (empty($this->NombreUser)) {
+      self::$ErrNomb = '<div style="padding-inline: 12px;"><strong>Error!</strong> Este campo no debe estar en blanco.</div>';
     }
 
     return self::$ErrNomb;
@@ -230,7 +210,7 @@ class User
     if (!preg_match("/^[a-zA-ZáéíóúÁÉÍÓÚÑñ\s]*$/", $this->Apellido1)) {
       self::$ErrApel = '<div style="padding-inline: 12px;"><strong>Error!</strong> Solo letras, acentos y espacios son permitidos.</div>';
     } elseif (empty($this->Apellido1)) {
-      self::$ErrApel = '<div style="padding-inline: 12px;"><strong>Error!</strong> "Primer apellido" no debe estar en blanco.</div>';
+      self::$ErrApel = '<div style="padding-inline: 12px;"><strong>Error!</strong> Este campo no debe estar en blanco.</div>';
     }
 
     return self::$ErrApel;
@@ -241,20 +221,21 @@ class User
     if (!preg_match("/^[a-zA-ZáéíóúÁÉÍÓÚÑñ\s]*$/", $this->Apellido2)) {
       self::$ErrApell = '<div style="padding-inline: 12px;"><strong>Error!</strong> Solo letras, acentos y espacios son permitidos.</div>';
     } elseif (empty($this->Apellido2)) {
-      self::$ErrApell = '<div style="padding-inline: 12px;"><strong>Error!</strong> "Segundo apellido" no debe estar en blanco.</div>';
+      self::$ErrApell = '<div style="padding-inline: 12px;"><strong>Error!</strong> Este campo no debe estar en blanco.</div>';
     }
 
     return self::$ErrApell;
   }
-
-  public function validaRol()
+  
+  public function validaTelefono()
   {
-    if (empty($this->Rol_Id)) {
-      self::$ErrRol = '<div style="padding-inline: 12px;"><strong>Error!</strong> "Rol de usuario" no debe estar en blanco.</div>';
+    if (empty($this->Telefono)) {
+      self::$ErrTelefono = '<div style="padding-inline: 12px;"><strong>Error!</strong> Este campo no debe estar en blanco.</div>';
     }
 
-    return self::$ErrRol;
+    return self::$ErrTelefono;
   }
+
 
   public function validaContraseña()
   {
@@ -273,38 +254,30 @@ class User
   
   public function validaEmail()
   {
-    $query = "SELECT Email FROM usuarios WHERE Email = '" . $this->Email . "' LIMIT 1";
+    $query = "SELECT Email FROM usuario WHERE Email = '" . $this->Email . "' LIMIT 1";
     $resultado = self::consultarSQL($query);
 
     if ($resultado) {
       self::$ErrEmail = '<div style="padding-inline: 12px;"><strong>Error!</strong> Este Email ya se encuentra registrado.</div>';
     } elseif (empty($this->Email)) {
-      self::$ErrEmail = '<div style="padding-inline: 12px;"><strong>Error!</strong> "Correo electrónico" no debe estar en blanco.</div>';
+      self::$ErrEmail = '<div style="padding-inline: 12px;"><strong>Error!</strong> Este campo no debe estar en blanco.</div>';
     } elseif (!preg_match("/^(\W|^)[a-zA-Z][\w,+\-]{0,25}@(yahoo|hotmail|gmail)\.com(\W|$)/", $this->Email)) {
       self::$ErrEmail = '<div style="padding-inline: 12px;"><strong>Error!</strong> Debe añadir un correo electrónico válido.</div>';
     }
 
     return self::$ErrEmail;
   }
-
-  public function validaEstado()
+  
+  public function validaEmailUpdate()
   {
-    if (empty($this->FK_Estado)) {
-      self::$ErrEstado = '<div style="padding-inline: 12px;"><strong>Error!</strong> "Estado" no debe estar en blanco.</div>';
+    if (empty($this->Email)) {
+      self::$ErrEmail = '<div style="padding-inline: 12px;"><strong>Error!</strong> Este campo no debe estar en blanco.</div>';
+    } elseif (!preg_match("/^(\W|^)[a-zA-Z][\w,+\-]{0,25}@(yahoo|hotmail|gmail)\.com(\W|$)/", $this->Email)) {
+      self::$ErrEmail = '<div style="padding-inline: 12px;"><strong>Error!</strong> Debe añadir un correo electrónico válido.</div>';
     }
 
-    return self::$ErrEstado;
+    return self::$ErrEmail;
   }
-
-  public function validaMotivo()
-  {
-    if (!preg_match("/^[a-zA-ZáéíóúÁÉÍÓÚÑñ\s]*$/", $this->Motivo)) {
-      self::$ErrMotivo = '<div style="padding-inline: 12px;"><strong>Error!</strong> Solo letras, acentos y espacios son permitidos.</div>';
-    }
-
-    return self::$ErrMotivo;
-  }
-
 
   protected static function crearObjeto($registro)
   {
@@ -354,7 +327,7 @@ class User
   // Busqueda Where con Columna 
   public static function where($columna, $valor)
   {
-    $query = "SELECT * FROM usuario WHERE ${columna} = '${valor}'";
+    $query = "SELECT * FROM usuario WHERE $columna = '$valor'";
     $resultado = self::consultarSQL($query);
     return array_shift(
       $resultado
@@ -375,28 +348,8 @@ class User
 
   public static function innerJoin()
   {
-    $query = "SELECT DISTINCT u.IdUsuario, u.Nombre, u.Apellido1, u.Apellido2, u.Email, u.Contrasena, u.Rol_Id , r.Nombre_Rol, e.Estado
-              FROM usuario u
-              INNER JOIN rol r 
-              on u.Rol_Id = r.IdRol
-              INNER JOIN estado_emprendedor e
-              ON u.FK_Estado = e.Id";
-
-    $resultado = self::consultarSQL($query);
-
-    return $resultado;
-  }
-  
-  public static function count()
-  {
-    $query = "SELECT COUNT(*) AS total_datos
-              FROM (
-                  SELECT DISTINCT 
-                      u.Id, u.Nombre, u.Apellido1, u.Apellido2, u.Email, u.Contraseña, r.Nombre_Rol, e.Estado
-                  FROM usuario u
-                  INNER JOIN rol r ON u.Rol_Id = r.Id
-                  INNER JOIN estado_emprendedor e ON u.FK_Estado = e.Id
-              ) AS subconsulta";
+    $query = "SELECT DISTINCT IdUsuario, NombreUser, Apellido1, Apellido2, Telefono, Email, Contrasena
+              FROM usuario";
 
     $resultado = self::consultarSQL($query);
 
@@ -407,7 +360,7 @@ class User
   // Busca un lugar por su id
   public static function find($IdUsuario)
   {
-    $query = "SELECT * FROM usuarios WHERE Id = ${IdUsuario}";
+    $query = "SELECT * FROM usuario WHERE IdUsuario = $IdUsuario";
 
     $resultado = self::consultarSQL($query);
 

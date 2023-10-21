@@ -32,7 +32,7 @@ include_once 'public/build/Sidebar.php';
 <body class="hold-transition sidebar-mini">
   <div class="wrapper">
     <div class="content-wrapper">
-      <section class="content-header bg-gradient-gray mb-3">
+      <section class="content-header mb-3" style="background-color: #80D0C7;">
         <div class="container-fluid">
           <div class="row mb-2">
             <div class="col-sm-6">
@@ -46,42 +46,71 @@ include_once 'public/build/Sidebar.php';
         <div class="container-fluid">
           <div class="row">
             <div class="col-md-12">
-              <div class="card card-success" style="border-radius: 7px; background: #F8F8FF;">
-                <div class="card-header" style="background: #13701C;">
-                </div>
-                <div class="card-body">
-                  <form method="POST" action="create" id="regiration_form">
+              <div class="card" style="border-radius: 7px; background: #F8F8FF;">
+              <form>
+                  <div class="card-header" style="background-color: #D6EAF8;">
+                    <h2 class="card-title" style="font-size: 23px;"><strong>Detalles:</strong> Datos de la finca</h2>
+                  </div>
+                  <div class="card-body">
                     <fieldset>
-                      <div class="row">
-                      <div class="col col-xxl-6 col-xl-6 col-lg-6 col-sm-6 col-md-6 col-12">
-                          <div class="mb-3">
-                            <label class="form-label" for="nombre">Nombre</label>
-                            <input readonly class="form-control" type="text" id="nombre" value="<?php echo s($finca->Nombre); ?>">
-                          </div>
-                      </div>
-                        <div class="col col-xxl-6 col-xl-6 col-lg-6 col-sm-6 col-md-6 col-12">
-                          <div class="mb-3">
-                            <label class="form-label" for="ubicacion">Ubicación de la finca</label>
-                            <input readonly class="form-control" type="text" id="ubicacion" value="<?php echo s($finca->Ubicacion); ?>">
-                          </div>
+                      <div class="col col-12">
+                        <div class="mb-3">
+                          <label class="form-label" for="raza">Nombre de la finca</label>
+                          <input disabled class="form-control" type="text" id="nombre" name="finca[NombreFinca]" autofocus onKeyUp="javascript:validateTextUbi('nombre')" placeholder="Escriba aquí el nombre de la finca" value="<?php echo s($finca->NombreFinca); ?>">
+                          <?php if ($ErrNombre) : ?>
+                            <div class="alert alert-danger mt-1 p-0" role="alert">
+                              <?php echo $ErrNombre ?>
+                            </div>
+                          <?php endif; ?>
                         </div>
-                        <div class="col col-xxl-6 col-xl-6 col-lg-6 col-sm-6 col-md-6 col-12">
-                          <div class="mb-3">
-                            <label class="form-label" for="tamano">Tamaño de la finca</label>
-                            <input readonly class="form-control" type="text" id="tamano" value="<?php echo s($finca->Tamano); ?>">
-                          </div>
+                      </div>
+                      <div class="col col-12">
+                        <div class="mb-3">
+                          <label class="form-label" for="raza">Ubicación de la finca</label>
+                          <input disabled class="form-control" type="text" id="ubicacion" name="finca[Ubicacion]" onKeyUp="javascript:validateTextUbi('ubicacion')" placeholder="Escriba aquí la ubicación" value="<?php echo s($finca->Ubicacion); ?>">
+                          <?php if ($ErrUbi) : ?>
+                            <div class="alert alert-danger mt-1 p-0" role="alert">
+                              <?php echo $ErrUbi ?>
+                            </div>
+                          <?php endif; ?>
+                        </div>
+                      </div>
+                      <div class="col col-12">
+                        <div class="mb-3">
+                          <label class="form-label" for="raza">Tamaño de la finca</label>
+                          <input disabled class="form-control" type="text" id="tamano" name="finca[Tamano]" onKeyUp="javascript:validateTextUbi('tamano')" placeholder="Escriba aquí el tamaño" value="<?php echo s($finca->Tamano); ?>">
+                          <?php if ($ErrTama) : ?>
+                            <div class="alert alert-danger mt-1 p-0" role="alert">
+                              <?php echo $ErrTama ?>
+                            </div>
+                          <?php endif; ?>
+                        </div>
+                      </div>
+                      <div class="col col-xxl-6 col-xl-6 col-lg-6 col-md-6 col-12">
+                        <div class="mb-3">
+                          <label class="form-label" for="usuario">Usuario</label>
+                          <select disabled class="form-control" name="finca[FKUsuario]" id="usuario">
+                            <?php foreach ($usuario as $usuario) : ?>
+                              <option <?php echo $finca->IdFinca === $usuario->IdUsuario ? 'selected' : ''; ?> value="<?php echo s($usuario->IdUsuario); ?>"> <?php echo s($usuario->NombreUser); ?> </option>
+                            <?php endforeach; ?>
+                          </select>
+                          <?php if ($ErrFKFinca) : ?>
+                            <div class="alert alert-danger mt-1 p-0" role="alert">
+                              <?php echo $ErrFKFinca ?>
+                            </div>
+                          <?php endif; ?>
                         </div>
                       </div>
                     </fieldset>
-                  </form>
-                </div>
-                <div class="card-footer">
-                  <div class="row">
-                    <div class="btn-spinner">
-                      <a class="btn btn-outline-danger col-auto me-2 col-xl-2 col-lg-2 col-md-2 col-sm-2 mt-1 mb-1" href="/finca/index"> <i class="fas fa-times-circle"></i> <b>Cerrar</b> </a>
+                  </div>
+                  <div class="card-footer">
+                    <div class="row">
+                      <div class="btn-spinner">
+                        <a href="/finca/index" class="btn btn-outline-danger col-auto me-2 col-xl-2 col-lg-2 col-md-2 col-sm-2 mt-1 mb-1"> <i class="fas fa-times-circle"></i> <b>Cerrar</b> </a>
+                      </div>
                     </div>
                   </div>
-                </div>
+                </form>
               </div>
             </div>
           </div>

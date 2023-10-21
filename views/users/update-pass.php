@@ -18,7 +18,7 @@ include_once 'public/build/Sidebar.php';
 <body class="hold-transition sidebar-mini">
     <div class="wrapper">
         <div class="content-wrapper">
-            <section class="content-header">
+            <section class="content-header mb-3" style="background-color: #80D0C7;">
                 <div class="container-fluid">
                     <div class="row mb-2">
                         <div class="col-sm-6">
@@ -32,18 +32,18 @@ include_once 'public/build/Sidebar.php';
                 <div class="container-fluid">
                     <div class="row">
                         <div class="col-md-12">
-                            <div class="card card-success" style="border-radius: 7px; background: #F8F8FF;">
-                                <div class="card-header" style="background-color: #13701C;">
-                                    <h2 class="card-title" style="font-size: 20px;"><strong>Actualizar:</strong> Contraseña</h2>
-                                </div>
-                                <div class="card-body">
-                                    <form class="form" method="POST" id="regiration_form">
+                            <form class="form" method="POST" id="regiration_form">
+                                <div class="card" style="border-radius: 7px; background: #F8F8FF;">
+                                    <div class="card-header" style="background-color: #D6EAF8;">
+                                        <h2 class="card-title" style="font-size: 20px;"><strong>Actualizar:</strong> Contraseña</h2>
+                                    </div>
+                                    <div class="card-body">
                                         <fieldset>
                                             <div class="row">
                                                 <div class="col col-xxl-6 col-xl-6 col-lg-6 col-sm-6 col-md-6 col-12">
                                                     <div class="mb-3">
                                                         <label class="form-label" for="ctrs1">Nueva contraseña</label>
-                                                        <input class="form-control password1" type="password" id="ctrs1" name="usuario[Password]" maxlength="16" onKeyUp="javascript:validatePass('ctrs1')" placeholder="Escriba en este espacio">
+                                                        <input class="form-control password1" type="password" id="ctrs1" name="usuario[Contrasena]" maxlength="16" onKeyUp="javascript:validatePass('ctrs1')" placeholder="Escriba en este espacio">
                                                         <span class="fa fa-fw fa-eye password-icon show-password"></span>
                                                         <span class="form-text" id="contador">De 8 a 16 caracteres.<small style="color:red;"><b>*</b></small> </span>
                                                         <span class="form-text" id="contador">Mínimo 1 letra mayúscula.<small style="color:red;"><b>*</b></small> </span>
@@ -68,14 +68,13 @@ include_once 'public/build/Sidebar.php';
                                                     </div>
                                                 </div>
                                             </div>
-                                            <hr style="background-color: green;">
-                                            <a class="btn btn-outline-danger col-auto col-xl-auto col-lg-auto col-md-auto col-sm-auto mt-2" href="/users/index"> <i class="fas fa-times-circle"></i> <b>Cerrar</b> </a>
-                                            <button type="submit" class="btn btn-outline-dark col-auto col-xl-auto col-lg-auto col-md-auto col-sm-auto mt-2" id="submit_data"> <b>Guardar</b> <i class="fas fa-save"></i> </button>
                                         </fieldset>
-                                    </form>
-                                </div>
-                                <div class="card-footer"></div>
-                            </div>
+                                    </div>
+                            </form>
+                        </div>
+                        <div class="card-footer">
+                            <a class="btn btn-outline-danger col-auto me-2 col-xl-2 col-lg-2 col-md-2 col-sm-3 mt-1 mb-1" href="/users/index"> <i class="fas fa-times-circle"></i> <b>Cerrar</b> </a>
+                            <button type="submit" class="btn btn-outline-dark col-auto me-2 col-xl-2 col-lg-2 col-md-2 col-sm-3 mt-1 mb-1" id="submit_data"> <b>Guardar</b> <i class="fas fa-save"></i> </button>
                         </div>
                     </div>
                 </div>
@@ -134,7 +133,7 @@ include_once 'public/build/Sidebar.php';
 
                         setTimeout(() => {
                             resolve();
-                        }, 2000);
+                        }, 1000);
                     });
                 },
             }).then((result) => {

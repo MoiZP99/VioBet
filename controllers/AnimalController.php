@@ -4,6 +4,7 @@ namespace Controllers;
 
 use MVC\Router;
 use Model\Animal;
+use Model\Finca;
 
 class AnimalController
 {
@@ -14,7 +15,7 @@ class AnimalController
 
         $router->render('/animal/index', [
             'animal' => $animal
-            // ,
+            ,
             // 'lugarSolicitud' => $lugarSolicitud
         ]);
     }
@@ -24,7 +25,7 @@ class AnimalController
         session_start();
 
         $animal = new Animal();
-        // $resultadoestado = Pasture::all();
+        $finca = Finca::all();
         $errores = Animal::getErrores();
         $ErrNomb = Animal::getErrNomb();
         $ErrTipo = Animal::getErrTipo();
@@ -49,7 +50,7 @@ class AnimalController
             $ErrNum = $animal->validaNum();
             $ErrFKFinca = $animal->validaFinca();
 
-            if (empty(($ErrNomb) || ($ErrTipo) || ($ErrRaza) || ($ErrEdad) || ($ErrSexo) || ($ErrPeso) || ($ErrNum) || ($ErrFKFinca))) {
+            if (empty(($errores) || ($ErrNomb) || ($ErrTipo) || ($ErrRaza) || ($ErrEdad) || ($ErrSexo) || ($ErrPeso) || ($ErrNum) || ($ErrFKFinca))) {
                 $animal->guardar();
                 if ($animal) {
                     $_SESSION['success_message'] = ['title' => '¡Éxito! Datos del animal guardados exitosamente'];
@@ -69,20 +70,18 @@ class AnimalController
             'ErrPeso' => $ErrPeso,
             'ErrNum' => $ErrNum,
             'ErrFKFinca' => $ErrFKFinca,
-            'animal' => $animal
-            // ,'resultadodiasl' => $resultadodiasl,
+            'animal' => $animal,
+            'finca' => $finca,
         ]);
     }
 
 
     public static function update(Router $router)
     {
-        $Id = validarORedireccionar('/animal/index');
+        $IdAnimal = validarORedireccionarAnimal('/animal/index');
 
-        $animal = Animal::find($Id);
-
-
-        // $resultadodiasl = Dayl::allDias();
+        $animal = Animal::find($IdAnimal);
+        $finca = Finca::all();
 
         $errores = Animal::getErrores();
         $ErrNomb = Animal::getErrNomb();
@@ -109,7 +108,7 @@ class AnimalController
             $ErrNum = $animal->validaNum();
             $ErrFKFinca = $animal->validaFinca();
 
-            if (empty(($ErrNomb) || ($ErrTipo) || ($ErrRaza) || ($ErrEdad) || ($ErrSexo) || ($ErrPeso) || ($ErrNum) || ($ErrFKFinca))) {
+            if (empty(($errores) || ($ErrNomb) || ($ErrTipo) || ($ErrRaza) || ($ErrEdad) || ($ErrSexo) || ($ErrPeso) || ($ErrNum) || ($ErrFKFinca))) {
                 $animal->guardar();
             }
         }
@@ -124,32 +123,30 @@ class AnimalController
             'ErrPeso' => $ErrPeso,
             'ErrNum' => $ErrNum,
             'ErrFKFinca' => $ErrFKFinca,
-            'animal' => $animal
-            // ,'resultadodiasl' => $resultadodiasl,
+            'animal' => $animal,
+            'finca' => $finca
         ]);
     }
 
 
     public static function details(Router $router)
     {
-        $Id = validarORedireccionar('/animal/index');
+        $IdAnimal = validarORedireccionarAnimal('/animal/index');
 
-        $animal = Animal::find($Id);
-
-        // $resultadodiasl = Dayl::allDias();
+        $animal = Animal::find($IdAnimal);
+        $finca = Finca::all();
 
         $router->render('/animal/details', [
-            'animal' => $animal
-            // ,
-            // 'resultadodiasl' => $resultadodiasl
+            'animal' => $animal,
+            'finca' => $finca
         ]);
     }
 
     public static function delete(Router $router)
     {
-        $Id = validarORedireccionar('/animal/index');
+        $IdAnimal = validarORedireccionarAnimal('/animal/index');
 
-        $animal = Animal::find($Id);
+        $animal = Animal::find($IdAnimal);
 
         // $resultadodiasl = Dayl::allDias();
 
@@ -162,13 +159,13 @@ class AnimalController
 
     public static function delete_partial(Router $router)
     {
-        $Id = $_POST['IdAnimal'];
+        $IdAnimal = $_POST['IdAnimal'];
 
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
-            $Id = filter_var($Id, FILTER_VALIDATE_INT);
-            if ($Id) {
-                $animal = Animal::find($Id);
+            $IdAnimal = filter_var($IdAnimal, FILTER_VALIDATE_INT);
+            if ($IdAnimal) {
+                $animal = Animal::find($IdAnimal);
                 $animal->eliminar();
             }
         }

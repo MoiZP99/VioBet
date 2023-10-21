@@ -4,6 +4,7 @@ namespace Controllers;
 
 use MVC\Router;
 use Model\Finca;
+use Model\User;
 
 class FincaController
 {
@@ -24,11 +25,12 @@ class FincaController
         session_start();
 
         $finca = new Finca();
-        // $resultadoestado = Pasture::all();
+        $usuario = User::all();
         $errores = Finca::getErrores();
         $ErrNomb = Finca::getErrNomb();
-        $ErrTipo = Finca::getErrUbi();
-        $ErrRaza = Finca::getErrTama();
+        $ErrUbi = Finca::getErrUbi();
+        $ErrTama = Finca::getErrTama();
+        $ErrFKFinca = Finca::getErrFKUsuario();
 
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
@@ -38,9 +40,9 @@ class FincaController
             $ErrNomb = $finca->validaNombre();
             $ErrUbi = $finca->validaUbi();
             $ErrTama = $finca->validaTama();
-           // $ErrFKFinca = $finca->validaFinca();
+            $ErrFKFinca = $finca->validaFKUsuario();
 
-            if (empty(($ErrNomb) || ($ErrUbi) || ($ErrTama))) {
+            if (empty(($ErrNomb) || ($ErrUbi) || ($ErrTama) || ($ErrFKFinca) || ($errores))) {
                 $finca->guardar();
                 if ($finca) {
                     $_SESSION['success_message'] = ['title' => '¡Éxito! Datos de la finca guardados exitosamente'];
@@ -55,26 +57,25 @@ class FincaController
             'ErrNomb' => $ErrNomb,
             'ErrUbi' => $ErrUbi,
             'ErrTama' => $ErrTama,
-            'finca' => $finca
-            // ,'resultadodiasl' => $resultadodiasl,
+            'ErrFKFinca' => $ErrFKFinca,
+            'finca' => $finca,
+            'usuario' => $usuario,
         ]);
     }
 
 
     public static function update(Router $router)
     {
-        $Id = validarORedireccionar('/finca/index');
+        $IdFinca = validarORedireccionarFinca('/finca/index');
 
-        $finca = Finca::find($Id);
-
-
-        // $resultadodiasl = Dayl::allDias();
+        $finca = Finca::find($IdFinca);
+        $usuario = User::all();
 
         $errores = Finca::getErrores();
         $ErrNomb = Finca::getErrNomb();
         $ErrUbi = Finca::getErrUbi();
         $ErrTama = Finca::getErrTama();
-        //$ErrFKFinca = Animal::getErrFKFinca();
+        $ErrFKFinca = Finca::getErrFKUsuario();
 
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $args = $_POST['finca'];
@@ -85,9 +86,9 @@ class FincaController
             $ErrNomb = $finca->validaNombre();
             $ErrUbi = $finca->validaUbi();
             $ErrTama = $finca->validaTama();
-           // $ErrFKFinca = $animal->validaFinca();
+            $ErrFKFinca = $finca->validaFKUsuario();
 
-            if (empty(($ErrNomb) || ($ErrUbi) || ($ErrTama))) {
+            if (empty(($ErrNomb) || ($ErrUbi) || ($ErrTama) || ($ErrFKFinca) || ($errores))) {
                 $finca->guardar();
             }
         }
@@ -97,78 +98,54 @@ class FincaController
             'ErrNomb' => $ErrNomb,
             'ErrUbi' => $ErrUbi,
             'ErrTama' => $ErrTama,
-            'finca' => $finca
-            // ,'resultadodiasl' => $resultadodiasl,
+            'ErrFKFinca' => $ErrFKFinca,
+            'finca' => $finca,
+            'usuario' => $usuario
         ]);
     }
 
 
     public static function details(Router $router)
     {
-        $Id = validarORedireccionar('/finca/index');
+        $IdFinca = validarORedireccionarFinca('/finca/index');
 
-        $finca = Finca::find($Id);
-
-        // $resultadodiasl = Dayl::allDias();
+        $finca = Finca::find($IdFinca);
+        $usuario = User::all();
 
         $router->render('/finca/details', [
-            'finca' => $finca
-            // ,
-            // 'resultadodiasl' => $resultadodiasl
+            'finca' => $finca,
+            'usuario' => $usuario
         ]);
     }
 
     public static function delete(Router $router)
     {
-        $Id = validarORedireccionar('/finca/index');
+        $IdFinca = validarORedireccionarFinca('/finca/index');
 
-        $finca = Finca::find($Id);
-
-        // $resultadodiasl = Dayl::allDias();
+        $finca = Finca::find($IdFinca);
+        $usuario = User::all();
 
         $router->render('/finca/delete', [
-            'finca' => $finca
-            // ,
-            // 'resultadodiasl' => $resultadodiasl
+            'finca' => $finca,
+            'usuario' => $usuario
         ]);
     }
 
     public static function delete_partial(Router $router)
     {
-        $Id = $_POST['IdFinca'];
+        $IdFinca = $_POST['IdFinca'];
 
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
-            $Id = filter_var($Id, FILTER_VALIDATE_INT);
-            if ($Id) {
-                $finca = Finca::find($Id);
+            $IdFinca = filter_var($IdFinca, FILTER_VALIDATE_INT);
+            if ($IdFinca) {
+                $finca = Finca::find($IdFinca);
                 $finca->eliminar();
             }
         }
 
         $router->render('/finca/delete/delete_partial', [
             'finca' => $finca
-        ]);
-    }
-
-
-    public static function report_excel(Router $router)
-    {
-        $finca = Finca::innerJoin();
-
-        $router->render('finca/report_excel', [
-            'finca' => $finca
-        ]);
-    }
-
-    public static function report_pdf(Router $router)
-    {
-        $opcion = isset($_POST['opcion']) ? $_POST['opcion'] : 'todo';
-
-        $reportPDF = Finca::innerPDF($opcion);
-
-        $router->render('finca/report_pdf', [
-            'reportPDF' => $reportPDF
         ]);
     }
 }

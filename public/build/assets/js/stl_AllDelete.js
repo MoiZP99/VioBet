@@ -8,7 +8,7 @@
   });
 //---iniciación global fin ---------------------------------------------------------|
 //---SweetAlert Delete LUGAR inicio ---------------------------------------------------------|  
-  function eliminarLugar(elimino) {
+  function eliminarAnimal(elimino) {
     swalWithBootstrapButtons.fire({
       title: '¿Está seguro de realizar esta acción?',
       text: '¡No volverá a ver este registro!',
@@ -27,9 +27,9 @@
           didOpen: () => {
             swalWithBootstrapButtons.showLoading();
             setTimeout(() => {
-              llamadoLugar(elimino);
+              llamadoAnimal(elimino);
               swalWithBootstrapButtons.close();
-            }, 2000); // Tiempo en milisegundos (2 segundos)
+            }, 1000); // Tiempo en milisegundos (2 segundos)
           }
         });
       } else if (result.dismiss === Swal.DismissReason.cancel) {
@@ -46,13 +46,13 @@
     });
   }
 
-  function llamadoLugar(elimino) {
+  function llamadoAnimal(elimino) {
     const parametros = {
-      Id: elimino
+      IdAnimal: elimino
     };
     $.ajax({
       data: parametros,
-      url: '/places/delete/delete_partial',
+      url: '/animal/delete/delete_partial',
       type: 'POST',
       beforeSend: function() {},
       success: function() {
@@ -65,14 +65,14 @@
           confirmButtonText: '<i class="fa fa-check"></i> OK',
           buttonsStyling: false
         }).then((result) => {
-          window.location.href = '/places/index';
+          window.location.href = '/animal/index';
         });
       },
     });
   }
 //---SweetAlert Delete LUGAR fin ---------------------------------------------------------|
 //---SweetAlert Delete GASTRONOMÍA inicio ---------------------------------------------------------|
-  function eliminarGastro(elimino) {
+  function eliminarFinca(elimino) {
     swalWithBootstrapButtons.fire({
       title: '¿Está seguro de realizar esta acción?',
       text: '¡No volverá a ver este registro!',
@@ -91,9 +91,9 @@
           didOpen: () => {
             swalWithBootstrapButtons.showLoading();
             setTimeout(() => {
-              llamadoGastro(elimino);
+              llamadoFinca(elimino);
               swalWithBootstrapButtons.close();
-            }, 2000); // Tiempo en milisegundos (2 segundos)
+            }, 1000); // Tiempo en milisegundos (2 segundos)
           }
         });
       } else if (result.dismiss === Swal.DismissReason.cancel) {
@@ -110,13 +110,13 @@
     });
   }
   
-  function llamadoGastro(elimino) {
+  function llamadoFinca(elimino) {
     const parametros = {
-      Id: elimino
+      IdFinca: elimino
     };
     $.ajax({
       data: parametros,
-      url: '/gastronomies/delete/delete_partial',
+      url: '/finca/delete/delete_partial',
       type: 'POST',
       beforeSend: function() {},
       success: function() {
@@ -129,7 +129,7 @@
           confirmButtonText: '<i class="fa fa-check"></i> OK',
           buttonsStyling: false
         }).then((result) => {
-          window.location.href = '/gastronomies/index';
+          window.location.href = '/finca/index';
         });
       },
     });
