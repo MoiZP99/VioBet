@@ -317,11 +317,10 @@ class User
   public static function all()
   {
     $idUsuarioSesion = $_SESSION['idUsuario'];
-    $query = "SELECT DISTINCT f.IdFinca, f.NombreFinca, f.Ubicacion, f.Tamano, f.FKUsuario, u.IdUsuario, u.NombreUser
-              FROM finca f
-              INNER JOIN Usuario u
-              ON f.FKUsuario = u.IdUsuario
-              WHERE FKUsuario = $idUsuarioSesion";
+    $query = "SELECT * FROM Usuario u
+              INNER JOIN Finca f
+              ON u.IdUsuario = f.FKUsuario
+              WHERE f.FKUsuario = $idUsuarioSesion LIMIT 1";
 
     $resultado = self::consultarSQL($query);
 

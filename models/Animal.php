@@ -325,7 +325,7 @@ class Animal
               ON f.FKUsuario = u.IdUsuario
               INNER JOIN Animal a
               ON a.FKFinca = f.IdFinca
-              WHERE f.IdFinca = $idUsuarioSesion";
+              WHERE f.FKUsuario = $idUsuarioSesion";
               
 
     $resultado = self::consultarSQL($query);
@@ -342,7 +342,7 @@ class Animal
               ON f.FKUsuario = u.IdUsuario
               INNER JOIN Animal a
               ON a.FKFinca = f.IdFinca
-              WHERE f.IdFinca = $idUsuarioSesion";
+              WHERE f.FKUsuario = $idUsuarioSesion";
 
     $resultado = self::consultarSQL($query);
 
