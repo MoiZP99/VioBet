@@ -318,8 +318,15 @@ class Animal
 
   public static function all()
   {
-    $query = "SELECT IdAnimal, Nombre, Tipo, Raza, Edad, Sexo, Peso, Numero, FKFinca
-              FROM animal";
+    $idUsuarioSesion = $_SESSION['idUsuario'];
+    $query = "SELECT DISTINCT f.IdFinca, f.NombreFinca, f.Ubicacion, f.Tamano, f.FKUsuario, u.IdUsuario, u.NombreUser, a.IdAnimal, a.Nombre, a.Tipo, a.Raza, a.Edad, a.Sexo, a.Peso, a.Numero, a.FKFinca
+              FROM finca f
+              INNER JOIN Usuario u
+              ON f.FKUsuario = u.IdUsuario
+              INNER JOIN Animal a
+              ON a.FKFinca = f.IdFinca
+              WHERE f.IdFinca = $idUsuarioSesion";
+              
 
     $resultado = self::consultarSQL($query);
 
@@ -328,11 +335,14 @@ class Animal
 
   public static function innerJoin()
   {
-    $query = "SELECT DISTINCT a.IdAnimal, a.Nombre, a.Tipo, a.Raza, a.Edad, a.Sexo, a.Peso, a.Numero, a.FKFinca,
-                              f.NombreFinca, f.Ubicacion
-              FROM animal a
-              INNER JOIN finca f
-              ON a.FKFinca = f.IdFinca";
+    $idUsuarioSesion = $_SESSION['idUsuario'];
+    $query = "SELECT DISTINCT f.IdFinca, f.NombreFinca, f.Ubicacion, f.Tamano, f.FKUsuario, u.IdUsuario, u.NombreUser, a.IdAnimal, a.Nombre, a.Tipo, a.Raza, a.Edad, a.Sexo, a.Peso, a.Numero, a.FKFinca
+              FROM finca f
+              INNER JOIN Usuario u
+              ON f.FKUsuario = u.IdUsuario
+              INNER JOIN Animal a
+              ON a.FKFinca = f.IdFinca
+              WHERE f.IdFinca = $idUsuarioSesion";
 
     $resultado = self::consultarSQL($query);
 

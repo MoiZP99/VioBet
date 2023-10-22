@@ -2,13 +2,13 @@
 
 namespace Model;
 
-class Login
+class Login extends Finca
 {
 
   //Base de datos
   protected static $db;
-  protected static $tabla = 'usuarios';
-  protected static $columnasDB = ['Id', 'Email', 'Password', 'Rol_Id', 'FK_Estado'];
+  protected static $tabla = 'usuario';
+  protected static $columnasDB = ['IdUsuario', 'Email', 'Contrasena'];
 
   //Errores
   public static $errores;
@@ -16,22 +16,16 @@ class Login
   public static $ErrEmail;
 
   //
-  public $Id;
-  public $Password;
+  public $IdUsuario;
+  public $Contrasena;
   public $Email;
-  public $Rol_Id;
-  public $FK_Estado;
-
-
 
 
   public function __construct($args = [])
   {
-    $this->Id = $args['Id'] ?? null;
-    $this->Password = $args['Password'] ?? '';
+    $this->IdUsuario = $args['IdUsuario'] ?? null;
+    $this->Contrasena = $args['Contrasena'] ?? '';
     $this->Email = $args['Email'] ?? '';
-    $this->Rol_Id = $arg['Rol_Id'] ?? '';
-    $this->FK_Estado = $arg['FK_Estado'] ?? '';
   }
 
   //Definir la conexion de la BDs
@@ -72,7 +66,7 @@ class Login
     if (!$this->Email) {
       self::$errores[] = 'El Correo es obligatorio';
     }
-    if (!$this->Password) {
+    if (!$this->Contrasena) {
       self::$errores[] = 'La Contraseña es obligatorio';
     }
     return self::$errores;
@@ -81,7 +75,7 @@ class Login
   public function existeUsuario()
   {
     //Revisar si el usuario existe o no
-    $query = "SELECT Id,Email,Password,Rol_Id,FK_Estado FROM usuarios WHERE Email = '" . $this->Email . "' LIMIT 1";
+    $query = "SELECT IdUsuario, Email, Contrasena FROM usuario WHERE Email = '" . $this->Email . "' LIMIT 1";
 
     $resultado = self::$db->query($query);
 
@@ -92,29 +86,16 @@ class Login
     return $resultado;
   }
 
-  public function comprobarPassword($resultado)
+  public function comprobarContrasena($resultado)
   {
     $usuario = $resultado->fetch_object();
 
-    $autenticado = password_verify($this->Password, $usuario->Password);
+    $autenticado = password_verify($this->Contrasena, $usuario->Contrasena);
 
     if (!$autenticado) {
       self::$errores[] = 'La Contraseña es incorrecta';
     }
     return $autenticado;
-  }
-
-  public function comprobaractividad()
-  {
-    $query = "SELECT FK_Estado FROM usuarios WHERE Email = '" . $this->Email . "' and FK_Estado=1 LIMIT 1";
-
-    $resultado2 = self::$db->query($query);
-
-    if (!$resultado2->num_rows) {
-      self::$errores[] = 'El usuario no está activo';
-      return;
-    }
-    return $resultado2;
   }
 
   public function autenticar()
@@ -124,16 +105,23 @@ class Login
     $_SESSION['usuario'] = $this->Email;
     $_SESSION['login'] = true;
     //ver el rol del usuario
-    $query = "SELECT Rol_Id FROM usuarios WHERE Email = '" . $this->Email . "' and Rol_Id=2 LIMIT 1";
+    $query = "SELECT * FROM Usuario u
+              INNER JOIN Finca f ON u.IdUsuario = f.FKUsuario
+              WHERE u.Email = '" . $this->Email . "' LIMIT 1";
 
     $result = self::$db->query($query);
-    if (!$result->num_rows) {
-      $_SESSION['rol'] = true;
+    
+    if ($result->num_rows) {
+        // El usuario ha sido autenticado
+        $row = $result->fetch_assoc();
+        $_SESSION['login'] = true;
+        $_SESSION['usuario'] = $this->Email;
+        $_SESSION['idUsuario'] = $row['IdUsuario']; // Almacena el ID del usuario en la sesión
+        header('Location: /principal/index'); // Redirige al panel de administración
     } else {
-      $_SESSION['rol'] = false;
+        $_SESSION['login'] = false;
+        // Puedes mostrar un mensaje de error o redirigir de nuevo a la página de inicio de sesión
+        header('Location: /');
     }
-
-
-    header('Location: /principal/index');
   }
 }

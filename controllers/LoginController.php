@@ -4,6 +4,7 @@ namespace Controllers;
 
 use MVC\Router;
 use Model\Login;
+use Model\User;
 
 
 class LoginController
@@ -23,14 +24,9 @@ class LoginController
                 $resultado = $auth->existeUsuario();
                 if (!$resultado) {
                     $errores = Login::getErrores();
-                }
-                //verifica si esta activo
-                $resultado2 = $auth->comprobaractividad();
-                if (!$resultado2) {
-                    $errores = Login::getErrores();
                 } else {
                     //Verificar la password
-                    $autenticado = $auth->comprobarPassword($resultado);
+                    $autenticado = $auth->comprobarContrasena($resultado);
                     if ($autenticado) {
                         //Autenticar usuario
                         $auth->autenticar();

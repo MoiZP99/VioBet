@@ -50,6 +50,8 @@ $router->post('/users/delete', [UserController::class, 'delete']);
 
 //PAGES
 $router->get('/', [PagesController::class, 'index']);
+$router->get('/register', [PagesController::class, 'register']);
+$router->post('/register', [PagesController::class, 'register']);
 
 //LOGIN
 $router->get('/login', [LoginController::class, 'login']);

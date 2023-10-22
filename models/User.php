@@ -316,7 +316,12 @@ class User
   //listar todos Lugares
   public static function all()
   {
-    $query = "SELECT * FROM usuario";
+    $idUsuarioSesion = $_SESSION['idUsuario'];
+    $query = "SELECT DISTINCT f.IdFinca, f.NombreFinca, f.Ubicacion, f.Tamano, f.FKUsuario, u.IdUsuario, u.NombreUser
+              FROM finca f
+              INNER JOIN Usuario u
+              ON f.FKUsuario = u.IdUsuario
+              WHERE FKUsuario = $idUsuarioSesion";
 
     $resultado = self::consultarSQL($query);
 
@@ -348,8 +353,11 @@ class User
 
   public static function innerJoin()
   {
+    $idUsuarioSesion = $_SESSION['idUsuario'];
+
     $query = "SELECT DISTINCT IdUsuario, NombreUser, Apellido1, Apellido2, Telefono, Email, Contrasena
-              FROM usuario";
+              FROM usuario
+              WHERE IdUsuario = $idUsuarioSesion";
 
     $resultado = self::consultarSQL($query);
 

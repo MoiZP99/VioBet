@@ -63,7 +63,7 @@
                         <ul class="dropdown-menu dropdown-menu-light" aria-labelledby="navbarLightDropdownMenuLink">
                             <li><a class="dropdown-item" href="login">Iniciar sesión</a></li>
 
-                            <li><a class="dropdown-item" href="login">Registrarse</a></li>
+                            <li><a class="dropdown-item" href="/register">Registrarse</a></li>
                         </ul>
                     </li>
                     </ul>

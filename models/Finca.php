@@ -244,8 +244,12 @@ class Finca
 
   public static function all()
   {
-    $query = "SELECT DISTINCT f.IdFinca, f.NombreFinca, f.Ubicacion, f.Tamano, f.FKUsuario
-              FROM finca f";
+    $idUsuarioSesion = $_SESSION['idUsuario'];
+    $query = "SELECT DISTINCT f.IdFinca, f.NombreFinca, f.Ubicacion, f.Tamano, f.FKUsuario, u.IdUsuario, u.NombreUser
+              FROM finca f
+              INNER JOIN Usuario u
+              ON f.FKUsuario = u.IdUsuario
+              WHERE FKUsuario = $idUsuarioSesion";
 
     $resultado = self::consultarSQL($query);
 
@@ -254,8 +258,12 @@ class Finca
 
   public static function innerJoin()
   {
-    $query = "SELECT DISTINCT f.IdFinca, f.NombreFinca, f.Ubicacion, f.Tamano, f.FKUsuario
-              FROM finca f";
+    $idUsuarioSesion = $_SESSION['idUsuario'];
+    $query = "SELECT DISTINCT f.IdFinca, f.NombreFinca, f.Ubicacion, f.Tamano, f.FKUsuario, u.IdUsuario, u.NombreUser
+              FROM finca f
+              INNER JOIN Usuario u
+              ON f.FKUsuario = u.IdUsuario
+              WHERE FKUsuario = $idUsuarioSesion";
 
     $resultado = self::consultarSQL($query);
 
