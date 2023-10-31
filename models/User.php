@@ -315,17 +315,27 @@ class User
 
   //listar todos Lugares
   public static function all()
-  {
+{
     $idUsuarioSesion = $_SESSION['idUsuario'];
-    $query = "SELECT * FROM Usuario u
-              INNER JOIN Finca f
+    $query = "SELECT u.*, f.* FROM Usuario u
+              LEFT JOIN Finca f
               ON u.IdUsuario = f.FKUsuario
-              WHERE f.FKUsuario = $idUsuarioSesion LIMIT 1";
+              WHERE u.IdUsuario = $idUsuarioSesion";
 
     $resultado = self::consultarSQL($query);
 
-    return $resultado;
-  }
+    if ($resultado) {
+        return $resultado;
+    } else {
+        $query = "SELECT * FROM Usuario
+                  WHERE IdUsuario = $idUsuarioSesion LIMIT 1";
+
+        $resultado = self::consultarSQL($query);
+
+        return $resultado;
+    }
+}
+
 
 
   // Busqueda Where con Columna 

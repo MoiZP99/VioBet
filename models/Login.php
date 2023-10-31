@@ -105,9 +105,13 @@ class Login extends Finca
     $_SESSION['usuario'] = $this->Email;
     $_SESSION['login'] = true;
     //ver el rol del usuario
+    if ($_POST['usuario']) {
     $query = "SELECT * FROM Usuario u
               INNER JOIN Finca f ON u.IdUsuario = f.FKUsuario
               WHERE u.Email = '" . $this->Email . "' LIMIT 1";
+    } else { 
+      $query = "SELECT * FROM Usuario WHERE Email = '" . $this->Email . "' LIMIT 1;";
+    }
 
     $result = self::$db->query($query);
     
