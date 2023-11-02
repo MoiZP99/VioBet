@@ -68,106 +68,96 @@ include_once 'public/build/Sidebar.php';
                       <div class="col col-xxl-6 col-xl-6 col-lg-6 col-md-6 col-12">
                           <div class="mb-3">
                             <label class="form-label" for="animal">Nombre del Animal</label>
-                            <select required class="form-select" name="animal[FKFinca]" id="finca">
+                            <select required class="form-select" name="fichamedica[FKAnimal]" id="animal">
                               <option selected disabled>Seleccione aquí</option>
                               <?php foreach ($animal as $animal) : ?>
                                 <option <?php echo $fichamedica->FKAnimal === $animal->IdAnimal ? 'selected' : ''; ?> value="<?php echo s($animal->IdAnimal); ?>"> <?php echo s($animal->Nombre); ?> </option>
                               <?php endforeach; ?>
                             </select>
-                            <?php if ($ErrFKFinca) : ?>
+                            <?php if ($ErrFKAnimal) : ?>
                               <div class="alert alert-danger mt-1 p-0" role="alert">
-                                <?php echo $ErrFKFinca ?>
+                                <?php echo $ErrFKAnimal ?>
                               </div>
                             <?php endif; ?>
                           </div>
                         </div>
                         <div class="col col-xxl-6 col-xl-6 col-lg-6 col-sm-6 col-md-6 col-12">
                           <div class="mb-3">
-                            <label class="form-label" for="tipo">Tipo de animal</label>
-                            <select required class="form-select" autofocus name="animal[Tipo]" id="tipo">
-                              <option selected disabled>Seleccione aquí</option>
-                              <option value="Vaca">Vaca</option>
-                              <option value="Toro">Toro</option>
-                              <option value="Caballo">Caballo</option>
-                              <option value="Yegua">Yegua</option>
-                            </select>
-                            <?php if ($ErrTipo) : ?>
+                            <label class="form-label" for="vacuna">Vacuna</label>
+                            <input required class="form-control" type="text" id="vacuna" name="fichamedica[Vacuna]" onKeyUp="javascript:validateTextUbi('vacuna')" placeholder="Escriba aquí la vacuna" value="<?php echo s($fichamedica->Vacuna); ?>">
+                            <?php if ($ErrVac) : ?>
                               <div class="alert alert-danger mt-1 p-0" role="alert">
-                                <?php echo $ErrTipo ?>
+                                <?php echo $ErrVac ?>
                               </div>
                             <?php endif; ?>
                           </div>
                         </div>
                         <div class="col col-xxl-6 col-xl-6 col-lg-6 col-sm-6 col-md-6 col-12">
                           <div class="mb-3">
-                            <label class="form-label" for="raza">Raza del animal</label>
-                            <input required class="form-control" type="text" id="raza" name="animal[Raza]" onKeyUp="javascript:validateTextUbi('raza')" placeholder="Escriba aquí la raza" value="<?php echo s($animal->Raza); ?>">
-                            <?php if ($ErrRaza) : ?>
+                            <label class="form-label" for="tiposangre">Tipo de Sangre</label>
+                            <input required class="form-control" type="text" id="tiposangre" name="fichamedica[TipoSangre]" onKeyUp="javascript:validateTextUbi('tiposangre')" placeholder="Escriba aquí el tipo de sangre" value="<?php echo s($fichamedica->TipoSangre); ?>">
+                            <?php if ($ErrSangr) : ?>
                               <div class="alert alert-danger mt-1 p-0" role="alert">
-                                <?php echo $ErrRaza ?>
+                                <?php echo $ErrSangr ?>
                               </div>
                             <?php endif; ?>
                           </div>
                         </div>
-                        <div class="col col-xxl-6 col-xl-6 col-lg-6 col-md-6 col-12">
+                        <div class="col col-xxl-6 col-xl-6 col-lg-6 col-sm-6 col-md-6 col-12">
                           <div class="mb-3">
-                            <label class="form-label" for="sexo">Sexo del animal</label>
-                            <select required class="form-select" name="animal[Sexo]" id="sexo">
-                              <option selected disabled>Seleccione aquí</option>
-                              <option value="Macho">Macho</option>
-                              <option value="Hembra">Hembra</option>
-                            </select>
-                            <?php if ($ErrSexo) : ?>
+                            <label class="form-label" for="antecedentes">Antecedentes del Animal</label>
+                            <input required class="form-control" type="text" id="antecedentes" name="fichamedica[Antecedentes]" onKeyUp="javascript:validateTextUbi('antecedentes')" placeholder="Escriba aquí los antecedentes" value="<?php echo s($fichamedica->Antecedentes); ?>">
+                            <?php if ($ErrAnte) : ?>
                               <div class="alert alert-danger mt-1 p-0" role="alert">
-                                <?php echo $ErrSexo ?>
+                                <?php echo $ErrAnte ?>
                               </div>
                             <?php endif; ?>
                           </div>
                         </div>
-                        <div class="col col-xxl-6 col-xl-6 col-lg-6 col-md-6 col-12">
+                        <div class="col col-xxl-6 col-xl-6 col-lg-6 col-sm-6 col-md-6 col-12">
                           <div class="mb-3">
-                            <label class="form-label" for="nombre">Nombre del animal</label>
-                            <input required class="form-control" type="text" id="nombre" name="animal[Nombre]" onKeyUp="javascript:validateText('nombre')" placeholder="Esriba aquí el nombre" value="<?php echo s($animal->Nombre); ?>">
-                            <?php if ($ErrNomb) : ?>
+                            <label class="form-label" for="sintomas">Sintomas del Animal</label>
+                            <input required class="form-control" type="text" id="sintomas" name="fichamedica[Sintomas]" onKeyUp="javascript:validateTextUbi('sintomas')" placeholder="Escriba aquí los sintomas" value="<?php echo s($fichamedica->Sintomas); ?>">
+                            <?php if ($ErrSinto) : ?>
                               <div class="alert alert-danger mt-1 p-0" role="alert">
-                                <?php echo $ErrNomb ?>
+                                <?php echo $ErrSinto ?>
                               </div>
                             <?php endif; ?>
                           </div>
                         </div>
-                        <div class="col col-xxl-6 col-xl-6 col-lg-6 col-md-6 col-12">
+                        <div class="col col-xxl-6 col-xl-6 col-lg-6 col-sm-6 col-md-6 col-12">
                           <div class="mb-3">
-                            <label class="form-label" for="edad">Edad del animal</label>
-                            <input required class="form-control" type="int" id="edad" name="animal[Edad]" onKeyUp="javascript:validateTextUbi('edad')" placeholder="Escriba aquí la edad" value="<?php echo s($animal->Edad); ?>">
-                            <?php if ($ErrEdad) : ?>
+                            <label class="form-label" for="diagnostico">Diagnostico del Animal</label>
+                            <input required class="form-control" type="text" id="diagnostico" name="fichamedica[Diagnostico]" onKeyUp="javascript:validateTextUbi('diagnostico')" placeholder="Escriba aquí el diagnostico" value="<?php echo s($fichamedica->Diagnostico); ?>">
+                            <?php if ($ErrDiagno) : ?>
                               <div class="alert alert-danger mt-1 p-0" role="alert">
-                                <?php echo $ErrEdad ?>
+                                <?php echo $ErrDiagno ?>
                               </div>
                             <?php endif; ?>
                           </div>
                         </div>
-                        <div class="col col-xxl-6 col-xl-6 col-lg-6 col-md-6 col-12">
+                        <div class="col col-xxl-6 col-xl-6 col-lg-6 col-sm-6 col-md-6 col-12">
                           <div class="mb-3">
-                            <label class="form-label" for="peso">Peso del animal (Kg)</label>
-                            <input required class="form-control" type="int" id="peso" name="animal[Peso]" onKeyUp="javascript:validateTextUbi('peso')" placeholder="Escriba aquí el peso" value="<?php echo s($animal->Peso); ?>">
-                            <?php if ($ErrPeso) : ?>
+                            <label class="form-label" for="medicamento">Medicamento del Animal</label>
+                            <input required class="form-control" type="text" id="medicamento" name="fichamedica[Medicamento]" onKeyUp="javascript:validateTextUbi('medicamento')" placeholder="Escriba aquí el medicamento" value="<?php echo s($fichamedica->Medicamento); ?>">
+                            <?php if ($ErrMedi) : ?>
                               <div class="alert alert-danger mt-1 p-0" role="alert">
-                                <?php echo $ErrPeso ?>
+                                <?php echo $ErrMedi ?>
                               </div>
                             <?php endif; ?>
                           </div>
                         </div>
-                        <div class="col col-xxl-6 col-xl-6 col-lg-6 col-md-6 col-12">
+                        <div class="col col-xxl-6 col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
                           <div class="mb-3">
-                            <label class="form-label" for="numero">Número en arete del animal</label>
-                            <input required class="form-control" type="int" id="numero" name="animal[Numero]" onKeyUp="javascript:validateTextUbi('numero')" placeholder="Escriba aquí el número" value="<?php echo s($animal->Numero); ?>">
-                            <?php if ($ErrNum) : ?>
+                            <label class="form-label" for="fecharevision">Fecha de Revision</label>
+                            <input required class="form-control" id="fecharevision" type="date" name="fichamedica[FechaRevision]" value="<?php echo s($fichamedica->FechaRevision); ?>">
+                            <?php if ($ErrFecha) : ?>
                               <div class="alert alert-danger mt-1 p-0" role="alert">
-                                <?php echo $ErrNum ?>
+                                <?php echo $ErrFecha ?>
                               </div>
                             <?php endif; ?>
                           </div>
-                        </div>
+                        </div>                 
                       </div>
                     </fieldset>
                   </div>
@@ -245,16 +235,16 @@ include_once 'public/build/Sidebar.php';
       var botonCerrar = document.getElementById("cerrarPagina");
 
       botonCerrar.addEventListener("click", function() {
-        var nombre = formulario.elements["nombre"].value;
-        var tipo = formulario.elements["tipo"].value;
-        var raza = formulario.elements["raza"].value;
-        var sexo = formulario.elements["sexo"].value;
-        var edad = formulario.elements["edad"].value;
-        var peso = formulario.elements["peso"].value;
-        var numero = formulario.elements["numero"].value;
-        var finca = formulario.elements["finca"].value;
+        var vacuna = formulario.elements["vacuna"].value;
+        var tiposangre = formulario.elements["tiposangre"].value;
+        var antecedentes = formulario.elements["antecedentes"].value;
+        var sintomas = formulario.elements["sintomas"].value;
+        var diagnostico = formulario.elements["diagnostico"].value;
+        var medicamento = formulario.elements["medicamento"].value;
+        var fecharevision = formulario.elements["fecharevision"].value;
+        var animal = formulario.elements["animal"].value;
 
-        if (nombre !== '' || tipo !== 'selected' || raza !== '' || sexo !== 'selected' || edad !== '' || peso !== '' || numero !== '' || finca !== 'selected') {
+        if (vacuna !== '' || tiposangre !== '' || antecedentes !== '' || sintomas !== '' || diagnostico !== '' || medicamento !== '' || fecharevision !== '' || animal !== 'selected') {
           Swal.fire({
             title: '¿Cancelar proceso?',
             text: '¿Desea cancelar el proceso?',
@@ -272,11 +262,11 @@ include_once 'public/build/Sidebar.php';
             }
           }).then((result) => {
             if (result.isConfirmed) {
-              window.location.href = '/animal/index';
+              window.location.href = '/fichamedica/index';
             }
           });
         } else {
-          window.location.href = '/animal/index';
+          window.location.href = '/fichamedica/index';
         }
       });
     });

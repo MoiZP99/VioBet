@@ -256,6 +256,9 @@ class FichaMedica
 
   public function validaFecha()
   {
+    if (empty($this->FechaRevision)) {
+        self::$ErrFecha = '<div style="padding-inline: 12px;"><strong>Error!</strong> Este campo es requerido.</div>';
+      }
     return self::$ErrFecha;
   }
 
@@ -303,10 +306,10 @@ class FichaMedica
 
   public function validar()
   {
-    if ((!preg_match("/^[a-zA-ZáéíóúÁÉÍÓÚÑñ\s]*$/", $this->Nombre)) || (!preg_match("/^([0-9])*$/", $this->Edad))
-      || (!preg_match("/^[a-zA-ZáéíóúÁÉÍÓÚÑñ\s]*$/", $this->Tipo)) || (!preg_match("/^[a-zA-ZáéíóúÁÉÍÓÚÑñ\s]*$/", $this->Raza))
-      || (!preg_match("/^[a-zA-ZáéíóúÁÉÍÓÚÑñ\s]*$/", $this->Sexo)) || (!preg_match("/^(\d+|\d+\.\d+)$/", $this->Peso))
-      || (!preg_match("/^([0-9])*$/", $this->Numero)) || (!$this->FKFinca)
+    if ((!preg_match("/^[a-zA-ZáéíóúÁÉÍÓÚÑñ\s]*$/", $this->Vacuna)) || (!preg_match("/^[a-zA-ZáéíóúÁÉÍÓÚÑñ\s]*$/", $this->Sintomas))
+      || (!preg_match("/^[a-zA-ZáéíóúÁÉÍÓÚÑñ\s]*$/", $this->TipoSangre)) || (!preg_match("/^[a-zA-ZáéíóúÁÉÍÓÚÑñ\s]*$/", $this->Diagnostico))
+      || (!preg_match("/^[a-zA-ZáéíóúÁÉÍÓÚÑñ\s]*$/", $this->Antecedentes)) || (!preg_match("/^[a-zA-ZáéíóúÁÉÍÓÚÑñ\s]*$/", $this->Medicamento))
+      || (!preg_match("/^([0-9])*$/", $this->Numero)) || (!$this->FKAnimal)
     ) {
       self::$errores = '<strong>Advertencia!</strong> Verifique que los datos ingresados sean correctos.';
     }
