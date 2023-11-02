@@ -107,6 +107,14 @@
                   </a>
                 </li>
               </ul>
+              <ul class="nav nav-treeview">
+                <li class="nav-item">
+                  <a href="/fichamedica/index" class="nav-link">
+                    <i class="far fa-edit nav-icon"></i>
+                    <p>FichaMedica</p>
+                  </a>
+                </li>
+              </ul>
             </li>
             <li class="nav-item menu-open">
               <a href="#" class="nav-link ">

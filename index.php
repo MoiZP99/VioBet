@@ -3,6 +3,7 @@ include_once __DIR__. '/vendor/autoload.php';
 include_once __DIR__. '/includes/app.php';
 
 use MVC\Router;
+use Controllers\FichaMedicaController;
 use Controllers\AnimalController;
 use Controllers\PagesController;
 use Controllers\UserController;
@@ -27,6 +28,18 @@ $router->get('/animal/delete', [AnimalController::class, 'delete']);
 $router->post('/animal/delete/delete_partial', [AnimalController::class, 'delete_partial']);
 $router->post('/animal/report_excel', [AnimalController::class, 'report_excel']);
 $router->post('/animal/report_pdf', [AnimalController::class, 'report_pdf']);
+
+//FichaMedica
+$router->get('/fichamedica/index', [FichaMedicaController::class, 'index']);
+$router->get('/fichamedica/create', [FichaMedicaController::class, 'create']);
+$router->post('/fichamedica/create', [FichaMedicaController::class, 'create']);
+$router->get('/fichamedica/update', [FichaMedicaController::class, 'update']);
+$router->post('/fichamedica/update', [FichaMedicaController::class, 'update']);
+$router->get('/fichamedica/details', [FichaMedicaController::class, 'details']);
+$router->get('/fichamedica/delete', [FichaMedicaController::class, 'delete']);
+$router->post('/fichamedica/delete/delete_partial', [FichaMedicaController::class, 'delete_partial']);
+$router->post('/fichamedica/report_excel', [FichaMedicaController::class, 'report_excel']);
+$router->post('/fichamedica/report_pdf', [FichaMedicaController::class, 'report_pdf']);
 
 //FINCA
 $router->get('/finca/index', [FincaController::class, 'index']);
