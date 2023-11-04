@@ -110,3 +110,14 @@ function validarORedireccionarAnimal(string $url) {
 
     return $IdAnimal;
 }
+
+function validarORedireccionarFichaMedica(string $url) {
+    $IdFichaMedica = $_GET['IdFichaMedica'];
+    $IdFichaMedica = filter_var($IdFichaMedica, FILTER_VALIDATE_INT);
+
+    if(!$IdFichaMedica) {
+        header("Location: $url " );
+    }
+
+    return $IdFichaMedica;
+}

@@ -1,6 +1,5 @@
 <?php
 include_once 'public/build/Sidebar.php';
-// session_start();
 ?>
 <!DOCTYPE html>
 <html lang="es">
@@ -12,7 +11,7 @@ include_once 'public/build/Sidebar.php';
                 <div class="container-fluid">
                     <div class="row mb-2">
                         <div class="col-sm-6">
-                            <h1>Gestión de Fichas Medicas en Animales</h1>
+                            <h1>Historial de Fichas Medicas</h1>
                         </div>
                     </div>
                 </div>
@@ -27,7 +26,7 @@ include_once 'public/build/Sidebar.php';
                                     <div class="container-fluid">
                                         <div class="row mb-2">
                                             <div class="col-sm-6">
-                                                <h1>Fichas Medicas en la base de datos VioBet</h1>
+                                                <h1>Historial de Fichas Medicas hasta la fecha</h1>
                                             </div>
                                         </div>
                                     </div>
@@ -35,10 +34,7 @@ include_once 'public/build/Sidebar.php';
                                 <div class="card-body">
                                     <div class="row d-flex justify-content-center justify-content-xl-start justify-content-xxl-start justify-content-lg-start justify-content-md-start justify-content-sm-start mb-xxl-n2 mb-xl-n2 mb-lg-n2 mb-md-n2 mb-sm-n2">
                                             <div class="col col-auto mb-3">
-                                                <a href="/fichamedica/create" class="btn btn-outline-primary"> <i class="fas fa-plus-circle"></i> <strong>Nueva Ficha Medica</strong></a>
-                                            </div>
-                                            <div class="col col-auto mb-3">
-                                                <a href="/historial/index" class="btn btn-outline-warning"> <i class="fas fa-file-medical"></i> <strong>Historial</strong></a>
+                                                <a href="/fichamedica/index" class="btn btn-outline-primary"> <i class="fas fa-backward"></i> <strong>Regresar</strong></a>
                                             </div>
                                         <div class="col col-auto d-flex justify-content-center justify-content-xl-start justify-content-xxl-start justify-content-lg-start justify-content-md-start justify-content-sm-start">
                                             <div class="form-group mb-3">
@@ -67,83 +63,41 @@ include_once 'public/build/Sidebar.php';
                                                 </form>
                                             </div>
                                         </div>
-                                    </div>
-                                    <table id="example1" class="table table-bordered table-hover">
-                                        <thead>
-                                            <tr>
-                                                <th>Vacuna</th>
-                                                <th>Tipo de Sangre</th>
-                                                <th>Antecedentes</th>
-                                                <th>Sintomas</th>
-                                                <th>Animal</th>
-                                                <th>Acciones</th>
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-                                            <?php foreach ($fichamedica as $fichamedica) : ?>
-                                                <tr>
-                                                    <td><?php echo $fichamedica->TipoMedicamento ?></td>
-                                                    <td><?php echo $fichamedica->TipoSangre ?></td>
-                                                    <td><?php echo $fichamedica->Antecedentes ?></td>
-                                                    <td><?php echo $fichamedica->Sintomas ?></td>
-                                                    <td><?php echo $fichamedica->Nombre ?></td>
-                                                    <td>
-                                                        <div class="d-grid gap-2 d-inline-flex">
-                                                            <a href="/fichamedica/details?IdFichaMedica=<?php echo $fichamedica->IdFichaMedica ?>" class="fa-regular fa-eye btn btn-outline-info" title="Detalles"></a>
-                                                                <a href="/fichamedica/update?IdFichaMedica=<?php echo $fichamedica->IdFichaMedica ?>" class="fa-regular fa-pen-to-square btn btn-outline-warning" title="Actualizar"></a>
-                                                                <a href="/fichamedica/delete?IdFichaMedica=<?php echo $fichamedica->IdFichaMedica ?>" class="fa-solid fa-trash-can btn btn-outline-danger" title="Eliminar"></a>
-                                                        </div>
-                                                    </td>
-                                                </tr>
-                                            <?php endforeach; ?>
-                                        </tbody>
-                                    </table>
+                                    </div>                                    
                                 </div>
-                                <div class="card-footer bg-gradient-gray"></div>
                             </div>
+                            <?php
+                            if ($historial) {
+                                foreach ($historial as $resultado) {
+                                    echo '<div class="row">';
+                                        echo '<div class="col col-auto gap-4">';
+                                            echo '<div class="card card-success">';
+                                                echo '<div class="card-body">';
+                                                    echo '<h5 class="card-title"><b>Nombre:</b> ' . $resultado->Nombre . '</h5>';
+                                                    echo '<p class="card-text">Raza: ' . $resultado->Raza . '</p>';
+                                                    echo '<p class="card-text">Sexo: ' . $resultado->Sexo . '</p>';
+                                                    echo '<p class="card-text">Tipo de Medicamento: ' . $resultado->TipoMedicamento . '</p>';
+                                                    echo '<p class="card-text">Tipo de Sangre: ' . $resultado->TipoSangre . '</p>';
+                                                    echo '<p class="card-text">Antecedentes: ' . $resultado->Antecedentes . '</p>';
+                                                    echo '<p class="card-text">Síntomas: ' . $resultado->Sintomas . '</p>';
+                                                    echo '<p class="card-text">Diagnóstico: ' . $resultado->Diagnostico . '</p>';
+                                                    echo '<p class="card-text">Detalle del Medicamento: ' . $resultado->DetalleMedicamento . '</p>';
+                                                    echo '<p class="card-text">Fecha de Revisión: ' . $resultado->FechaRevision . '</p>';
+                                                echo '</div>';
+                                            echo '</div>';
+                                        echo '</div>';
+                                    echo '</div>';
+                                }
+                            } else {
+                                echo 'No se encontraron resultados.';
+                            }
+                            ?>
                         </div>
                     </div>
                 </div>
             </section>
         </div>
     </div>
-
-    <script>
-        var submitting = false;
-
-        document.getElementById('myForm').addEventListener('submit', function(event) {
-            if (submitting) {
-                event.preventDefault();
-                return;
-            }
-
-            submitting = true;
-            document.getElementById('spinner').style.visibility = 'visible';
-            document.getElementById('PDFButton').disabled = true;
-            var dropdownToggle = document.querySelector('.dropdown-toggle');
-            dropdownToggle.disabled = true;
-
-            setTimeout(function() {
-                restoreState();
-            }, 3000);
-        });
-
-        function restoreState() {
-            document.getElementById('spinner').style.visibility = 'hidden';
-            document.getElementById('PDFButton').disabled = false;
-            var dropdownToggle = document.querySelector('.dropdown-toggle');
-            dropdownToggle.disabled = false;
-            submitting = false;
-        }
-
-        document.getElementById('myForm').addEventListener('error', function(event) {
-            restoreState();
-        });
-
-        document.getElementById('myForm').addEventListener('abort', function(event) {
-            restoreState();
-        });
-    </script>
 
 </body>
 

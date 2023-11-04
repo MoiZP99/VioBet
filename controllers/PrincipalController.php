@@ -4,6 +4,7 @@ use Model\User;
 use MVC\Router;
 use Model\Finca;
 use Model\Animal;
+use Model\FichaMedica;
 
 class PrincipalController {
     public static function index(Router $router)
@@ -11,6 +12,7 @@ class PrincipalController {
         $animal = Animal::innerJoin();
         $finca = Finca::innerJoin();
         $usuarios = User::innerJoin();
+        $fMedica = FichaMedica::innerJoin();
         // $gastronomias = Gastronomy::innerJoin();
         // $actividad = Activity::innerJoin();
         // $emprendedores = Entrepreneur::innerJoin();
@@ -19,7 +21,8 @@ class PrincipalController {
         $router->render('/principal/index', [
             'animal' => $animal,
             'finca' => $finca,
-            'usuarios' => $usuarios
+            'usuarios' => $usuarios,
+            'fMedica' => $fMedica
             // ,
             // 'gastronomias' => $gastronomias,
             

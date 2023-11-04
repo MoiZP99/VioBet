@@ -13,9 +13,13 @@ use Model\Animal;
 use Model\Finca;
 use Model\User;
 use Model\Login;
+use Model\DtCruce;
+use Model\Historial;
 
 FichaMedica::setDB($db);
 Animal::setDB($db);
 Finca::setDB($db);
 User::setDB($db);
 Login::setDB($db);
+DtCruce::setDB($db);
+Historial::setDB($db);

@@ -5,9 +5,11 @@ include_once __DIR__. '/includes/app.php';
 use MVC\Router;
 use Controllers\FichaMedicaController;
 use Controllers\AnimalController;
+use Controllers\DtCruceController;
 use Controllers\PagesController;
 use Controllers\UserController;
 use Controllers\FincaController;
+use Controllers\HistorialController;
 use Controllers\LoginController;
 use Controllers\PrincipalController;
 
@@ -15,6 +17,13 @@ $router = new Router();
 
 //PAGES
 $router->get('/principal/index', [PrincipalController::class, 'index']);
+
+//CRUCE
+$router->get('/dtCruce/index', [DtCruceController::class, 'index']);
+$router->post('/dtCruce/index', [DtCruceController::class, 'index']);
+
+//HISTORIAL MÉDICO
+$router->get('/historial/index', [HistorialController::class, 'index']);
 
 //PLACES
 $router->get('/animal/index', [AnimalController::class, 'index']);

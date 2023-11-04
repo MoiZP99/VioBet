@@ -320,7 +320,7 @@ class User
     $query = "SELECT u.*, f.* FROM Usuario u
               LEFT JOIN Finca f
               ON u.IdUsuario = f.FKUsuario
-              WHERE u.IdUsuario = $idUsuarioSesion";
+              WHERE u.IdUsuario = $idUsuarioSesion LIMIT 1";
 
     $resultado = self::consultarSQL($query);
 

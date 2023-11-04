@@ -83,8 +83,13 @@ include_once 'public/build/Sidebar.php';
                         </div>
                         <div class="col col-xxl-6 col-xl-6 col-lg-6 col-sm-6 col-md-6 col-12">
                           <div class="mb-3">
-                            <label class="form-label" for="vacuna">Vacuna</label>
-                            <input required class="form-control" type="text" id="vacuna" name="fichamedica[Vacuna]" onKeyUp="javascript:validateTextUbi('vacuna')" placeholder="Escriba aquí la vacuna" value="<?php echo s($fichamedica->Vacuna); ?>">
+                            <label class="form-label" for="TipoMedicamento">Tipo de medicamento</label>
+                            <select required class="form-select" autofocus name="fichamedica[TipoMedicamento]" id="TipoMedicamento">
+                              <option selected disabled>Seleccione aquí</option>
+                              <option value="Vacuna">Vacuna</option>
+                              <option value="Antibiótico">Antibiótico</option>
+                              <option value="Antiparasitario">Antiparasitario</option>
+                            </select>
                             <?php if ($ErrVac) : ?>
                               <div class="alert alert-danger mt-1 p-0" role="alert">
                                 <?php echo $ErrVac ?>
@@ -138,8 +143,8 @@ include_once 'public/build/Sidebar.php';
                         </div>
                         <div class="col col-xxl-6 col-xl-6 col-lg-6 col-sm-6 col-md-6 col-12">
                           <div class="mb-3">
-                            <label class="form-label" for="medicamento">Medicamento del Animal</label>
-                            <input required class="form-control" type="text" id="medicamento" name="fichamedica[Medicamento]" onKeyUp="javascript:validateTextUbi('medicamento')" placeholder="Escriba aquí el medicamento" value="<?php echo s($fichamedica->Medicamento); ?>">
+                            <label class="form-label" for="DetalleMedicamento">Detalles del medicamento</label>
+                            <input required class="form-control" type="text" id="DetalleMedicamento" name="fichamedica[DetalleMedicamento]" onKeyUp="javascript:validateTextUbi('DetalleMedicamento')" placeholder="Escriba aquí el detaller" value="<?php echo s($fichamedica->Medicamento); ?>">
                             <?php if ($ErrMedi) : ?>
                               <div class="alert alert-danger mt-1 p-0" role="alert">
                                 <?php echo $ErrMedi ?>

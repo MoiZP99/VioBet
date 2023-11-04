@@ -5,7 +5,7 @@ namespace Model;
 class FichaMedica
 {
   protected static $db;
-  protected static $columnasDB = ['IdFichaMedica', 'Vacuna', 'TipoSangre', 'Antecedentes', 'Sintomas', 'Diagnostico', 'Medicamento', 'FechaRevision', 'FKAnimal'];
+  protected static $columnasDB = ['IdFichaMedica', 'TipoMedicamento', 'TipoSangre', 'Antecedentes', 'Sintomas', 'Diagnostico', 'DetalleMedicamento', 'FechaRevision', 'FKAnimal'];
 
   public static $errores;
   public static $ErrVac;
@@ -18,12 +18,12 @@ class FichaMedica
   public static $ErrFKAnimal;
 
   public $IdFichaMedica;
-  public $Vacuna;
+  public $TipoMedicamento;
   public $TipoSangre;
   public $Antecedentes;
   public $Sintomas;
   public $Diagnostico;
-  public $Medicamento;
+  public $DetalleMedicamento;
   public $FechaRevision;
   public $FKAnimal;
   public $Nombre;
@@ -31,12 +31,12 @@ class FichaMedica
   public function __construct($args = [])
   {
     $this->IdFichaMedica = $args['IdFichaMedica'] ?? null;
-    $this->Vacuna = $args['Vacuna'] ?? '';
+    $this->TipoMedicamento = $args['TipoMedicamento'] ?? '';
     $this->TipoSangre = $args['TipoSangre'] ?? '';
     $this->Antecedentes = $args['Antecedentes'] ?? '';
     $this->Sintomas = $args['Sintomas'] ?? '';
     $this->Diagnostico = $args['Diagnostico'] ?? '';
-    $this->Medicamento = $args['Medicamento'] ?? '';
+    $this->DetalleMedicamento = $args['DetalleMedicamento'] ?? '';
     $this->FechaRevision = $args['FechaRevision'] ?? '';
     $this->FKAnimal = $args['FKAnimal'] ?? '';
   }
@@ -102,7 +102,7 @@ class FichaMedica
 
   public static function get($limite)
   {
-    $query = "SELECT DISTINCT IdFichaMedica, Vacuna, TipoSangre, Antecedentes, Sintomas, Diagnostico, Medicamento, FechaRevision
+    $query = "SELECT DISTINCT IdFichaMedica, TipoMedicamento, TipoSangre, Antecedentes, Sintomas, Diagnostico, DetalleMedicamento, FechaRevision
               FROM fichamedica
               LIMIT $limite";
 
@@ -188,11 +188,11 @@ class FichaMedica
     return self::$ErrFKAnimal;
   }
 
-  public function validaVacuna()
+  public function validaTipoMedicamento()
   {
-    if (!preg_match("/^[a-zA-ZáéíóúÁÉÍÓÚÑñ\s]*$/", $this->Vacuna)) {
+    if (!preg_match("/^[a-zA-ZáéíóúÁÉÍÓÚÑñ\s]*$/", $this->TipoMedicamento)) {
       self::$ErrVac = '<div style="padding-inline: 12px;"><strong>Error!</strong> Solo letras, acentos y espacios son permitidos.</div>';
-    } elseif (empty($this->Vacuna)) {
+    } elseif (empty($this->TipoMedicamento)) {
       self::$ErrVac = '<div style="padding-inline: 12px;"><strong>Error!</strong> Este campo es requerido.</div>';
     }
 
@@ -245,9 +245,9 @@ class FichaMedica
 
   public function validaMedicamento()
   {
-    if (!preg_match("/^[a-zA-ZáéíóúÁÉÍÓÚÑñ\s]*$/", $this->Medicamento)) {
+    if (!preg_match("/^[a-zA-ZáéíóúÁÉÍÓÚÑñ\s]*$/", $this->DetalleMedicamento)) {
       self::$ErrMedi = '<div style="padding-inline: 12px;"><strong>Error!</strong> Solo letras, acentos y espacios son permitidos.</div>';
-    } elseif (empty($this->Medicamento)) {
+    } elseif (empty($this->DetalleMedicamento)) {
       self::$ErrMedi = '<div style="padding-inline: 12px;"><strong>Error!</strong> Este campo es requerido.</div>';
     }
 
@@ -262,38 +262,6 @@ class FichaMedica
     return self::$ErrFecha;
   }
 
-  public function validaSexo()
-  {
-    if (!preg_match("/^[a-zA-ZáéíóúÁÉÍÓÚÑñ\s]*$/", $this->Sexo)) {
-      self::$ErrSexo = '<div style="padding-inline: 12px;"><strong>Error!</strong> Solo letras, acentos y espacios son permitidos.</div>';
-    } elseif (empty($this->Sexo)) {
-      self::$ErrSexo = '<div style="padding-inline: 12px;"><strong>Error!</strong> Este campo es requerido.</div>';
-    }
-
-    return self::$ErrSexo;
-  }
-
-  public function validaPeso()
-  {
-    if (!preg_match("/^(\d+|\d+\.\d+)$/", $this->Peso)) {
-      self::$ErrPeso = '<div style="padding-inline: 12px;"><strong>Error!</strong> Solo números son permitidos.</div>';
-    } elseif (empty($this->Peso)) {
-      self::$ErrPeso = '<div style="padding-inline: 12px;"><strong>Error!</strong> Este campo es requerido.</div>';
-    }
-
-    return self::$ErrPeso;
-  }
-
-  public function validaNum()
-  {
-    if (!preg_match("/^([0-9])*$/", $this->Numero)) {
-      self::$ErrFKFinca = '<div style="padding-inline: 12px;"><strong>Error!</strong> Solo números son permitidos.</div>';
-    } elseif (empty($this->Numero)) {
-      self::$ErrFKFinca = '<div style="padding-inline: 12px;"><strong>Error!</strong> Este campo es requerido.</div>';
-    }
-
-    return self::$ErrFKFinca;
-  }
 
   public function validaAnimal()
   {
@@ -306,10 +274,10 @@ class FichaMedica
 
   public function validar()
   {
-    if ((!preg_match("/^[a-zA-ZáéíóúÁÉÍÓÚÑñ\s]*$/", $this->Vacuna)) || (!preg_match("/^[a-zA-ZáéíóúÁÉÍÓÚÑñ\s]*$/", $this->Sintomas))
+    if ((!preg_match("/^[a-zA-ZáéíóúÁÉÍÓÚÑñ\s]*$/", $this->TipoMedicamento)) || (!preg_match("/^[a-zA-ZáéíóúÁÉÍÓÚÑñ\s]*$/", $this->Sintomas))
       || (!preg_match("/^[a-zA-ZáéíóúÁÉÍÓÚÑñ\s]*$/", $this->TipoSangre)) || (!preg_match("/^[a-zA-ZáéíóúÁÉÍÓÚÑñ\s]*$/", $this->Diagnostico))
-      || (!preg_match("/^[a-zA-ZáéíóúÁÉÍÓÚÑñ\s]*$/", $this->Antecedentes)) || (!preg_match("/^[a-zA-ZáéíóúÁÉÍÓÚÑñ\s]*$/", $this->Medicamento))
-      || (!preg_match("/^([0-9])*$/", $this->Numero)) || (!$this->FKAnimal)
+      || (!preg_match("/^[a-zA-ZáéíóúÁÉÍÓÚÑñ\s]*$/", $this->Antecedentes)) || (!preg_match("/^[a-zA-ZáéíóúÁÉÍÓÚÑñ\s]*$/", $this->DetalleMedicamento))
+      || (!$this->FKAnimal)
     ) {
       self::$errores = '<strong>Advertencia!</strong> Verifique que los datos ingresados sean correctos.';
     }
@@ -349,7 +317,7 @@ class FichaMedica
   public static function all()
   {
     $idUsuarioSesion = $_SESSION['idUsuario'];
-    $query = "SELECT DISTINCT f.IdFinca, f.NombreFinca, f.Ubicacion, f.Tamano, f.FKUsuario, u.IdUsuario, u.NombreUser, a.IdAnimal, a.Nombre, a.Tipo, a.Raza, a.Edad, a.Sexo, a.Peso, a.Numero, a.FKFinca, m.IdFichaMedica, m.Vacuna, m.TipoSangre, m.Antecedentes, m.Sintomas, m.Diagnostico, m.Medicamento, m.FechaRevision, m.FKAnimal
+    $query = "SELECT DISTINCT f.IdFinca, f.NombreFinca, f.Ubicacion, f.Tamano, f.FKUsuario, u.IdUsuario, u.NombreUser, a.IdAnimal, a.Nombre, a.Tipo, a.Raza, a.Edad, a.Sexo, a.Peso, a.Numero, a.FKFinca, m.IdFichaMedica, m.TipoMedicamento, m.TipoSangre, m.Antecedentes, m.Sintomas, m.Diagnostico, m.DetalleMedicamento, m.FechaRevision, m.FKAnimal
               FROM finca f
               INNER JOIN Usuario u
               ON f.FKUsuario = u.IdUsuario
@@ -368,7 +336,7 @@ class FichaMedica
   public static function innerJoin()
   {
     $idUsuarioSesion = $_SESSION['idUsuario'];
-    $query = "SELECT DISTINCT f.IdFinca, f.NombreFinca, f.Ubicacion, f.Tamano, f.FKUsuario, u.IdUsuario, u.NombreUser, a.IdAnimal, a.Nombre, a.Tipo, a.Raza, a.Edad, a.Sexo, a.Peso, a.Numero, a.FKFinca, m.IdFichaMedica, m.Vacuna, m.TipoSangre, m.Antecedentes, m.Sintomas, m.Diagnostico, m.Medicamento, m.FechaRevision, m.FKAnimal
+    $query = "SELECT DISTINCT f.IdFinca, f.NombreFinca, f.Ubicacion, f.Tamano, f.FKUsuario, u.IdUsuario, u.NombreUser, a.IdAnimal, a.Nombre, a.Tipo, a.Raza, a.Edad, a.Sexo, a.Peso, a.Numero, a.FKFinca, m.IdFichaMedica, m.TipoMedicamento, m.TipoSangre, m.Antecedentes, m.Sintomas, m.Diagnostico, m.DetalleMedicamento, m.FechaRevision, m.FKAnimal
               FROM finca f
               INNER JOIN Usuario u
               ON f.FKUsuario = u.IdUsuario
@@ -383,28 +351,6 @@ class FichaMedica
     return $resultado;
   }
 
-  // public static function innerJoinSolicitud()
-  // {
-  //   $query = "SELECT DISTINCT lt.Id, lt.Nombre_Lugar, lt.Numero_Contacto, lt.Descripcion, lt.Correo, lt.Imagen, 
-  //             te.Espacio, lt.Hora_apertura, lt.Hora_clausura, lt.Ubicacion, cl.categoria_turismo, 
-  //             dl.Nombre_Dial, dll.Nombre_Diall, cl.categoria_turismo, e.Estado
-  //             FROM lugar_turistico lt
-  //             INNER JOIN categoria_lugar cl
-  //             ON lt.categoria_Id = cl.Id
-  //             INNER JOIN tipo_espacio te
-  //             ON lt.TipoEspacio_Id = te.Id
-  //             INNER JOIN dias_lugar_l dl
-  //             ON lt.DiaApertura_Id = dl.Id
-  //             INNER JOIN dias_lugar_ll dll
-  //             ON lt.DiaClausura_Id = dll.Id
-  //             INNER JOIN estado e
-  //             ON lt.FK_Estado = e.Id
-  //             WHERE e.Estado = 'Solicitud'";
-
-  //   $resultado = self::consultarSQL($query);
-
-  //   return $resultado;
-  // }
 
   public static function innerPDF()
   {
@@ -436,7 +382,7 @@ class FichaMedica
 
   public static function find($Id)
   {
-    $query = "SELECT DISTINCT IdFichaMedica, Vacuna, TipoSangre, Antecedentes, Sintomas, Diagnostico, Medicamento, FechaRevision
+    $query = "SELECT DISTINCT IdFichaMedica, TipoMedicamento, TipoSangre, Antecedentes, Sintomas, Diagnostico, DetalleMedicamento, FechaRevision
               FROM fichamedica
               WHERE IdFichaMedica = $Id";
 

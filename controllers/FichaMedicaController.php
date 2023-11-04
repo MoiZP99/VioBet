@@ -5,18 +5,18 @@ namespace Controllers;
 use MVC\Router;
 use Model\FichaMedica;
 use Model\Animal;
+use Model\Historial;
 
 class FichaMedicaController
 {
     public static function index(Router $router)
     {
         $fichamedica = FichaMedica::innerJoin();
-        // $lugarSolicitud = Animal::innerJoinSolicitud();
+        // $historial = Historial::all();
 
         $router->render('/fichamedica/index', [
             'fichamedica' => $fichamedica
-            ,
-            // 'lugarSolicitud' => $lugarSolicitud
+            // 'historial' => $historial
         ]);
     }
 
@@ -41,7 +41,7 @@ class FichaMedicaController
             $fichamedica = new FichaMedica($_POST['fichamedica']);
 
             $errores = $fichamedica->validar();
-            $ErrVac = $fichamedica->validaVacuna();
+            $ErrVac = $fichamedica->validaTipoMedicamento();
             $ErrSangr = $fichamedica->validaTipoSangre();
             $ErrAnte = $fichamedica->validaAntecedentes();
             $ErrSinto = $fichamedica->validaSintomas();
@@ -99,7 +99,7 @@ class FichaMedicaController
             $fichamedica->sincronizar($args);
 
             $errores = $fichamedica->validar();
-            $ErrVac = $fichamedica->validaVacuna();
+            $ErrVac = $fichamedica->validaTipoMedicamento();
             $ErrSangr = $fichamedica->validaTipoSangre();
             $ErrAnte = $fichamedica->validaAntecedentes();
             $ErrSinto = $fichamedica->validaSintomas();
@@ -146,7 +146,7 @@ class FichaMedicaController
     {
         $IdAnimal = validarORedireccionarFichaMedica('/fichamedica/index');
 
-        $fichamedica = FichaMedica::find($IdFichaMedica);
+        $fichamedica = FichaMedica::find($IdAnimal);
 
         // $resultadodiasl = Dayl::allDias();
 
