@@ -21,7 +21,6 @@ class HistorialController
     public static function historial(Router $router)
     {
         $historial = Historial::get();
-        // $historial = new Historial();
 
         $router->render('/fichamedica/historial', [
             'historial' => $historial
