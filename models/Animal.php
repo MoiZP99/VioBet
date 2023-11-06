@@ -332,6 +332,22 @@ class Animal
 
     return $resultado;
   }
+  
+  public static function all1()
+  {
+    // $idUsuarioSesion = $_SESSION['idUsuario'];
+    $query = "SELECT DISTINCT f.IdFinca, f.NombreFinca, f.Ubicacion, f.Tamano, f.FKUsuario, u.IdUsuario, u.NombreUser, a.IdAnimal, a.Nombre, a.Tipo, a.Raza, a.Edad, a.Sexo, a.Peso, a.Numero, a.FKFinca
+              FROM finca f
+              INNER JOIN Usuario u
+              ON f.FKUsuario = u.IdUsuario
+              INNER JOIN Animal a
+              ON a.FKFinca = f.IdFinca";
+              
+
+    $resultado = self::consultarSQL($query);
+
+    return $resultado;
+  }
 
   public static function innerJoin()
   {

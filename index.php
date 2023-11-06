@@ -25,6 +25,8 @@ $router->post('/dtCruce/index', [DtCruceController::class, 'index']);
 //HISTORIAL MÉDICO
 $router->get('/historial/index', [HistorialController::class, 'index']);
 
+$router->get('/fichamedica/historial', [HistorialController::class, 'historial']);
+
 //PLACES
 $router->get('/animal/index', [AnimalController::class, 'index']);
 // $router->post('/animal/index', [AnimalController::class, 'index']);

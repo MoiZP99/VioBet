@@ -37,7 +37,7 @@ class FichaMedicaController
         $ErrFKAnimal = FichaMedica::getErrFKAnimal();
 
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-//coemtnrairo
+            //coemtnrairo
             $fichamedica = new FichaMedica($_POST['fichamedica']);
 
             $errores = $fichamedica->validar();

@@ -18,6 +18,15 @@ class HistorialController
         ]);
     }
 
+    public static function historial(Router $router)
+    {
+        $historial = Historial::get();
+
+        $router->render('/fichamedica/historial', [
+            'historial' => $historial
+        ]);
+    }
+
     public static function report_excel(Router $router)
     {
         $historial = FichaMedica::innerJoin();

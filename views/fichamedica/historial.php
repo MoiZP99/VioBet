@@ -82,7 +82,7 @@ include_once 'public/build/Sidebar.php';
                                                     echo '<p class="card-text">Síntomas: ' . $resultado->Sintomas . '</p>';
                                                     echo '<p class="card-text">Diagnóstico: ' . $resultado->Diagnostico . '</p>';
                                                     echo '<p class="card-text">Detalle del Medicamento: ' . $resultado->DetalleMedicamento . '</p>';
-                                                    echo '<p class="card-text">Fecha de Revisión: ' . $resultado->FechaRevision . '</p>';
+                                                    echo '<p class="card-text">Fecha de Revisión: ' . date_format(date_create($resultado->FechaRevision), 'd-m-Y') . '</p>';
                                                 echo '</div>';
                                             echo '</div>';
                                         echo '</div>';

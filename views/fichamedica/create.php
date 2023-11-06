@@ -155,7 +155,7 @@ include_once 'public/build/Sidebar.php';
                         <div class="col col-xxl-6 col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
                           <div class="mb-3">
                             <label class="form-label" for="fecharevision">Fecha de Revision</label>
-                            <input required class="form-control" id="fecharevision" type="date" name="fichamedica[FechaRevision]" value="<?php echo s($fichamedica->FechaRevision); ?>">
+                            <input required class="form-control" id="fecharevision" type="date" name="fichamedica[FechaRevision]" value="<?php echo s($fichamedica->FechaRevision); ?>" max="<?php echo date('Y-m-d'); ?>">
                             <?php if ($ErrFecha) : ?>
                               <div class="alert alert-danger mt-1 p-0" role="alert">
                                 <?php echo $ErrFecha ?>
