@@ -17,6 +17,9 @@ class Historial
   public $FechaRevision;
   public $FKAnimal;
   public $Nombre;
+  public $Raza;
+  public $Sexo;
+  public $Peso;
 
   public function __construct($args = [])
   {
@@ -92,27 +95,18 @@ class Historial
 
   public static function get()
   {
-    // $idUsuarioSesion = $_SESSION['idUsuario'];
-    $query = "SELECT DISTINCT f.IdFinca, f.NombreFinca, f.Ubicacion, f.Tamano, f.FKUsuario, u.IdUsuario, u.NombreUser, a.IdAnimal,
-                              a.Nombre, a.Tipo, a.Raza, a.Edad, a.Sexo, a.Peso, a.Numero, a.FKFinca, e.IdHistorial, e.TipoMedicamento, 
-                              e.TipoSangre, e.Antecedentes, e.Sintomas, e.Diagnostico, e.DetalleMedicamento, e.FechaRevision, e.FKAnimal
-              FROM finca f
-              INNER JOIN Usuario u
-              ON f.FKUsuario = u.IdUsuario
-              INNER JOIN Animal a
-              ON a.FKFinca = f.IdFinca
-              INNER JOIN historial e
-              ON e.FKAnimal = a.IdAnimal";
-            //   WHERE f.FKUsuario = $idUsuarioSesion
-
-    // $query = "SELECT DISTINCT IdHistorial, TipoMedicamento, TipoSangre, Antecedentes, Sintomas, Diagnostico, DetalleMedicamento, FechaRevision
-    //           FROM historial
-    //           LIMIT $limite";
+    $id = $_GET['IdFichaMedica'];
+    $query = "SELECT fichamedica.*, historial.*, animal.*
+              FROM fichamedica
+              INNER JOIN historial ON fichamedica.FKAnimal = historial.FKAnimal
+              INNER JOIN animal ON fichamedica.FKAnimal = animal.IdAnimal
+              WHERE fichamedica.IdFichaMedica = $id;";
 
     $resultado = self::consultarSQL($query);
 
     return $resultado;
   }
+  
 
   public function atributos()
   {
@@ -244,9 +238,25 @@ class Historial
 
   public static function find($Id)
   {
-    $query = "SELECT DISTINCT IdHistorial, TipoMedicamento, TipoSangre, Antecedentes, Sintomas, Diagnostico, DetalleMedicamento, FechaRevision
-              FROM historial
-              WHERE IdHistorial = $Id";
+    // $idUsuarioSesion = $_SESSION['idUsuario'];
+    $query = "SELECT DISTINCT f.IdFinca, f.NombreFinca, f.Ubicacion, f.Tamano, f.FKUsuario, u.IdUsuario, u.NombreUser, a.IdAnimal,
+    a.Nombre, a.Tipo, a.Raza, a.Edad, a.Sexo, a.Peso, a.Numero, a.FKFinca, e.IdHistorial, e.TipoMedicamento, 
+    e.TipoSangre, e.Antecedentes, e.Sintomas, e.Diagnostico, e.DetalleMedicamento, e.FechaRevision, e.FKAnimal
+              FROM finca f
+              INNER JOIN Usuario u
+              ON f.FKUsuario = u.IdUsuario
+              INNER JOIN Animal a
+              ON a.FKFinca = f.IdFinca
+              INNER JOIN historial e
+              ON e.FKAnimal = a.IdAnimal
+              INNER JOIN fichamedica fm
+              ON fm.FKAnimal = a.IdAnimal
+              WHERE a.IdAnimal = $Id";
+
+    
+    // $query = "SELECT DISTINCT IdHistorial, TipoMedicamento, TipoSangre, Antecedentes, Sintomas, Diagnostico, DetalleMedicamento, FechaRevision
+    //           FROM historial
+    //           WHERE IdHistorial = $Id";
 
     $resultado = self::consultarSQL($query);
 

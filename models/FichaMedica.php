@@ -317,7 +317,10 @@ class FichaMedica
   public static function all()
   {
     $idUsuarioSesion = $_SESSION['idUsuario'];
-    $query = "SELECT DISTINCT f.IdFinca, f.NombreFinca, f.Ubicacion, f.Tamano, f.FKUsuario, u.IdUsuario, u.NombreUser, a.IdAnimal, a.Nombre, a.Tipo, a.Raza, a.Edad, a.Sexo, a.Peso, a.Numero, a.FKFinca, m.IdFichaMedica, m.TipoMedicamento, m.TipoSangre, m.Antecedentes, m.Sintomas, m.Diagnostico, m.DetalleMedicamento, m.FechaRevision, m.FKAnimal
+    $query = "SELECT DISTINCT f.IdFinca, f.NombreFinca, f.Ubicacion, f.Tamano, f.FKUsuario, u.IdUsuario, u.NombreUser, 
+                              a.IdAnimal, a.Nombre, a.Tipo, a.Raza, a.Edad, a.Sexo, a.Peso, a.Numero, a.FKFinca, m.IdFichaMedica, 
+                              m.TipoMedicamento, m.TipoSangre, m.Antecedentes, m.Sintomas, m.Diagnostico, m.DetalleMedicamento, 
+                              m.FechaRevision, m.FKAnimal
               FROM finca f
               INNER JOIN Usuario u
               ON f.FKUsuario = u.IdUsuario
@@ -327,7 +330,6 @@ class FichaMedica
               ON a.FKAnimal = a.IdAnimal
               WHERE f.FKUsuario = $idUsuarioSesion";
               
-
     $resultado = self::consultarSQL($query);
 
     return $resultado;
