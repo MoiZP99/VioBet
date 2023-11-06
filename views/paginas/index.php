@@ -1,16 +1,4 @@
 <section class="hero-section d-flex justify-content-center align-items-center" id="section_1">
-    <div class="container">
-        <div class="row">
-
-            <div class="col-lg-8 col-12 mx-auto">
-                <h1 class="text-white text-center">Se parte de nosotros</h1>
-
-                <h6 class="text-center">Registre los datos de sus animales y administre sus fincas</h6>
-
-            </div>
-
-        </div>
-    </div>
 
 </section>
 <section class="featured-section">
@@ -78,19 +66,15 @@
                 </li>
 
                 <li class="nav-item" role="presentation">
-                    <button class="nav-link" id="marketing-tab" data-bs-toggle="tab" data-bs-target="#marketing-tab-pane" type="button" role="tab" aria-controls="marketing-tab-pane" aria-selected="false">Marketing</button>
+                    <button class="nav-link" id="marketing-tab" data-bs-toggle="tab" data-bs-target="#marketing-tab-pane" type="button" role="tab" aria-controls="marketing-tab-pane" aria-selected="false">Registrarse</button>
                 </li>
 
                 <li class="nav-item" role="presentation">
-                    <button class="nav-link" id="finance-tab" data-bs-toggle="tab" data-bs-target="#finance-tab-pane" type="button" role="tab" aria-controls="finance-tab-pane" aria-selected="false">Finance</button>
+                    <button class="nav-link" id="finance-tab" data-bs-toggle="tab" data-bs-target="#finance-tab-pane" type="button" role="tab" aria-controls="finance-tab-pane" aria-selected="false">Manejo de fincas</button>
                 </li>
 
                 <li class="nav-item" role="presentation">
-                    <button class="nav-link" id="music-tab" data-bs-toggle="tab" data-bs-target="#music-tab-pane" type="button" role="tab" aria-controls="music-tab-pane" aria-selected="false">Music</button>
-                </li>
-
-                <li class="nav-item" role="presentation">
-                    <button class="nav-link" id="education-tab" data-bs-toggle="tab" data-bs-target="#education-tab-pane" type="button" role="tab" aria-controls="education-tab-pane" aria-selected="false">Education</button>
+                    <button class="nav-link" id="music-tab" data-bs-toggle="tab" data-bs-target="#music-tab-pane" type="button" role="tab" aria-controls="music-tab-pane" aria-selected="false">Calcular cruces</button>
                 </li>
             </ul>
         </div>
@@ -108,15 +92,15 @@
                                     <a href="topics-detail.html">
                                         <div class="d-flex">
                                             <div>
-                                                <h5 class="mb-2">Web Design</h5>
+                                                <h5 class="mb-2">Manejo de animales</h5>
 
-                                                <p class="mb-0">Topic Listing Template based on Bootstrap 5</p>
+                                                <p class="mb-0">Registre todos sus animales dentro del sistema</p>
                                             </div>
 
-                                            <span class="badge bg-design rounded-pill ms-auto">14</span>
+                                            <span class="badge bg-design rounded-pill ms-auto">1</span>
                                         </div>
 
-                                        <img src="public/build/assets/images/topics/undraw_Remote_design_team_re_urdx.png" class="custom-block-image img-fluid" alt="">
+                                        <img src="../../public/build/assets/images/topics/vaca-animada.png" class="custom-block-image img-fluid" alt="">
                                     </a>
                                 </div>
                             </div>
@@ -126,15 +110,15 @@
                                     <a href="topics-detail.html">
                                         <div class="d-flex">
                                             <div>
-                                                <h5 class="mb-2">Graphic</h5>
+                                                <h5 class="mb-2">Ficha médica</h5>
 
-                                                <p class="mb-0">Lorem Ipsum dolor sit amet consectetur</p>
+                                                <p class="mb-0">Tenga un control detallado de la salud de sus animales</p>
                                             </div>
 
-                                            <span class="badge bg-design rounded-pill ms-auto">75</span>
+                                            <span class="badge bg-design rounded-pill ms-auto">2</span>
                                         </div>
 
-                                        <img src="public/build/assets/images/topics/undraw_Redesign_feedback_re_jvm0.png" class="custom-block-image img-fluid" alt="">
+                                        <img src="../../public/build/assets/images/topics/pantalla.png" class="custom-block-image img-fluid" alt="">
                                     </a>
                                 </div>
                             </div>
@@ -144,15 +128,15 @@
                                     <a href="topics-detail.html">
                                         <div class="d-flex">
                                             <div>
-                                                <h5 class="mb-2">Logo Design</h5>
+                                                <h5 class="mb-2">Historial médico</h5>
 
-                                                <p class="mb-0">Lorem Ipsum dolor sit amet consectetur</p>
+                                                <p class="mb-0">Conozca todo el historial veterinario de sus animales</p>
                                             </div>
 
-                                            <span class="badge bg-design rounded-pill ms-auto">100</span>
+                                            <span class="badge bg-design rounded-pill ms-auto">3</span>
                                         </div>
 
-                                        <img src="public/build/assets/images/topics/colleagues-working-cozy-office-medium-shot.png" class="custom-block-image img-fluid" alt="">
+                                        <img src="../../public/build/assets/images/topics/expediente.png" class="custom-block-image img-fluid" alt="">
                                     </a>
                                 </div>
                             </div>
@@ -166,15 +150,15 @@
                                     <a href="topics-detail.html">
                                         <div class="d-flex">
                                             <div>
-                                                <h5 class="mb-2">Advertising</h5>
+                                                <h5 class="mb-2">Registrarse en el sistema</h5>
 
-                                                <p class="mb-0">Lorem Ipsum dolor sit amet consectetur</p>
+                                                <p class="mb-0">Se debe dirigir al apartado de usuario</p>
                                             </div>
 
-                                            <span class="badge bg-advertising rounded-pill ms-auto">30</span>
+                                            <span class="badge bg-advertising rounded-pill ms-auto">4</span>
                                         </div>
 
-                                        <img src="public/build/assets/images/topics/undraw_online_ad_re_ol62.png" class="custom-block-image img-fluid" alt="">
+                                        <img src="../../public/build/assets/images/topics/registro.png"  class="custom-block-image img-fluid" alt="">
                                     </a>
                                 </div>
                             </div>
@@ -184,15 +168,15 @@
                                     <a href="topics-detail.html">
                                         <div class="d-flex">
                                             <div>
-                                                <h5 class="mb-2">Video Content</h5>
+                                                <h5 class="mb-2">Llenar los datos</h5>
 
-                                                <p class="mb-0">Lorem Ipsum dolor sit amet consectetur</p>
+                                                <p class="mb-0">Digite todos los datos necesarios para realizar el registro correctamente</p>
                                             </div>
 
-                                            <span class="badge bg-advertising rounded-pill ms-auto">65</span>
+                                            <span class="badge bg-advertising rounded-pill ms-auto">5</span>
                                         </div>
 
-                                        <img src="public/build/assets/images/topics/undraw_Group_video_re_btu7.png" class="custom-block-image img-fluid" alt="">
+                                        <img src="../../public/build/assets/images/topics/datos.png" class="custom-block-image img-fluid" alt="">
                                     </a>
                                 </div>
                             </div>
@@ -202,15 +186,15 @@
                                     <a href="topics-detail.html">
                                         <div class="d-flex">
                                             <div>
-                                                <h5 class="mb-2">Viral Tweet</h5>
+                                                <h5 class="mb-2">Iniciar sesión</h5>
 
-                                                <p class="mb-0">Lorem Ipsum dolor sit amet consectetur</p>
+                                                <p class="mb-0">Ingrese sus credenciales para poder acceder al sistema Biovet</p>
                                             </div>
 
-                                            <span class="badge bg-advertising rounded-pill ms-auto">50</span>
+                                            <span class="badge bg-advertising rounded-pill ms-auto">6</span>
                                         </div>
 
-                                        <img src="public/build/assets/images/topics/undraw_viral_tweet_gndb.png" class="custom-block-image img-fluid" alt="">
+                                        <img src="../../public/build/assets/images/topics/login.JPG" class="custom-block-image img-fluid" alt="">
                                     </a>
                                 </div>
                             </div>
@@ -338,48 +322,7 @@
                             </div>
                         </div>
                     </div>
-
-                    <div class="tab-pane fade" id="education-tab-pane" role="tabpanel" aria-labelledby="education-tab" tabindex="0">
-                        <div class="row">
-                            <div class="col-lg-6 col-md-6 col-12 mb-4 mb-lg-3">
-                                <div class="custom-block bg-white shadow-lg">
-                                    <a href="topics-detail.html">
-                                        <div class="d-flex">
-                                            <div>
-                                                <h5 class="mb-2">Graduation</h5>
-
-                                                <p class="mb-0">Lorem Ipsum dolor sit amet consectetur</p>
-                                            </div>
-
-                                            <span class="badge bg-education rounded-pill ms-auto">80</span>
-                                        </div>
-
-                                        <img src="public/build/assets/images/topics/undraw_Graduation_re_gthn.png" class="custom-block-image img-fluid" alt="">
-                                    </a>
-                                </div>
-                            </div>
-
-                            <div class="col-lg-6 col-md-6 col-12">
-                                <div class="custom-block bg-white shadow-lg">
-                                    <a href="topics-detail.html">
-                                        <div class="d-flex">
-                                            <div>
-                                                <h5 class="mb-2">Educator</h5>
-
-                                                <p class="mb-0">Lorem Ipsum dolor sit amet consectetur</p>
-                                            </div>
-
-                                            <span class="badge bg-education rounded-pill ms-auto">75</span>
-                                        </div>
-
-                                        <img src="public/build/assets/images/topics/undraw_Educator_re_ju47.png" class="custom-block-image img-fluid" alt="">
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
                 </div>
-
             </div>
         </div>
 </section>
@@ -516,57 +459,57 @@
         <div class="row">
 
             <div class="col-lg-12 col-12 text-center">
-                <h2 class="mb-5">Get in touch</h2>
+                <h2 class="mb-5">Información de contacto</h2>
             </div>
 
             <div class="col-lg-5 col-12 mb-4 mb-lg-0">
-                <iframe class="google-map" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2595.065641062665!2d-122.4230416990949!3d37.80335401520422!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x80858127459fabad%3A0x808ba520e5e9edb7!2sFrancisco%20Park!5e1!3m2!1sen!2sth!4v1684340239744!5m2!1sen!2sth" width="100%" height="250" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                <iframe class="google-map" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d31419.070749628085!2d-85.45359135!3d10.149421199999997!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8f9fb6d26f825361%3A0xcbdc1416a01be4f3!2sProvincia%20de%20Guanacaste%2C%20Nicoya!5e0!3m2!1ses-419!2scr!4v1699077475265!5m2!1ses-419!2scr" width="100%" height="250" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
             </div>
 
             <div class="col-lg-3 col-md-6 col-12 mb-3 mb-lg- mb-md-0 ms-auto">
-                <h4 class="mb-3">Head office</h4>
+                <h4 class="mb-3">Redes sociales</h4>
 
-                <p>Bay St &amp;, Larkin St, San Francisco, CA 94109, United States</p>
+                <p>Obtenga información de nuestros servicios</p>
 
                 <hr>
 
                 <p class="d-flex align-items-center mb-1">
-                    <span class="me-2">Phone</span>
+                    <span class="me-2">Instagram:</span>
 
                     <a href="tel: 305-240-9671" class="site-footer-link">
-                        305-240-9671
+                        Biovet_cr
                     </a>
                 </p>
 
                 <p class="d-flex align-items-center">
-                    <span class="me-2">Email</span>
+                    <span class="me-2">Facebook:</span>
 
                     <a href="mailto:info@company.com" class="site-footer-link">
-                        info@company.com
+                        Biovet
                     </a>
                 </p>
             </div>
 
             <div class="col-lg-3 col-md-6 col-12 mx-auto">
-                <h4 class="mb-3">Dubai office</h4>
+                <h4 class="mb-3">Ubicación</h4>
 
-                <p>Burj Park, Downtown Dubai, United Arab Emirates</p>
+                <p>Al servicio de todo Guanacaste</p>
 
                 <hr>
 
                 <p class="d-flex align-items-center mb-1">
-                    <span class="me-2">Phone</span>
+                    <span class="me-2">Teléfono:</span>
 
                     <a href="tel: 110-220-3400" class="site-footer-link">
-                        110-220-3400
+                        2659-2628
                     </a>
                 </p>
 
                 <p class="d-flex align-items-center">
-                    <span class="me-2">Email</span>
+                    <span class="me-2">Correo:</span>
 
                     <a href="mailto:info@company.com" class="site-footer-link">
-                        info@company.com
+                        Biovet@gmail.com
                     </a>
                 </p>
             </div>

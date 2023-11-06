@@ -36,7 +36,7 @@ include_once 'public/build/Sidebar.php';
         <div class="container-fluid">
           <div class="row mb-2">
             <div class="col-sm-6">
-              <h1>Regristro de Ficha Medica de Animales</h1>
+              <h1>Registro de Ficha Médica de Animales</h1>
             </div>
           </div>
         </div>
@@ -49,7 +49,7 @@ include_once 'public/build/Sidebar.php';
               <div class="card" style="border-radius: 7px; background: #F8F8FF;">
                 <form method="POST" action="create" id="regiration_form">
                   <div class="card-header" style="background-color: #D6EAF8;">
-                    <h2 class="card-title" style="font-size: 23px;"><strong>Ingresar:</strong> Nueva Ficha Medica</h2>
+                    <h2 class="card-title" style="font-size: 23px;"><strong>Ingresar:</strong> Nueva Ficha Médica</h2>
                   </div>
                   <div class="card-body">
                     <fieldset>

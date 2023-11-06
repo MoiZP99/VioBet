@@ -12,6 +12,11 @@
 </head>
 
 <body>
+<button type="submit" class="button login__submit2" id="login">
+						<i class="button__icon2 fas fa-chevron-left"></i>
+						<span class="button__text" href="../paginas/index.php">Atrás</span>
+						
+</button>
 	<div class="container">
 		<?php foreach ($errores as $error) : ?>
 			<div class="alert alert-warning d-flex align-items-center justify-content-center p-1" role="alert">
@@ -24,7 +29,9 @@
 			</div>
 		<?php endforeach; ?>
 		<div class="screen">
+			
 			<div class="screen__content">
+				<h1 id="Welcome">Bienvenido</h1>
 				<form class="login" method="POST" action="/login" id="form1">
 					<div class="login__field">
 						<i class="login__icon fas fa-user"></i>
@@ -39,13 +46,6 @@
 						<i class="button__icon fas fa-chevron-right"></i>
 					</button>
 				</form>
-				<div class="social-login">
-					<h1>Continuar sin registrarse</h1>
-					<button class="button login__submit">
-						<span class="button__text">Continuar</span>
-						<i class="button__icon fas fa-chevron-right"></i>
-					</button>
-				</div>
 			</div>
 			<div class="screen__background">
 				<span class="screen__background__shape screen__background__shape4"></span>

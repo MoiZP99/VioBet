@@ -91,61 +91,44 @@
                 </div>
 
                 <div class="col-lg-3 col-md-4 col-6">
-                    <h6 class="site-footer-title mb-3">Resources</h6>
+                    <h6 class="site-footer-title mb-3">Accesos</h6>
 
                     <ul class="site-footer-links">
                         <li class="site-footer-link-item">
-                            <a href="#" class="site-footer-link">Home</a>
+                            <a href="#section_1" class="site-footer-link">Inicio</a>
                         </li>
 
                         <li class="site-footer-link-item">
-                            <a href="#" class="site-footer-link">How it works</a>
+                            <a href="#section_2" class="site-footer-link">Procesos</a>
+                        </li>
+                        <li class="site-footer-link-item">
+                            <a href="#section_3" class="site-footer-link">Cómo funciona</a>
                         </li>
 
                         <li class="site-footer-link-item">
-                            <a href="#" class="site-footer-link">FAQs</a>
+                            <a href="#section_4" class="site-footer-link">Preguntas frecuentes</a>
                         </li>
 
                         <li class="site-footer-link-item">
-                            <a href="#" class="site-footer-link">Contact</a>
+                            <a href="#section_5" class="site-footer-link">Contactos</a>
                         </li>
                     </ul>
                 </div>
 
                 <div class="col-lg-3 col-md-4 col-6 mb-4 mb-lg-0">
-                    <h6 class="site-footer-title mb-3">Information</h6>
+                    <h6 class="site-footer-title mb-3">Información</h6>
 
                     <p class="text-white d-flex mb-1">
                         <a href="tel: 305-240-9671" class="site-footer-link">
-                            305-240-9671
+                            2659-2628
                         </a>
                     </p>
 
                     <p class="text-white d-flex">
                         <a href="mailto:info@company.com" class="site-footer-link">
-                            info@company.com
+                            Biovet@gmail.com
                         </a>
                     </p>
-                </div>
-
-                <div class="col-lg-3 col-md-4 col-12 mt-4 mt-lg-0 ms-auto">
-                    <div class="dropdown">
-                        <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-                            English</button>
-
-                        <ul class="dropdown-menu">
-                            <li><button class="dropdown-item" type="button">Thai</button></li>
-
-                            <li><button class="dropdown-item" type="button">Myanmar</button></li>
-
-                            <li><button class="dropdown-item" type="button">Arabic</button></li>
-                        </ul>
-                    </div>
-
-                    <p class="copyright-text mt-lg-5 mt-4">Copyright © 2048 Topic Listing Center. All rights reserved.
-                        <br><br>Design: <a rel="nofollow" href="https://templatemo.com" target="_blank">TemplateMo</a>
-                    </p>
-
                 </div>
 
             </div>

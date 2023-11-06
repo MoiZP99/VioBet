@@ -7,7 +7,7 @@ include_once 'public/build/Sidebar.php';
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Somos Hojancha</title>
+    <title>Biovet</title>
     <link rel="stylesheet" href="/public/build/FontFamily_admin_section/fontfamily.css">
     <link rel="stylesheet" href="/public/build/FontAwesome_table_users/fontawesome5.13.0.css">
     <link rel="stylesheet" href="/public/build/bootstrap/css/bootstrap.min.css">

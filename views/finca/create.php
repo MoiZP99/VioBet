@@ -36,7 +36,7 @@ include_once 'public/build/Sidebar.php';
         <div class="container-fluid">
           <div class="row mb-2">
             <div class="col-sm-6">
-              <h1>Regristro de una nueva finca</h1>
+              <h1>Registro de una nueva finca</h1>
             </div>
           </div>
         </div>
