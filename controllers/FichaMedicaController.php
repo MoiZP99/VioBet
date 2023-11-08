@@ -144,9 +144,9 @@ class FichaMedicaController
 
     public static function delete(Router $router)
     {
-        $IdAnimal = validarORedireccionarFichaMedica('/fichamedica/index');
+        $IdFichaMedica = validarORedireccionarFichaMedica('/fichamedica/index');
 
-        $fichamedica = FichaMedica::find($IdAnimal);
+        $fichamedica = FichaMedica::find($IdFichaMedica);
 
         // $resultadodiasl = Dayl::allDias();
 

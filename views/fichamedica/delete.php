@@ -119,6 +119,7 @@ include_once 'public/build/Sidebar.php';
                     <div class="row">
                       <div class="btn-spinner">
                         <a href="/fichamedica/index" class="btn btn-outline-danger col-auto me-2 col-xl-2 col-lg-2 col-md-2 col-sm-2 mt-1 mb-1"> <i class="fas fa-times-circle"></i> <b>Cerrar</b> </a>
+                        <a class="btn btn-outline-dark col-auto me-2 col-xl-2 col-lg-2 col-md-2 col-sm-2 mt-1 mb-1" onclick="eliminarFichaMedica(<?php echo $fichamedica->IdFichaMedica ?>)"> <i class="fa-solid fa-trash-can"></i> <b> Eliminar</b></a>
                       </div>
                     </div>
                   </div>
@@ -130,7 +131,10 @@ include_once 'public/build/Sidebar.php';
       </section>
     </div>
   </div>
-
+  <script src="/public/build/assets/js/stl_AllDelete.js"></script>
+    <script src="/public/build/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="/public/build/jquery/jquery-3.3.1.min.js"></script>
+    <script src="/public/build/sweetalert2@11.1.4/sweetalert2.js"></script>
 </body>
 
 </html>
