@@ -62,11 +62,11 @@
         <div class="row">
             <ul class="nav nav-tabs" id="myTab" role="tablist">
                 <li class="nav-item" role="presentation">
-                    <button class="nav-link active" id="design-tab" data-bs-toggle="tab" data-bs-target="#design-tab-pane" type="button" role="tab" aria-controls="design-tab-pane" aria-selected="true">Administración</button>
+                    <button class="nav-link" id="marketing-tab" data-bs-toggle="tab" data-bs-target="#marketing-tab-pane" type="button" role="tab" aria-controls="marketing-tab-pane" aria-selected="false">Registrarse</button>
                 </li>
 
                 <li class="nav-item" role="presentation">
-                    <button class="nav-link" id="marketing-tab" data-bs-toggle="tab" data-bs-target="#marketing-tab-pane" type="button" role="tab" aria-controls="marketing-tab-pane" aria-selected="false">Registrarse</button>
+                    <button class="nav-link active" id="design-tab" data-bs-toggle="tab" data-bs-target="#design-tab-pane" type="button" role="tab" aria-controls="design-tab-pane" aria-selected="true">Administración</button>
                 </li>
 
                 <li class="nav-item" role="presentation">
@@ -97,7 +97,7 @@
                                                 <p class="mb-0">Registre todos sus animales dentro del sistema</p>
                                             </div>
 
-                                            <span class="badge bg-design rounded-pill ms-auto">1</span>
+                                            <span class="badge bg-design rounded-pill ms-auto">4</span>
                                         </div>
 
                                         <img src="../../public/build/assets/images/topics/vaca-animada.png" class="custom-block-image img-fluid" alt="">
@@ -115,7 +115,7 @@
                                                 <p class="mb-0">Tenga un control detallado de la salud de sus animales</p>
                                             </div>
 
-                                            <span class="badge bg-design rounded-pill ms-auto">2</span>
+                                            <span class="badge bg-design rounded-pill ms-auto">5</span>
                                         </div>
 
                                         <img src="../../public/build/assets/images/topics/pantalla.png" class="custom-block-image img-fluid" alt="">
@@ -133,7 +133,7 @@
                                                 <p class="mb-0">Conozca todo el historial veterinario de sus animales</p>
                                             </div>
 
-                                            <span class="badge bg-design rounded-pill ms-auto">3</span>
+                                            <span class="badge bg-design rounded-pill ms-auto">6</span>
                                         </div>
 
                                         <img src="../../public/build/assets/images/topics/expediente.png" class="custom-block-image img-fluid" alt="">
@@ -155,7 +155,7 @@
                                                 <p class="mb-0">Se debe dirigir al apartado de usuario</p>
                                             </div>
 
-                                            <span class="badge bg-advertising rounded-pill ms-auto">4</span>
+                                            <span class="badge bg-advertising rounded-pill ms-auto">1</span>
                                         </div>
 
                                         <img src="../../public/build/assets/images/topics/registro.png"  class="custom-block-image img-fluid" alt="">
@@ -173,7 +173,7 @@
                                                 <p class="mb-0">Digite todos los datos necesarios para realizar el registro correctamente</p>
                                             </div>
 
-                                            <span class="badge bg-advertising rounded-pill ms-auto">5</span>
+                                            <span class="badge bg-advertising rounded-pill ms-auto">2</span>
                                         </div>
 
                                         <img src="../../public/build/assets/images/topics/datos.png" class="custom-block-image img-fluid" alt="">
@@ -191,7 +191,7 @@
                                                 <p class="mb-0">Ingrese sus credenciales para poder acceder al sistema Biovet</p>
                                             </div>
 
-                                            <span class="badge bg-advertising rounded-pill ms-auto">6</span>
+                                            <span class="badge bg-advertising rounded-pill ms-auto">3</span>
                                         </div>
 
                                         <img src="../../public/build/assets/images/topics/login.JPG" class="custom-block-image img-fluid" alt="">
@@ -226,15 +226,15 @@
                                     <a href="topics-detail.html">
                                         <div class="d-flex">
                                             <div>
-                                                <h5 class="mb-2">Distribuya correctamente sus animales</h5>
+                                                <h5 class="mb-2">Administre varias fincas</h5>
 
-                                                <p class="mb-0">Es importante tener un mejor control de zonas en su finca, distribuya los animales adecuadamente.</p>
+                                                <p class="mb-0">Registre las fincas que tenga a disposición para dirigir correctamente la distribución de animales</p>
                                             </div>
 
-                                            <span class="badge bg-finance rounded-pill ms-auto">7</span>
+                                            <span class="badge bg-finance rounded-pill ms-auto">8</span>
                                         </div>
 
-                                        <img src="../../public/build/assets/images/topics/Mapa2.jpg" class="custom-block-image img-fluid" alt="">
+                                        <img src="../../public/build/assets/images/topics/varios.jpg" class="custom-block-image img-fluid" alt="">
                                     </a>
                                 </div>
                             </div>
@@ -249,15 +249,15 @@
                                     <a href="topics-detail.html">
                                         <div class="d-flex">
                                             <div>
-                                                <h5 class="mb-2">Composing Song</h5>
+                                                <h5 class="mb-2">Ingrese la raza de los padres</h5>
 
-                                                <p class="mb-0">Lorem Ipsum dolor sit amet consectetur</p>
+                                                <p class="mb-0">Ingresar los datos del padre y de la madre para obtener el resultado genético</p>
                                             </div>
 
-                                            <span class="badge bg-music rounded-pill ms-auto">45</span>
+                                            <span class="badge bg-music rounded-pill ms-auto">9</span>
                                         </div>
 
-                                        <img src="public/build/assets/images/topics/undraw_Compose_music_re_wpiw.png" class="custom-block-image img-fluid" alt="">
+                                        <img src="../../public/build/assets/images/topics/lechera.png" class="custom-block-image img-fluid" alt="">
                                     </a>
                                 </div>
                             </div>
@@ -267,15 +267,15 @@
                                     <a href="topics-detail.html">
                                         <div class="d-flex">
                                             <div>
-                                                <h5 class="mb-2">Online Music</h5>
+                                                <h5 class="mb-2">Ingrese la pureza de los padres</h5>
 
-                                                <p class="mb-0">Lorem Ipsum dolor sit amet consectetur</p>
+                                                <p class="mb-0">La pureza nos ayuda a determinar el resultado final del cruce</p>
                                             </div>
 
-                                            <span class="badge bg-music rounded-pill ms-auto">45</span>
+                                            <span class="badge bg-music rounded-pill ms-auto">10</span>
                                         </div>
 
-                                        <img src="public/build/assets/images/topics/undraw_happy_music_g6wc.png" class="custom-block-image img-fluid" alt="">
+                                        <img src="../../public/build/assets/images/topics/gene.jpg" class="custom-block-image img-fluid" alt="">
                                     </a>
                                 </div>
                             </div>
@@ -285,15 +285,15 @@
                                     <a href="topics-detail.html">
                                         <div class="d-flex">
                                             <div>
-                                                <h5 class="mb-2">Podcast</h5>
+                                                <h5 class="mb-2">Obtenga sus resultados</h5>
 
-                                                <p class="mb-0">Lorem Ipsum dolor sit amet consectetur</p>
+                                                <p class="mb-0">Verifique si el cruce da el resultado que necesita</p>
                                             </div>
 
-                                            <span class="badge bg-music rounded-pill ms-auto">20</span>
+                                            <span class="badge bg-music rounded-pill ms-auto">11</span>
                                         </div>
 
-                                        <img src="public/build/assets/images/topics/undraw_Podcast_audience_re_4i5q.png" class="custom-block-image img-fluid" alt="">
+                                        <img src="../../public/build/assets/images/topics/Resu.jpg" class="custom-block-image img-fluid" alt="">
                                     </a>
                                 </div>
                             </div>
@@ -312,7 +312,7 @@
         <div class="row">
 
             <div class="col-12 text-center">
-                <h2 class="text-white mb-4">How does it work?</h1>
+                <h2 class="text-white mb-4">¿Cómo funciona?</h1>
             </div>
 
             <div class="col-lg-10 col-12 mx-auto">
@@ -323,22 +323,22 @@
                         </div>
 
                         <li>
-                            <h4 class="text-white mb-3">Search your favourite topic</h4>
+                            <h4 class="text-white mb-3">Versión gratuita</h4>
 
-                            <p class="text-white">Lorem ipsum dolor sit amet consectetur adipisicing elit. Reiciendis, cumque magnam? Sequi, cupiditate quibusdam alias illum sed esse ad dignissimos libero sunt, quisquam numquam aliquam? Voluptas, accusamus omnis?</p>
+                            <p class="text-white">Esta versión del sistema de administración de fincas y animales ofrece a los ganaderos una solución esencial y fácil de usar para optimizar sus operaciones con un limite de registro de 10 animales, además, de ingresar una finca que se le asignará para todos los animales. Si necesitas gestionar más, puedes considerar una actualización a la versión premium.</p>
 
                             <div class="icon-holder">
-                                <i class="bi-search"></i>
+                                <i class="bi bi-unlock"></i>
                             </div>
                         </li>
 
                         <li>
-                            <h4 class="text-white mb-3">Bookmark &amp; Keep it for yourself</h4>
+                            <h4 class="text-white mb-3">Versión premium</h4>
 
-                            <p class="text-white">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Sint animi necessitatibus aperiam repudiandae nam omnis est vel quo, nihil repellat quia velit error modi earum similique odit labore. Doloremque, repudiandae?</p>
+                            <p class="text-white">Por el pago de 15 dolares podra disfrutar de todos los recursos administrativos completos del sistema, lo cual incluye poder registrar la cantidad de fincas que desee, asimismo con los animales.</p>
 
                             <div class="icon-holder">
-                                <i class="bi-bookmark"></i>
+                                <i class="bi bi-cash-coin"></i>
                             </div>
                         </li>
 
@@ -348,18 +348,11 @@
                             <p class="text-white">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Animi vero quisquam, rem assumenda similique voluptas distinctio, iste est hic eveniet debitis ut ducimus beatae id? Quam culpa deleniti officiis autem?</p>
 
                             <div class="icon-holder">
-                                <i class="bi-book"></i>
+                                <i class="bi bi-info-circle"></i>
                             </div>
                         </li>
                     </ul>
                 </div>
-            </div>
-
-            <div class="col-12 text-center mt-5">
-                <p class="text-white">
-                    Want to learn more?
-                    <a href="#" class="btn custom-btn custom-border-btn ms-3">Check out Youtube</a>
-                </p>
             </div>
         </div>
     </div>
@@ -371,7 +364,7 @@
         <div class="row">
 
             <div class="col-lg-6 col-12">
-                <h2 class="mb-4">Frequently Asked Questions</h2>
+                <h2 class="mb-4">Preguntas frecuentes</h2>
             </div>
 
             <div class="clearfix"></div>
@@ -385,13 +378,13 @@
                     <div class="accordion-item">
                         <h2 class="accordion-header" id="headingOne">
                             <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-                                What is Topic Listing?
+                            ¿Qué es un sistema de administración de fincas y animales?
                             </button>
                         </h2>
 
                         <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
                             <div class="accordion-body">
-                                Topic Listing is free Bootstrap 5 CSS template. <strong>You are not allowed to redistribute this template</strong> on any other template collection website without our permission. Please contact TemplateMo for more detail. Thank you.
+                            Un sistema de administración de fincas y animales es una herramienta digital diseñada para ayudar a ganaderos a gestionar eficazmente sus fincas y animales. Permite un seguimiento detallado de las actividades, desplazamientos y datos relacionados con la salud de los animales.
                             </div>
                         </div>
                     </div>
@@ -399,13 +392,13 @@
                     <div class="accordion-item">
                         <h2 class="accordion-header" id="headingTwo">
                             <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-                                How to find a topic?
+                            ¿Cómo puedo registrarme en el sistema?
                             </button>
                         </h2>
 
                         <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#accordionExample">
                             <div class="accordion-body">
-                                You can search on Google with <strong>keywords</strong> such as templatemo portfolio, templatemo one-page layouts, photography, digital marketing, etc.
+                            El proceso de registro es simple. Solo tienes que visitar nuestra página de inicio, hacer clic en "Registro" y seguir las instrucciones. Proporciona información básica y estarás listo para empezar.
                             </div>
                         </div>
                     </div>
@@ -413,13 +406,13 @@
                     <div class="accordion-item">
                         <h2 class="accordion-header" id="headingThree">
                             <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
-                                Does it need to paid?
+                            ¿Qué ventajas ofrece la versión premium del sistema?
                             </button>
                         </h2>
 
                         <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree" data-bs-parent="#accordionExample">
                             <div class="accordion-body">
-                                You can modify any of this with custom CSS or overriding our default variables. It's also worth noting that just about any HTML can go within the <code>.accordion-body</code>, though the transition does limit overflow.
+                            La versión premium desbloquea características adicionales, como la gestión ilimitada de animales, informes avanzados y asistencia prioritaria, para una gestión más eficiente y completa de tu finca y animales.
                             </div>
                         </div>
                     </div>

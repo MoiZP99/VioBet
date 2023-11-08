@@ -93,6 +93,7 @@ h4 {
 
 h5 {
   font-size: var(--h5-font-size);
+  text-align: center;
 }
 
 h6 {
@@ -104,6 +105,8 @@ p {
   color: var(--p-color);
   font-size: var(--p-font-size);
   font-weight: var(--font-weight-normal);
+  text-align: center;
+  justify-content: center;
 }
 
 ul li {
@@ -777,6 +780,7 @@ blockquote {
 
 .timeline-container .vertical-scrollable-timeline li p {
   line-height: 40px;
+  text-align: justify;
 }
 
 .timeline-container .vertical-scrollable-timeline li p:last-child {
