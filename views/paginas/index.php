@@ -7,7 +7,7 @@
 
             <div class="col-lg-4 col-12 mb-4 mb-lg-0">
                 <div class="custom-block bg-white shadow-lg">
-                    <a href="topics-detail.html">
+                    <a href="">
                         <div class="d-flex">
                             <div>
                                 <h5 class="mb-2">Control de fincas</h5>
@@ -33,7 +33,7 @@
 
                                 <p class="text-white">Se basa en un proceso administrativo animal para el control de razas de los diferentes animales que tenga en posesión la persona, esto con el fin de llevar un registro de la cantidad de animales que maneja el ganadero y los posibles cruces a realizar para mantener la pureza en los animales.</p>
 
-                                <a href="topics-detail.html" class="btn custom-btn mt-2 mt-lg-3">Suscribirse</a>
+                                <a href="" class="btn custom-btn mt-2 mt-lg-3">Suscribirse</a>
                             </div>
                         </div>
 
@@ -89,7 +89,7 @@
                         <div class="row">
                             <div class="col-lg-4 col-md-6 col-12 mb-4 mb-lg-0">
                                 <div class="custom-block bg-white shadow-lg">
-                                    <a href="topics-detail.html">
+                                    <a href="">
                                         <div class="d-flex">
                                             <div>
                                                 <h5 class="mb-2">Manejo de animales</h5>
@@ -107,7 +107,7 @@
 
                             <div class="col-lg-4 col-md-6 col-12 mb-4 mb-lg-0">
                                 <div class="custom-block bg-white shadow-lg">
-                                    <a href="topics-detail.html">
+                                    <a href="">
                                         <div class="d-flex">
                                             <div>
                                                 <h5 class="mb-2">Ficha médica</h5>
@@ -125,7 +125,7 @@
 
                             <div class="col-lg-4 col-md-6 col-12">
                                 <div class="custom-block bg-white shadow-lg">
-                                    <a href="topics-detail.html">
+                                    <a href="">
                                         <div class="d-flex">
                                             <div>
                                                 <h5 class="mb-2">Historial médico</h5>
@@ -147,7 +147,7 @@
                         <div class="row">
                             <div class="col-lg-4 col-md-6 col-12 mb-4 mb-lg-3">
                                 <div class="custom-block bg-white shadow-lg">
-                                    <a href="topics-detail.html">
+                                    <a href="">
                                         <div class="d-flex">
                                             <div>
                                                 <h5 class="mb-2">Registrarse en el sistema</h5>
@@ -165,7 +165,7 @@
 
                             <div class="col-lg-4 col-md-6 col-12 mb-4 mb-lg-3">
                                 <div class="custom-block bg-white shadow-lg">
-                                    <a href="topics-detail.html">
+                                    <a href="">
                                         <div class="d-flex">
                                             <div>
                                                 <h5 class="mb-2">Llenar los datos</h5>
@@ -183,7 +183,7 @@
 
                             <div class="col-lg-4 col-md-6 col-12">
                                 <div class="custom-block bg-white shadow-lg">
-                                    <a href="topics-detail.html">
+                                    <a href="">
                                         <div class="d-flex">
                                             <div>
                                                 <h5 class="mb-2">Iniciar sesión</h5>
@@ -205,7 +205,7 @@
                         <div class="row">
                             <div class="col-lg-6 col-md-6 col-12 mb-4 mb-lg-0">
                                 <div class="custom-block bg-white shadow-lg">
-                                    <a href="topics-detail.html">
+                                    <a href="">
                                         <div class="d-flex">
                                             <div>
                                                 <h5 class="mb-2">Distribuya correctamente sus animales</h5>
@@ -223,7 +223,7 @@
                             
                             <div class="col-lg-6 col-md-6 col-12 mb-4 mb-lg-0">
                                 <div class="custom-block bg-white shadow-lg">
-                                    <a href="topics-detail.html">
+                                    <a href="">
                                         <div class="d-flex">
                                             <div>
                                                 <h5 class="mb-2">Administre varias fincas</h5>
@@ -246,7 +246,7 @@
                         <div class="row">
                             <div class="col-lg-4 col-md-6 col-12 mb-4 mb-lg-3">
                                 <div class="custom-block bg-white shadow-lg">
-                                    <a href="topics-detail.html">
+                                    <a href="">
                                         <div class="d-flex">
                                             <div>
                                                 <h5 class="mb-2">Ingrese la raza de los padres</h5>
@@ -264,7 +264,7 @@
 
                             <div class="col-lg-4 col-md-6 col-12 mb-4 mb-lg-3">
                                 <div class="custom-block bg-white shadow-lg">
-                                    <a href="topics-detail.html">
+                                    <a href="">
                                         <div class="d-flex">
                                             <div>
                                                 <h5 class="mb-2">Ingrese la pureza de los padres</h5>
@@ -282,7 +282,7 @@
 
                             <div class="col-lg-4 col-md-6 col-12">
                                 <div class="custom-block bg-white shadow-lg">
-                                    <a href="topics-detail.html">
+                                    <a href="">
                                         <div class="d-flex">
                                             <div>
                                                 <h5 class="mb-2">Obtenga sus resultados</h5>
@@ -335,7 +335,7 @@
                         <li>
                             <h4 class="text-white mb-3">Versión premium</h4>
 
-                            <p class="text-white">Por el pago de 15 dolares podra disfrutar de todos los recursos administrativos completos del sistema, lo cual incluye poder registrar la cantidad de fincas que desee, asimismo con los animales.</p>
+                            <p class="text-white">Por el pago de 30 dolares podra disfrutar de todos los recursos administrativos completos del sistema, lo cual incluye poder registrar la cantidad de fincas que desee, asimismo con los animales.</p>
 
                             <div class="icon-holder">
                                 <i class="bi bi-cash-coin"></i>
@@ -343,9 +343,9 @@
                         </li>
 
                         <li>
-                            <h4 class="text-white mb-3">Read &amp; Enjoy</h4>
+                            <h4 class="text-white mb-3">Proceso de subscripción</h4>
 
-                            <p class="text-white">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Animi vero quisquam, rem assumenda similique voluptas distinctio, iste est hic eveniet debitis ut ducimus beatae id? Quam culpa deleniti officiis autem?</p>
+                            <p class="text-white">Regístrese en el sistema primero para poder mejorar su usuario de gratis a premium, esta opción estará dentro del sistema administrativo para realizar el pago respectivo.</p>
 
                             <div class="icon-holder">
                                 <i class="bi bi-info-circle"></i>
