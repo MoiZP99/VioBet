@@ -280,4 +280,10 @@ class Finca
 
     return array_shift($resultado);
   }
+  public static function contar(){
+    $query = "SELECT * FROM finca ";
+    $resultado = self::$db->query($query);
+    $numero_de_registros = mysqli_num_rows($resultado);
+    return $numero_de_registros;
+  }
 }
