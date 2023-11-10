@@ -1,6 +1,7 @@
 <?php
 include_once 'public/build/Sidebar.php';
 // session_start();
+use Model\Animal;
 ?>
 <!DOCTYPE html>
 <html lang="es">
@@ -34,9 +35,15 @@ include_once 'public/build/Sidebar.php';
                                 </section>
                                 <div class="card-body">
                                     <div class="row d-flex justify-content-center justify-content-xl-start justify-content-xxl-start justify-content-lg-start justify-content-md-start justify-content-sm-start mb-xxl-n2 mb-xl-n2 mb-lg-n2 mb-md-n2 mb-sm-n2">
+                                        <?php if(Animal::contar() >= 10): ?>
                                             <div class="col col-auto mb-3">
-                                                <a href="/animal/create" class="btn btn-outline-primary"> <i class="fas fa-plus-circle"></i> <strong>Nuevo animal</strong></a>
+                                            <a href="" class="btn btn-outline-primary"> <i class="fas fa-plus-circle"></i> <strong>suscribase a Premium</strong></a>     
                                             </div>
+                                            <?php else: ?>
+                                                <a href="animal/create" class="btn btn-outline-primary"> <i class="fas fa-plus-circle"></i> <strong>Nuevo Animal</strong></a> 
+
+                                            <?php endif; ?>
+                                            
                                         <div class="col col-auto d-flex justify-content-center justify-content-xl-start justify-content-xxl-start justify-content-lg-start justify-content-md-start justify-content-sm-start">
                                             <div class="form-group mb-3">
                                                 <form action="report_excel" method="POST">
