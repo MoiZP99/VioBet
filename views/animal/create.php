@@ -82,6 +82,18 @@ include_once 'public/build/Sidebar.php';
                             <?php endif; ?>
                           </div>
                         </div>
+
+                        <div class="col col-xxl-6 col-xl-6 col-lg-6 col-sm-6 col-md-6 col-12">
+                          <div class="mb-3">
+                            <label class="form-label" for="tiposangre">Tipo de Sangre</label>
+                            <input required class="form-control" type="text" id="tiposangre" name="animal[TipoSangre]" onKeyUp="javascript:validateTextUbi('tiposangre')" placeholder="Escriba aquí el tipo de sangre" value="<?php echo s($animal->TipoSangre); ?>">
+                            <?php if ($ErrSangr) : ?>
+                              <div class="alert alert-danger mt-1 p-0" role="alert">
+                                <?php echo $ErrSangr ?>
+                              </div>
+                            <?php endif; ?>
+                          </div>
+                        </div>
                         <div class="col col-xxl-6 col-xl-6 col-lg-6 col-sm-6 col-md-6 col-12">
                           <div class="mb-3">
                             <label class="form-label" for="raza">Raza del animal</label>
@@ -152,6 +164,7 @@ include_once 'public/build/Sidebar.php';
                             <?php endif; ?>
                           </div>
                         </div>
+
                         <div class="col col-xxl-6 col-xl-6 col-lg-6 col-md-6 col-12">
                           <div class="mb-3">
                             <label class="form-label" for="finca">Finca</label>
@@ -247,14 +260,16 @@ include_once 'public/build/Sidebar.php';
       botonCerrar.addEventListener("click", function() {
         var nombre = formulario.elements["nombre"].value;
         var tipo = formulario.elements["tipo"].value;
+        var tiposangre = formulario.elements["tiposangre"].value;
         var raza = formulario.elements["raza"].value;
         var sexo = formulario.elements["sexo"].value;
         var edad = formulario.elements["edad"].value;
         var peso = formulario.elements["peso"].value;
         var numero = formulario.elements["numero"].value;
+     
         var finca = formulario.elements["finca"].value;
 
-        if (nombre !== '' || tipo !== 'selected' || raza !== '' || sexo !== 'selected' || edad !== '' || peso !== '' || numero !== '' || finca !== 'selected') {
+        if (nombre !== '' || tipo !== 'selected' ||  tiposangre !== '' ||raza !== '' || sexo !== 'selected' || edad !== '' || peso !== '' || numero !== '' || finca !== 'selected') {
           Swal.fire({
             title: '¿Cancelar proceso?',
             text: '¿Desea cancelar el proceso?',

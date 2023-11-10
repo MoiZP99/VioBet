@@ -77,7 +77,7 @@ include_once 'public/build/Sidebar.php';
                                                     echo '<p class="card-text">Raza: ' . $resultado->Raza . '</p>';
                                                     echo '<p class="card-text">Sexo: ' . $resultado->Sexo . '</p>';
                                                     echo '<p class="card-text">Tipo de Medicamento: ' . $resultado->TipoMedicamento . '</p>';
-                                                    echo '<p class="card-text">Tipo de Sangre: ' . $resultado->TipoSangre . '</p>';
+                                                  
                                                     echo '<p class="card-text">Antecedentes: ' . $resultado->Antecedentes . '</p>';
                                                     echo '<p class="card-text">Síntomas: ' . $resultado->Sintomas . '</p>';
                                                     echo '<p class="card-text">Diagnóstico: ' . $resultado->Diagnostico . '</p>';
