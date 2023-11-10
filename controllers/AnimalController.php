@@ -29,13 +29,11 @@ class AnimalController
         $errores = Animal::getErrores();
         $ErrNomb = Animal::getErrNomb();
         $ErrTipo = Animal::getErrTipo();
-        $ErrSangr = Animal::getErrSangr();
         $ErrRaza = Animal::getErrRaza();
         $ErrEdad = Animal::getErrEdad();
         $ErrSexo = Animal::getErrSexo();
         $ErrPeso = Animal::getErrPeso();
         $ErrNum = Animal::getErrNum();
-      
         $ErrFKFinca = Animal::getErrFKFinca();
 
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
@@ -45,16 +43,14 @@ class AnimalController
             $errores = $animal->validar();
             $ErrNomb = $animal->validaNombre();
             $ErrTipo = $animal->validaTipo();
-            $ErrSangr = $animal->validaTipoSangre();
             $ErrRaza = $animal->validaRaza();
             $ErrEdad = $animal->validaEdad();
             $ErrSexo = $animal->validaSexo();
             $ErrPeso = $animal->validaPeso();
             $ErrNum = $animal->validaNum();
-           
             $ErrFKFinca = $animal->validaFinca();
 
-            if (empty(($errores) || ($ErrNomb) || ($ErrTipo) || ($ErrSangr) || ($ErrRaza) || ($ErrEdad) || ($ErrSexo) || ($ErrPeso) || ($ErrNum) || ($ErrFKFinca))) {
+            if (empty(($errores) || ($ErrNomb) || ($ErrTipo) || ($ErrRaza) || ($ErrEdad) || ($ErrSexo) || ($ErrPeso) || ($ErrNum) || ($ErrFKFinca))) {
                 $animal->guardar();
                 if ($animal) {
                     $_SESSION['success_message'] = ['title' => '¡Éxito! Datos del animal guardados exitosamente'];
@@ -68,13 +64,11 @@ class AnimalController
             'errores' => $errores,
             'ErrNomb' => $ErrNomb,
             'ErrTipo' => $ErrTipo,
-            'ErrSangr' => $ErrSangr,
             'ErrRaza' => $ErrRaza,
             'ErrEdad' => $ErrEdad,
             'ErrSexo' => $ErrSexo,
             'ErrPeso' => $ErrPeso,
             'ErrNum' => $ErrNum,
-           
             'ErrFKFinca' => $ErrFKFinca,
             'animal' => $animal,
             'finca' => $finca,
@@ -92,13 +86,11 @@ class AnimalController
         $errores = Animal::getErrores();
         $ErrNomb = Animal::getErrNomb();
         $ErrTipo = Animal::getErrTipo();
-        $ErrSangr = Animal::getErrSangr();
         $ErrRaza = Animal::getErrRaza();
         $ErrEdad = Animal::getErrEdad();
         $ErrSexo = Animal::getErrSexo();
         $ErrPeso = Animal::getErrPeso();
         $ErrNum = Animal::getErrNum();
-
         $ErrFKFinca = Animal::getErrFKFinca();
 
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
@@ -109,7 +101,6 @@ class AnimalController
             $errores = $animal->validar();
             $ErrNomb = $animal->validaNombre();
             $ErrTipo = $animal->validaTipo();
-            $ErrSangr = $animal->validaTipoSangre();
             $ErrRaza = $animal->validaRaza();
             $ErrEdad = $animal->validaEdad();
             $ErrSexo = $animal->validaSexo();
@@ -117,7 +108,7 @@ class AnimalController
             $ErrNum = $animal->validaNum();
             $ErrFKFinca = $animal->validaFinca();
 
-            if (empty(($errores) || ($ErrNomb) || ($ErrTipo) ||($ErrSangr) || ($ErrRaza) || ($ErrEdad) || ($ErrSexo) || ($ErrPeso) || ($ErrNum)  || ($ErrFKFinca))) {
+            if (empty(($errores) || ($ErrNomb) || ($ErrTipo) || ($ErrRaza) || ($ErrEdad) || ($ErrSexo) || ($ErrPeso) || ($ErrNum) || ($ErrFKFinca))) {
                 $animal->guardar();
             }
         }
@@ -126,7 +117,6 @@ class AnimalController
             'errores' => $errores,
             'ErrNomb' => $ErrNomb,
             'ErrTipo' => $ErrTipo,
-            'ErrSangr' => $ErrSangr,
             'ErrRaza' => $ErrRaza,
             'ErrEdad' => $ErrEdad,
             'ErrSexo' => $ErrSexo,

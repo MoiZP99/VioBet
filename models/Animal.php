@@ -5,30 +5,26 @@ namespace Model;
 class Animal
 {
   protected static $db;
-  protected static $columnasDB = ['IdAnimal', 'Nombre', 'Tipo', 'TipoSangre','Raza', 'Edad', 'Sexo', 'Peso', 'Numero', 'FKFinca'];
+  protected static $columnasDB = ['IdAnimal', 'Nombre', 'Tipo', 'Raza', 'Edad', 'Sexo', 'Peso', 'Numero', 'FKFinca'];
 
   public static $errores;
   public static $ErrNomb;
   public static $ErrTipo;
-  public static $ErrSangr;
   public static $ErrRaza;
   public static $ErrEdad;
   public static $ErrSexo;
   public static $ErrPeso;
   public static $ErrNum;
-
   public static $ErrFKFinca;
 
   public $IdAnimal;
   public $Nombre;
   public $Tipo;
-  public $TipoSangre;
   public $Raza;
   public $Edad;
   public $Sexo;
   public $Peso;
   public $Numero;
-
   public $FKFinca;
   public $NombreFinca;
 
@@ -37,13 +33,11 @@ class Animal
     $this->IdAnimal = $args['IdAnimal'] ?? null;
     $this->Nombre = $args['Nombre'] ?? '';
     $this->Tipo = $args['Tipo'] ?? '';
-    $this->TipoSangre = $args['TipoSangre'] ?? '';
     $this->Raza = $args['Raza'] ?? '';
     $this->Edad = $args['Edad'] ?? '';
     $this->Sexo = $args['Sexo'] ?? '';
     $this->Peso = $args['Peso'] ?? '';
     $this->Numero = $args['Numero'] ?? '';
-   
     $this->FKFinca = $args['FKFinca'] ?? '';
   }
 
@@ -108,7 +102,7 @@ class Animal
 
   public static function get($limite)
   {
-    $query = "SELECT DISTINCT IdAnimal, Nombre, Tipo,TipoSangre,  Raza, Edad, Sexo, Peso, Numero
+    $query = "SELECT DISTINCT IdAnimal, Nombre, Tipo, Raza, Edad, Sexo, Peso, Numero
               FROM animal
               LIMIT $limite";
 
@@ -163,10 +157,6 @@ class Animal
   {
     return self::$ErrTipo;
   }
-  public static function getErrSangr()
-  {
-    return self::$ErrSangr;
-  }
 
   public static function getErrRaza()
   {
@@ -192,7 +182,6 @@ class Animal
   {
     return self::$ErrNum;
   }
- 
 
   public static function getErrFKFinca()
   {
@@ -219,17 +208,6 @@ class Animal
     }
 
     return self::$ErrTipo;
-  }
-
-  public function validaTipoSangre()
-  {
-    if (!preg_match("/^[a-zA-ZáéíóúÁÉÍÓÚÑñ\s]*$/", $this->TipoSangre)) {
-      self::$ErrSangr = '<div style="padding-inline: 12px;"><strong>Error!</strong> Solo letras, acentos y espacios son permitidos.</div>';
-    } elseif (empty($this->TipoSangre)) {
-      self::$ErrSangr = '<div style="padding-inline: 12px;"><strong>Error!</strong> Este campo es requerido.</div>';
-    }
-
-    return self::$ErrSangr;
   }
 
   public function validaRaza()
@@ -276,7 +254,6 @@ class Animal
     return self::$ErrPeso;
   }
 
-
   public function validaNum()
   {
     if (!preg_match("/^([0-9])*$/", $this->Numero)) {
@@ -301,8 +278,8 @@ class Animal
   {
     if ((!preg_match("/^[a-zA-ZáéíóúÁÉÍÓÚÑñ\s]*$/", $this->Nombre)) || (!preg_match("/^([0-9])*$/", $this->Edad))
       || (!preg_match("/^[a-zA-ZáéíóúÁÉÍÓÚÑñ\s]*$/", $this->Tipo)) || (!preg_match("/^[a-zA-ZáéíóúÁÉÍÓÚÑñ\s]*$/", $this->Raza))
-      || (!preg_match("/^[a-zA-ZáéíóúÁÉÍÓÚÑñ\s]*$/", $this->TipoSangre))  || (!preg_match("/^[a-zA-ZáéíóúÁÉÍÓÚÑñ\s]*$/", $this->Sexo)) 
-      || (!preg_match("/^(\d+|\d+\.\d+)$/", $this->Peso))|| (!preg_match("/^([0-9])*$/", $this->Numero)) || (!$this->FKFinca)
+      || (!preg_match("/^[a-zA-ZáéíóúÁÉÍÓÚÑñ\s]*$/", $this->Sexo)) || (!preg_match("/^(\d+|\d+\.\d+)$/", $this->Peso))
+      || (!preg_match("/^([0-9])*$/", $this->Numero)) || (!$this->FKFinca)
     ) {
       self::$errores = '<strong>Advertencia!</strong> Verifique que los datos ingresados sean correctos.';
     }
@@ -342,7 +319,7 @@ class Animal
   public static function all()
   {
     $idUsuarioSesion = $_SESSION['idUsuario'];
-    $query = "SELECT DISTINCT f.IdFinca, f.NombreFinca, f.Ubicacion, f.Tamano, f.FKUsuario, u.IdUsuario, u.NombreUser, a.IdAnimal, a.Nombre, a.Tipo, a.TipoSangre,a.Raza, a.Edad, a.Sexo, a.Peso, a.Numero, a.FKFinca
+    $query = "SELECT DISTINCT f.IdFinca, f.NombreFinca, f.Ubicacion, f.Tamano, f.FKUsuario, u.IdUsuario, u.NombreUser, a.IdAnimal, a.Nombre, a.Tipo, a.Raza, a.Edad, a.Sexo, a.Peso, a.Numero, a.FKFinca
               FROM finca f
               INNER JOIN Usuario u
               ON f.FKUsuario = u.IdUsuario
@@ -359,7 +336,7 @@ class Animal
   public static function all1()
   {
     // $idUsuarioSesion = $_SESSION['idUsuario'];
-    $query = "SELECT DISTINCT f.IdFinca, f.NombreFinca, f.Ubicacion, f.Tamano, f.FKUsuario, u.IdUsuario, u.NombreUser, a.IdAnimal, a.Nombre, a.Tipo,a.TipoSangre, a.Raza, a.Edad, a.Sexo, a.Peso, a.Numero, a.FKFinca
+    $query = "SELECT DISTINCT f.IdFinca, f.NombreFinca, f.Ubicacion, f.Tamano, f.FKUsuario, u.IdUsuario, u.NombreUser, a.IdAnimal, a.Nombre, a.Tipo, a.Raza, a.Edad, a.Sexo, a.Peso, a.Numero, a.FKFinca
               FROM finca f
               INNER JOIN Usuario u
               ON f.FKUsuario = u.IdUsuario
@@ -375,7 +352,7 @@ class Animal
   public static function innerJoin()
   {
     $idUsuarioSesion = $_SESSION['idUsuario'];
-    $query = "SELECT DISTINCT f.IdFinca, f.NombreFinca, f.Ubicacion, f.Tamano, f.FKUsuario, u.IdUsuario, u.NombreUser, a.IdAnimal, a.Nombre, a.Tipo,a.TipoSangre, a.Raza, a.Edad, a.Sexo, a.Peso, a.Numero, a.FKFinca
+    $query = "SELECT DISTINCT f.IdFinca, f.NombreFinca, f.Ubicacion, f.Tamano, f.FKUsuario, u.IdUsuario, u.NombreUser, a.IdAnimal, a.Nombre, a.Tipo, a.Raza, a.Edad, a.Sexo, a.Peso, a.Numero, a.FKFinca
               FROM finca f
               INNER JOIN Usuario u
               ON f.FKUsuario = u.IdUsuario
@@ -441,7 +418,7 @@ class Animal
 
   public static function find($Id)
   {
-    $query = "SELECT DISTINCT IdAnimal, Nombre, Tipo, TipoSangre,Raza, Edad, Sexo, Peso, Numero
+    $query = "SELECT DISTINCT IdAnimal, Nombre, Tipo, Raza, Edad, Sexo, Peso, Numero
               FROM animal
               WHERE IdAnimal = $Id";
 

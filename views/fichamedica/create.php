@@ -99,6 +99,17 @@ include_once 'public/build/Sidebar.php';
                         </div>
                         <div class="col col-xxl-6 col-xl-6 col-lg-6 col-sm-6 col-md-6 col-12">
                           <div class="mb-3">
+                            <label class="form-label" for="tiposangre">Tipo de Sangre</label>
+                            <input required class="form-control" type="text" id="tiposangre" name="fichamedica[TipoSangre]" onKeyUp="javascript:validateTextUbi('tiposangre')" placeholder="Escriba aquí el tipo de sangre" value="<?php echo s($fichamedica->TipoSangre); ?>">
+                            <?php if ($ErrSangr) : ?>
+                              <div class="alert alert-danger mt-1 p-0" role="alert">
+                                <?php echo $ErrSangr ?>
+                              </div>
+                            <?php endif; ?>
+                          </div>
+                        </div>
+                        <div class="col col-xxl-6 col-xl-6 col-lg-6 col-sm-6 col-md-6 col-12">
+                          <div class="mb-3">
                             <label class="form-label" for="antecedentes">Antecedentes del Animal</label>
                             <input required class="form-control" type="text" id="antecedentes" name="fichamedica[Antecedentes]" onKeyUp="javascript:validateTextUbi('antecedentes')" placeholder="Escriba aquí los antecedentes" value="<?php echo s($fichamedica->Antecedentes); ?>">
                             <?php if ($ErrAnte) : ?>
@@ -230,7 +241,7 @@ include_once 'public/build/Sidebar.php';
 
       botonCerrar.addEventListener("click", function() {
         var vacuna = formulario.elements["vacuna"].value;
-    
+        var tiposangre = formulario.elements["tiposangre"].value;
         var antecedentes = formulario.elements["antecedentes"].value;
         var sintomas = formulario.elements["sintomas"].value;
         var diagnostico = formulario.elements["diagnostico"].value;
@@ -238,7 +249,7 @@ include_once 'public/build/Sidebar.php';
         var fecharevision = formulario.elements["fecharevision"].value;
         var animal = formulario.elements["animal"].value;
 
-        if (vacuna !== '' || antecedentes !== '' || sintomas !== '' || diagnostico !== '' || medicamento !== '' || fecharevision !== '' || animal !== 'selected') {
+        if (vacuna !== '' || tiposangre !== '' || antecedentes !== '' || sintomas !== '' || diagnostico !== '' || medicamento !== '' || fecharevision !== '' || animal !== 'selected') {
           Swal.fire({
             title: '¿Cancelar proceso?',
             text: '¿Desea cancelar el proceso?',
