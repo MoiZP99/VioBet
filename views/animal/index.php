@@ -28,7 +28,7 @@ use Model\Animal;
                                     <div class="container-fluid">
                                         <div class="row mb-2">
                                             <div class="col-sm-6">
-                                                <h1>Total de animales en la base de datos BioVet</h1>
+                                                <h1>Total de animales en la base de datos VioBet</h1>
                                             </div>
                                         </div>
                                     </div>
@@ -77,7 +77,6 @@ use Model\Animal;
                                             <tr>
                                                 <th>Nombre</th>
                                                 <th>Tipo</th>
-                                                <th>Tipo de Sangre</th>
                                                 <th>Raza</th>
                                                 <th>Número en arete</th>
                                                 <th>Finca</th>
@@ -89,20 +88,16 @@ use Model\Animal;
                                                 <tr>
                                                     <td><?php echo $animal->Nombre ?></td>
                                                     <td><?php echo $animal->Tipo ?></td>
-                                                    <td><?php echo $animal->TipoSangre ?></td>
                                                     <td><?php echo $animal->Raza ?></td>
                                                     <td><?php echo $animal->Numero ?></td>
                                                     <td><?php echo $animal->NombreFinca ?></td>
-   
                                                     <td>
                                                         <div class="d-grid gap-2 d-inline-flex">
-                                                            <a href="/animal/details?IdAnimal=<?php echo $animal->IdAnimal ?>" class="btn btn-outline-info" title="Detalles"><i class="fa-regular fa-eye"></i></a>
-                                                            <a href="/animal/update?IdAnimal=<?php echo $animal->IdAnimal ?>" class="btn btn-outline-warning" title="Actualizar"><i class="fa-regular fa-pen-to-square"></i></a>
-                                                            <a href="/animal/delete?IdAnimal=<?php echo $animal->IdAnimal ?>" class="btn btn-outline-danger" title="Eliminar"><i class="fa-solid fa-trash-can"></i>
-                                                            </a>
+                                                            <a href="/animal/details?IdAnimal=<?php echo $animal->IdAnimal ?>" class="fa-regular fa-eye btn btn-outline-info" title="Detalles"></a>
+                                                                <a href="/animal/update?IdAnimal=<?php echo $animal->IdAnimal ?>" class="fa-regular fa-pen-to-square btn btn-outline-warning" title="Actualizar"></a>
+                                                                <a href="/animal/delete?IdAnimal=<?php echo $animal->IdAnimal ?>" class="fa-solid fa-trash-can btn btn-outline-danger" title="Eliminar"></a>
                                                         </div>
                                                     </td>
-
                                                 </tr>
                                             <?php endforeach; ?>
                                         </tbody>

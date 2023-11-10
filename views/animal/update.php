@@ -68,20 +68,6 @@ include_once 'public/build/Sidebar.php';
                             <?php endif; ?>
                           </div>
                         </div>
-
-                        <div class="col col-xxl-6 col-xl-6 col-lg-6 col-sm-6 col-md-6 col-12">
-                          <div class="mb-3">
-                            <label class="form-label" for="tiposangre">Tipo de Sangre</label>
-                            <input required class="form-control" type="text" id="tiposangre" name="animal[TipoSangre]" onKeyUp="javascript:validateTextUbi('tiposangre')" placeholder="Escriba aquí el tipo de sangre" value="<?php echo s($animal->TipoSangre); ?>">
-                            <?php if ($ErrSangr) : ?>
-                              <div class="alert alert-danger mt-1 p-0" role="alert">
-                                <?php echo $ErrSangr ?>
-                              </div>
-                            <?php endif; ?>
-                          </div>
-                        </div>
-
-
                         <div class="col col-xxl-6 col-xl-6 col-lg-6 col-sm-6 col-md-6 col-12">
                           <div class="mb-3">
                             <label class="form-label" for="raza">Raza del animal</label>
@@ -152,11 +138,6 @@ include_once 'public/build/Sidebar.php';
                             <?php endif; ?>
                           </div>
                         </div>
-
-                    
-
-
-
                         <div class="col col-xxl-6 col-xl-6 col-lg-6 col-md-6 col-12">
                           <div class="mb-3">
                             <label class="form-label" for="finca">Finca</label>

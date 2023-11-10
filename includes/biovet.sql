@@ -12,7 +12,6 @@ CREATE TABLE `animal` (
   `IdAnimal` int NOT NULL AUTO_INCREMENT,
   `Nombre` varchar(15) NOT NULL,
   `Tipo` varchar(15) DEFAULT NULL,
-  `TipoSangre` varchar(10) NOT NULL,
   `Raza` varchar(13) NOT NULL,
   `Edad` int NOT NULL,
   `Sexo` varchar(6) NOT NULL,
@@ -37,6 +36,7 @@ DROP TABLE IF EXISTS `fichamedica`;
 CREATE TABLE `fichamedica` (
   `IdFichaMedica` int NOT NULL AUTO_INCREMENT,
   `TipoMedicamento` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
+  `TipoSangre` varchar(10) NOT NULL,
   `Antecedentes` varchar(150) DEFAULT NULL,
   `Sintomas` varchar(150) DEFAULT NULL,
   `Diagnostico` varchar(30) DEFAULT NULL,

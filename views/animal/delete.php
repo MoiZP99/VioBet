@@ -22,7 +22,7 @@ include_once 'public/build/Sidebar.php';
                 <div class="container-fluid">
                     <div class="row mb-2">
                         <div class="col-sm-6">
-                            <h1>Animal</h1>
+                            <h1>Lugares Turísticos</h1>
                         </div>
                     </div>
                 </div>
@@ -52,14 +52,6 @@ include_once 'public/build/Sidebar.php';
                                                         </select>
                                                     </div>
                                                 </div>
-
-                                                <div class="col col-xxl-6 col-xl-6 col-lg-6 col-sm-6 col-md-6 col-12">
-                                                  <div class="mb-3">
-                                                       <label class="form-label" for="raza">Tipo de Sangre</label>
-                                                         <input disabled class="form-control" type="text" id="tiposangre" name="animal[TipoSangre]" onKeyUp="javascript:validateTextUbi('raza')" placeholder="Escriba aquí el tipo de sangre" value="<?php echo s($animal->TipoSangre); ?>">
-                                                 </div>
-                                                 </div>
-
                                                 <div class="col col-xxl-6 col-xl-6 col-lg-6 col-sm-6 col-md-6 col-12">
                                                     <div class="mb-3">
                                                         <label class="form-label" for="raza">Raza del animal</label>
@@ -100,8 +92,6 @@ include_once 'public/build/Sidebar.php';
                                                         <input disabled class="form-control" type="int" id="numero" name="animal[Numero]" onKeyUp="javascript:validateTextUbi('numero')" placeholder="Escriba aquí el número" value="<?php echo s($animal->Numero); ?>">
                                                     </div>
                                                 </div>
-
-                                 
                                                 <div class="col col-xxl-6 col-xl-6 col-lg-6 col-md-6 col-12">
                                                     <div class="mb-3">
                                                         <label class="form-label" for="finca">Finca</label>
