@@ -40,8 +40,10 @@ use Model\Animal;
                                             <a href="" class="btn btn-outline-primary"> <i class="fas fa-plus-circle"></i> <strong>suscribase a Premium</strong></a>     
                                             </div>
                                             <?php else: ?>
-                                                <a href="animal/create" class="btn btn-outline-primary"> <i class="fas fa-plus-circle"></i> <strong>Nuevo Animal</strong></a> 
-
+                        
+                                                <div class="col col-auto mb-3">
+                                                <a href="/animal/create" class="btn btn-outline-primary"> <i class="fas fa-plus-circle"></i> <strong>Nuevo Animal</strong></a>
+                                                </div>
                                             <?php endif; ?>
                                             
                                         <div class="col col-auto d-flex justify-content-center justify-content-xl-start justify-content-xxl-start justify-content-lg-start justify-content-md-start justify-content-sm-start">
