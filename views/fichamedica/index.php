@@ -27,7 +27,7 @@ include_once 'public/build/Sidebar.php';
                                     <div class="container-fluid">
                                         <div class="row mb-2">
                                             <div class="col-sm-6">
-                                                <h1>Fichas Medicas en la base de datos BioVet</h1>
+                                                <h1>Fichas Medicas en la base de datos VioBet</h1>
                                             </div>
                                         </div>
                                     </div>
@@ -66,7 +66,7 @@ include_once 'public/build/Sidebar.php';
                                         </div>
                                     </div>
                                     <table id="example1" class="table table-bordered table-hover">
-                                        <thead>
+                                        <thead class="table-light">
                                             <tr>
                                                 <th>Vacuna</th>
                                                 <th>Tipo de Sangre</th>
@@ -74,6 +74,7 @@ include_once 'public/build/Sidebar.php';
                                                 <th>Sintomas</th>
                                                 <th>Animal</th>
                                                 <th>Acciones</th>
+                                                <th>Historial</th>
                                             </tr>
                                         </thead>
                                         <tbody>
@@ -92,7 +93,11 @@ include_once 'public/build/Sidebar.php';
                                                             </a>
                                                         </div>
                                                     </td>
-                                                   
+                                                    <td>
+                                                        <div class="d-grid gap-2 d-inline-flex">
+                                                            <a href="/fichamedica/historial?IdFichaMedica=<?php echo $fichamedica->IdFichaMedica ?>" class="btn btn-outline-primary" title="Historial"><i class="fa-solid fa-forward"></i></a>
+                                                        </div>
+                                                    </td>
                                                 </tr>
                                             <?php endforeach; ?>
                                         </tbody>

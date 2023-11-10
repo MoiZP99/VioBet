@@ -68,11 +68,14 @@ include_once 'public/build/Sidebar.php';
                       <div class="col col-xxl-6 col-xl-6 col-lg-6 col-md-6 col-12">
                           <div class="mb-3">
                             <label class="form-label" for="animal">Nombre del Animal</label>
-                            <select required class="form-select" name="fichamedica[FKAnimal]" id="animal">
-                              <option selected disabled>Seleccione aquí</option>
-                              <?php foreach ($animal as $animal) : ?>
-                                <option <?php echo $fichamedica->FKAnimal === $animal->IdAnimal ? 'selected' : ''; ?> value="<?php echo s($animal->IdAnimal); ?>"> <?php echo s($animal->Nombre); ?> </option>
-                              <?php endforeach; ?>
+                            <select required class="form-select" autofocus name="fichamedica[FKAnimal]" id="animal">
+                              <?php if (empty($animales_no_registrados)) : ?>
+                                <option selected disabled>Ya todos los animales tinen una ficha</option>
+                              <?php else : ?>
+                                <?php foreach ($animal as $animal) : ?>
+                                  <option <?php echo $fichamedica->FKAnimal === $animal->IdAnimal ? 'selected' : ''; ?> value="<?php echo s($animal->IdAnimal); ?>"> <?php echo s($animal->Nombre); ?> </option>
+                                <?php endforeach; ?>
+                              <?php endif; ?>
                             </select>
                             <?php if ($ErrFKAnimal) : ?>
                               <div class="alert alert-danger mt-1 p-0" role="alert">
@@ -84,7 +87,7 @@ include_once 'public/build/Sidebar.php';
                         <div class="col col-xxl-6 col-xl-6 col-lg-6 col-sm-6 col-md-6 col-12">
                           <div class="mb-3">
                             <label class="form-label" for="TipoMedicamento">Tipo de medicamento</label>
-                            <select required class="form-select" autofocus name="fichamedica[TipoMedicamento]" id="TipoMedicamento">
+                            <select required class="form-select" name="fichamedica[TipoMedicamento]" id="TipoMedicamento">
                               <option selected disabled>Seleccione aquí</option>
                               <option value="Vacuna">Vacuna</option>
                               <option value="Antibiótico">Antibiótico</option>
@@ -158,8 +161,8 @@ include_once 'public/build/Sidebar.php';
                   <div class="card-footer">
                     <div class="row">
                       <div class="btn-spinner">
-                        <button type="button" class="btn btn-outline-danger col-auto me-2 col-xl-2 col-lg-2 col-md-2 col-sm-2 mt-1 mb-1" id="cerrarPagina"> <i class="fas fa-times-circle"></i> <b>Cerrar</b> </button>
-                        <button class="btn btn-outline-dark col-auto col-xl-2 col-lg-2 col-md-2 col-sm-2 mt-1 mb-1" type="button" id="submit_data" onclick="enviarFormulario()"> <b>Guardar</b> <i class="fas fa-save"></i> </button>
+                        <a href="/fichamedica/index" class="btn btn-outline-danger col-auto me-2 col-xl-2 col-lg-2 col-md-2 col-sm-2 mt-1 mb-1"> <i class="fas fa-times-circle"></i> <b>Cerrar</b> </a>
+                        <button class="btn btn-outline-dark col-auto col-xl-2 col-lg-2 col-md-2 col-sm-2 mt-1 mb-1" type="button" id="submit_data" onclick="enviarFormulario()" <?php echo empty($animales_no_registrados) ? 'disabled' : ''; ?>> <b>Guardar</b> <i class="fas fa-save"></i> </button>
                       </div>
                     </div>
                   </div>

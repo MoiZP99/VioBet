@@ -342,14 +342,15 @@ class Animal
   public static function all()
   {
     $idUsuarioSesion = $_SESSION['idUsuario'];
-    $query = "SELECT DISTINCT f.IdFinca, f.NombreFinca, f.Ubicacion, f.Tamano, f.FKUsuario, u.IdUsuario, u.NombreUser, a.IdAnimal, a.Nombre, a.Tipo, a.TipoSangre,a.Raza, a.Edad, a.Sexo, a.Peso, a.Numero, a.FKFinca
+    $query = "SELECT f.IdFinca, f.NombreFinca, f.Ubicacion, f.Tamano, f.FKUsuario, u.IdUsuario, u.NombreUser, a.IdAnimal, a.Nombre, a.Tipo, a.Raza, a.Edad, a.Sexo, a.Peso, a.Numero, a.FKFinca
               FROM finca f
-              INNER JOIN Usuario u
+              INNER JOIN Usuario u 
               ON f.FKUsuario = u.IdUsuario
-              INNER JOIN Animal a
+              INNER JOIN Animal a 
               ON a.FKFinca = f.IdFinca
-              WHERE f.FKUsuario = $idUsuarioSesion";
-              
+              LEFT JOIN fichamedica fm 
+              ON a.IdAnimal = fm.FKAnimal
+              WHERE f.FKUsuario = $idUsuarioSesion AND fm.IdFichaMedica IS NULL";
 
     $resultado = self::consultarSQL($query);
 
@@ -358,13 +359,12 @@ class Animal
   
   public static function all1()
   {
-    // $idUsuarioSesion = $_SESSION['idUsuario'];
-    $query = "SELECT DISTINCT f.IdFinca, f.NombreFinca, f.Ubicacion, f.Tamano, f.FKUsuario, u.IdUsuario, u.NombreUser, a.IdAnimal, a.Nombre, a.Tipo,a.TipoSangre, a.Raza, a.Edad, a.Sexo, a.Peso, a.Numero, a.FKFinca
-              FROM finca f
-              INNER JOIN Usuario u
-              ON f.FKUsuario = u.IdUsuario
-              INNER JOIN Animal a
-              ON a.FKFinca = f.IdFinca";
+    $id = $_GET['IdFichaMedica'];
+    $query = "SELECT DISTINCT a.IdAnimal, a.Nombre, a.Tipo, a.Raza, a.Edad, a.Sexo, a.Peso, a.Numero
+              FROM animal a
+              INNER JOIN fichamedica f
+              ON a.IdAnimal = f.FKAnimal
+              WHERE IdFichaMedica = $id";
               
 
     $resultado = self::consultarSQL($query);
