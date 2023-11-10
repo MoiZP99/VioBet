@@ -28,7 +28,6 @@ class FichaMedicaController
         $animal = Animal::all();
         $errores = FichaMedica::getErrores();
         $ErrVac = FichaMedica::getErrVac();
-        $ErrSangr = FichaMedica::getErrSangr();
         $ErrAnte = FichaMedica::getErrAnte();
         $ErrSinto = FichaMedica::getErrSinto();
         $ErrDiagno = FichaMedica::getErrDiagno();
@@ -42,7 +41,6 @@ class FichaMedicaController
 
             $errores = $fichamedica->validar();
             $ErrVac = $fichamedica->validaTipoMedicamento();
-            $ErrSangr = $fichamedica->validaTipoSangre();
             $ErrAnte = $fichamedica->validaAntecedentes();
             $ErrSinto = $fichamedica->validaSintomas();
             $ErrDiagno = $fichamedica->validaDiagnostico();
@@ -50,7 +48,7 @@ class FichaMedicaController
             $ErrFecha = $fichamedica->validaFecha();
             $ErrFKAnimal = $fichamedica->validaAnimal();
 
-            if (empty(($errores) || ($ErrVac) || ($ErrSangr) || ($ErrAnte) || ($ErrSinto) || ($ErrDiagno) || ($ErrMedi) || ($ErrFecha) || ($ErrFKAnimal))) {
+            if (empty(($errores) || ($ErrVac) || ($ErrAnte) || ($ErrSinto) || ($ErrDiagno) || ($ErrMedi) || ($ErrFecha) || ($ErrFKAnimal))) {
                 $fichamedica->guardar();
                 if ($fichamedica) {
                     $_SESSION['success_message'] = ['title' => '¡Éxito! Datos del animal guardados exitosamente'];
@@ -63,7 +61,7 @@ class FichaMedicaController
         $router->render('/fichamedica/create', [
             'errores' => $errores,
             'ErrVac' => $ErrVac,
-            'ErrSangr' => $ErrSangr,
+         
             'ErrAnte' => $ErrAnte,
             'ErrSinto' => $ErrSinto,
             'ErrDiagno' => $ErrDiagno,
@@ -85,7 +83,7 @@ class FichaMedicaController
 
         $errores = FichaMedica::getErrores();
         $ErrVac = FichaMedica::getErrVac();
-        $ErrSangr = FichaMedica::getErrSangr();
+       
         $ErrAnte = FichaMedica::getErrAnte();
         $ErrSinto = FichaMedica::getErrSinto();
         $ErrDiagno = FichaMedica::getErrDiagno();
@@ -100,7 +98,6 @@ class FichaMedicaController
 
             $errores = $fichamedica->validar();
             $ErrVac = $fichamedica->validaTipoMedicamento();
-            $ErrSangr = $fichamedica->validaTipoSangre();
             $ErrAnte = $fichamedica->validaAntecedentes();
             $ErrSinto = $fichamedica->validaSintomas();
             $ErrDiagno = $fichamedica->validaDiagnostico();
@@ -108,7 +105,7 @@ class FichaMedicaController
             $ErrFecha = $fichamedica->validaFecha();
             $ErrFKAnimal = $fichamedica->validaAnimal();
 
-            if (empty(($errores) || ($ErrVac) || ($ErrSangr) || ($ErrAnte) || ($ErrSinto) || ($ErrDiagno) || ($ErrMedi) || ($ErrFecha) || ($ErrFKAnimal))) {
+            if (empty(($errores) || ($ErrVac) || ($ErrAnte) || ($ErrSinto) || ($ErrDiagno) || ($ErrMedi) || ($ErrFecha) || ($ErrFKAnimal))) {
                 $fichamedica->guardar();
             }
         }
@@ -116,7 +113,6 @@ class FichaMedicaController
         $router->render('/fichamedica/update', [
             'errores' => $errores,
             'ErrVac' => $ErrVac,
-            'ErrSangr' => $ErrSangr,
             'ErrAnte' => $ErrAnte,
             'ErrSinto' => $ErrSinto,
             'ErrDiagno' => $ErrDiagno,
