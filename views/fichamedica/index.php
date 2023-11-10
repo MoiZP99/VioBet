@@ -69,7 +69,6 @@ include_once 'public/build/Sidebar.php';
                                         <thead class="table-light">
                                             <tr>
                                                 <th>Vacuna</th>
-                                                <th>Tipo de Sangre</th>
                                                 <th>Antecedentes</th>
                                                 <th>Sintomas</th>
                                                 <th>Animal</th>
@@ -81,7 +80,6 @@ include_once 'public/build/Sidebar.php';
                                             <?php foreach ($fichamedica as $fichamedica) : ?>
                                                 <tr>
                                                     <td><?php echo $fichamedica->TipoMedicamento ?></td>
-                                                    <td><?php echo $fichamedica->TipoSangre ?></td>
                                                     <td><?php echo $fichamedica->Antecedentes ?></td>
                                                     <td><?php echo $fichamedica->Sintomas ?></td>
                                                     <td><?php echo $fichamedica->Nombre ?></td>

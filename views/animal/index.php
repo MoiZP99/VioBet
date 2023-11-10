@@ -47,7 +47,7 @@ use Model\Animal;
                                         <div class="col col-auto d-flex justify-content-center justify-content-xl-start justify-content-xxl-start justify-content-lg-start justify-content-md-start justify-content-sm-start">
                                             <div class="form-group mb-3">
                                                 <form action="report_excel" method="POST">
-                                                    <button type="submit" class="btn btn-outline-success"><i class="fas fa-file-excel"></i><b> Excel</b> </button>
+                                                    <button type="submit" disabled class="btn btn-outline-success"><i class="fas fa-file-excel"></i><b> Excel</b> </button>
                                                 </form>
                                             </div>
                                         </div>
@@ -55,11 +55,11 @@ use Model\Animal;
                                             <div class="form-group mb-3">
                                                 <form action="report_pdf" method="POST" id="myForm">
                                                     <div class="btn-group dropend">
-                                                        <button type="button" id="PDFButton" class="btn btn-outline-danger dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+                                                        <button disabled type="button" id="PDFButton" class="btn btn-outline-danger dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
                                                             <i class="fas fa-print"></i><b> PDF</b>
                                                             <span id="spinner" class="spinner-border spinner-border-sm" role="status" aria-hidden="true" style="visibility: hidden;"></span>
                                                         </button>
-                                                        <ul class="dropdown-menu">
+                                                        <ul class="dropdown-menu" >
                                                             <li><button class="dropdown-item submitButton" type="submit" name="opcion" value="activo">Activos</button></li>
                                                             <li><button class="dropdown-item submitButton" type="submit" name="opcion" value="inactivo">Inactivos</button></li>
                                                             <li>
