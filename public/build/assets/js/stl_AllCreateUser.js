@@ -29,6 +29,44 @@ var boton = document.getElementById("submit_data");
 var formulario = document.getElementById("regiration_form");
 
 function enviarFormulario() {
+    // Verificar la validez de los campos "required"
+    var camposValidos = Array.from(formulario.elements).every(function(elemento) {
+        return !(elemento.required) || elemento.checkValidity();
+    });
+
+    if (!camposValidos) {
+        // Mostrar un mensaje de error con SweetAlert
+        Swal.fire({
+            icon: 'error',
+            text: 'Por favor, complete todos los campos obligatorios correctamente.',
+            position: 'top-end',
+            showConfirmButton: false,
+            timer: 7000,
+            timerProgressBar: true,
+            toast: true,
+        });
+
+        return false;
+    }
+
+    // Obtener el valor del reCAPTCHA
+    var recaptchaResponse = grecaptcha.getResponse();
+    
+    if (!recaptchaResponse) {
+        // Mostrar un mensaje de error con SweetAlert
+        Swal.fire({
+            icon: 'error',
+            text: 'Por favor, completa el re-CAPTCHA.',
+            position: 'top-end',
+            showConfirmButton: false,
+            timer: 7000,
+            timerProgressBar: true,
+            toast: true,
+        });
+
+        return false;
+    }
+
     var spinner = document.createElement("span");
     spinner.className = "spinner-border spinner-border-sm";
     spinner.setAttribute("role", "status");
@@ -40,15 +78,24 @@ function enviarFormulario() {
     boton.appendChild(spinner);
     boton.innerHTML += " Verificando...";
 
+    // Envía el valor del reCAPTCHA junto con el formulario
     setTimeout(function() {
+        // Agrega el valor del reCAPTCHA al formulario antes de enviarlo
+        var inputRecaptcha = document.createElement("input");
+        inputRecaptcha.type = "hidden";
+        inputRecaptcha.name = "recaptcha_response";
+        inputRecaptcha.value = recaptchaResponse;
+        formulario.appendChild(inputRecaptcha);
+
         formulario.submit();
         boton.disabled = true;
         boton.classList.remove("verificando");
         boton.removeChild(spinner);
     }, 1000);
 
-    return false; // Evita el envío automático del form y permite que el envío lo realice la función
+    return false;
 }
+
 
 var errorAlert = null; // Variable para almacenar la instancia de la alerta de error
 

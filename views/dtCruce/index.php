@@ -35,8 +35,7 @@ include_once 'public/build/Sidebar.php';
                                                         <label class="form-label" for="RazaMadre">Raza de la madre</label>
                                                         <select required class="form-select" autofocus name="dtCruce[RazaMadre]" id="RazaMadre">
                                                             <option selected disabled>Seleccione aquí</option>
-                                                            <option value="Puro">Puro</option>
-                                                            <option value="Holstein">Holstein</option>
+                                                            <!-- <option value="Holstein">Holstein</option>
                                                             <option value="Angus">Angus</option>
                                                             <option value="Hereford">Hereford</option>
                                                             <option value="Charolais">Charolais</option>
@@ -47,7 +46,10 @@ include_once 'public/build/Sidebar.php';
                                                             <option value="Jersey">Jersey</option>
                                                             <option value="Guernsey">Guernsey</option>
                                                             <option value="Ayrshire">Ayrshire</option>
-                                                            <option value="Gyr">Gyr</option>
+                                                            <option value="Gyr">Gyr</option> -->
+                                                            <option value="Angus" <?php echo ($selectedRazaPadre == 'Angus') ? 'selected' : ''; ?>>Angus</option>
+                                                            <option value="Holstein" <?php echo ($selectedRazaPadre == 'Holstein') ? 'selected' : ''; ?>>Holstein</option>
+                                                            <option value="Charolais" <?php echo ($selectedRazaPadre == 'Charolais') ? 'selected' : ''; ?>>Charolais</option>
                                                         </select>
                                                     </div>
                                                 </div>
@@ -56,8 +58,7 @@ include_once 'public/build/Sidebar.php';
                                                         <label class="form-label" for="RazaPadre">Raza de la madre</label>
                                                         <select required class="form-select" autofocus name="dtCruce[RazaPadre]" id="RazaPadre">
                                                             <option selected disabled>Seleccione aquí</option>
-                                                            <option value="Puro">Puro</option>
-                                                            <option value="Holstein">Holstein</option>
+                                                            <!-- <option value="Holstein">Holstein</option>
                                                             <option value="Angus">Angus</option>
                                                             <option value="Hereford">Hereford</option>
                                                             <option value="Charolais">Charolais</option>
@@ -68,7 +69,10 @@ include_once 'public/build/Sidebar.php';
                                                             <option value="Jersey">Jersey</option>
                                                             <option value="Guernsey">Guernsey</option>
                                                             <option value="Ayrshire">Ayrshire</option>
-                                                            <option value="Gyr">Gyr</option>
+                                                            <option value="Gyr">Gyr</option> -->
+                                                            <option value="Angus" <?php echo ($selectedRazaMadre == 'Angus') ? 'selected' : ''; ?>>Angus</option>
+                                                            <option value="Holstein" <?php echo ($selectedRazaMadre == 'Holstein') ? 'selected' : ''; ?>>Holstein</option>
+                                                            <option value="Charolais" <?php echo ($selectedRazaMadre == 'Charolais') ? 'selected' : ''; ?>>Charolais</option>
                                                         </select>
                                                     </div>
                                                 </div>
@@ -77,10 +81,14 @@ include_once 'public/build/Sidebar.php';
                                                         <label class="form-label" for="PurezaPadre">% de pureza del padre</label>
                                                         <select required class="form-select" autofocus name="dtCruce[PurezaPadre]" id="PurezaPadre">
                                                             <option selected disabled>Seleccione aquí</option>
-                                                            <option value="25">25</option>
+                                                            <!-- <option value="25">25</option>
                                                             <option value="50">50</option>
                                                             <option value="75">75</option>
-                                                            <option value="100">100</option>
+                                                            <option value="100">100</option> -->
+                                                            <option value="25" <?php echo ($selectedPurezaPadre == '25') ? 'selected' : ''; ?>>25</option>
+                                                            <option value="50" <?php echo ($selectedPurezaPadre == '50') ? 'selected' : ''; ?>>50</option>
+                                                            <option value="75" <?php echo ($selectedPurezaPadre == '75') ? 'selected' : ''; ?>>75</option>
+                                                            <option value="100" <?php echo ($selectedPurezaPadre == '100') ? 'selected' : ''; ?>>100</option>
                                                         </select>
                                                     </div>
                                                 </div>
@@ -89,10 +97,14 @@ include_once 'public/build/Sidebar.php';
                                                         <label class="form-label" for="PurezaMadre">% de pureza de la madre</label>
                                                         <select required class="form-select" autofocus name="dtCruce[PurezaMadre]" id="PurezaMadre">
                                                             <option selected disabled>Seleccione aquí</option>
-                                                            <option value="25">25</option>
+                                                            <!-- <option value="25">25</option>
                                                             <option value="50">50</option>
                                                             <option value="75">75</option>
-                                                            <option value="100">100</option>
+                                                            <option value="100">100</option> -->
+                                                            <option value="25" <?php echo ($selectedPurezaMadre == '25') ? 'selected' : ''; ?>>25</option>
+                                                            <option value="50" <?php echo ($selectedPurezaMadre == '50') ? 'selected' : ''; ?>>50</option>
+                                                            <option value="75" <?php echo ($selectedPurezaMadre == '75') ? 'selected' : ''; ?>>75</option>
+                                                            <option value="110" <?php echo ($selectedPurezaMadre == '110') ? 'selected' : ''; ?>>110</option>
                                                         </select>
                                                     </div>
                                                 </div>
