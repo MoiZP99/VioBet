@@ -64,7 +64,7 @@
     <aside class="main-sidebar sidebar-dark-primary elevation-4">
       <a style="text-decoration: none;" class="brand-link">
         <i class="bi-back brand-image"></i>
-        <span class="img-circle elevation-3">Nomb Finca</span>
+        <span class="img-circle elevation-3">BioVet</span>
       </a>
 
       <div class="sidebar">

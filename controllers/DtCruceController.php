@@ -16,33 +16,40 @@ class DtCruceController
     //         'dtCruce' => $dtCruce
     //     ]);
     // }
-    
+
 
     public static function index(Router $router)
     {
         $dtCruce = new DtCruce();
-        // Obtén los datos del formulario
+
         $data = $_POST['dtCruce'];
-    
-        // Realiza el cálculo de los porcentajes aquí
+
+        $selectedRazaMadre = isset($data['RazaMadre']) ? $data['RazaMadre'] : '';
+        $selectedRazaPadre = isset($data['RazaPadre']) ? $data['RazaPadre'] : '';
+        $selectedPurezaMadre = isset($data['PurezaMadre']) ? $data['PurezaMadre'] : '';
+        $selectedPurezaPadre = isset($data['PurezaPadre']) ? $data['PurezaPadre'] : '';
+
         $razaMadre = $data['RazaMadre'];
         $razaPadre = $data['RazaPadre'];
         $purezaMadre = (float) $data['PurezaMadre'];
         $purezaPadre = (float) $data['PurezaPadre'];
 
-    
-        // Lógica de cálculo de los porcentajes resultantes
-        $resultado1 = ($razaMadre == 'Puro' || $razaPadre == 'Puro') ? $purezaMadre : ($purezaMadre / 2);
-        $resultado2 = min($purezaMadre, $purezaPadre);
+        if ($razaMadre == $razaPadre && $purezaMadre == $purezaPadre) {
+            $resultado1 = $purezaMadre / 2;
+            $resultado2 = $purezaPadre / 2;
+        } else {
+            $resultado1 = ($razaMadre == 'Puro' || $razaPadre == 'Puro') ? $purezaMadre : ($purezaMadre / 2);
+            $resultado2 = min($purezaMadre, $purezaPadre);
+        }
 
-    
-        // Renderiza la vista con los resultados
         $router->render('/dtCruce/index', [
             'dtCruce' => $dtCruce,
             'resultado1' => $resultado1,
-            'resultado2' => $resultado2
+            'resultado2' => $resultado2,
+            'selectedRazaMadre' => $selectedRazaMadre,
+            'selectedRazaPadre' => $selectedRazaPadre,
+            'selectedPurezaMadre' => $selectedPurezaMadre,
+            'selectedPurezaPadre' => $selectedPurezaPadre,
         ]);
     }
-    
-
 }

@@ -28,26 +28,25 @@ use Model\Finca;
                                     <div class="container-fluid">
                                         <div class="row mb-2">
                                             <div class="col-sm-6">
-                                                <h1>Total de fincas en la base de datos VioBet</h1>
+                                                <h1>Total de fincas en la base de datos BioVet</h1>
                                             </div>
                                         </div>
                                     </div>
                                 </section>
                                 <div class="card-body">
                                     <div class="row d-flex justify-content-center justify-content-xl-start justify-content-xxl-start justify-content-lg-start justify-content-md-start justify-content-sm-start mb-xxl-n2 mb-xl-n2 mb-lg-n2 mb-md-n2 mb-sm-n2">
-                                    <?php if(Finca::contar() < 1): ?>
-                                        <div class="col col-auto mb-3">
-                                            <a href="/finca/create" class="btn btn-outline-primary"> <i class="fas fa-plus-circle"></i> <strong>Nueva finca</strong></a>
-                                        </div>
-                                        
-                                        <?php else: ?>
+                                        <?php if (Finca::contar() < 1) : ?>
                                             <div class="col col-auto mb-3">
-                                                <a href="" class="btn btn-outline-primary"> <i class="fas fa-plus-circle"></i> <strong>Suscribase a Premium</strong></a>
-                                                </div> 
-                                            <?php endif; ?>
+                                                <a href="/finca/create" class="btn btn-outline-primary"> <i class="fas fa-plus-circle"></i> <strong>Nueva finca</strong></a>
+                                            </div>
+                                        <?php else : ?>
+                                            <div class="col col-auto mb-3">
+                                                <a class="btn btn-outline-secondary"> </i> <strong>Suscribase a Premium </strong><i class="fas fa-dollar-sign"></i></a>
+                                            </div>
+                                        <?php endif; ?>
                                     </div>
                                     <table id="example1" class="table table-bordered table-hover">
-                                        <thead>
+                                        <thead class="table-light">
                                             <tr>
                                                 <th>Nombre</th>
                                                 <th>Ubicación</th>
@@ -61,13 +60,16 @@ use Model\Finca;
                                                     <td><?php echo $finca->NombreFinca ?></td>
                                                     <td><?php echo $finca->Ubicacion ?></td>
                                                     <td><?php echo $finca->Tamano ?></td>
+
                                                     <td>
                                                         <div class="d-grid gap-2 d-inline-flex">
-                                                            <a href="/finca/details?IdFinca=<?php echo $finca->IdFinca ?>" class="fa-regular fa-eye btn btn-outline-info" title="Detalles"></a>
-                                                            <a href="/finca/update?IdFinca=<?php echo $finca->IdFinca ?>" class="fa-regular fa-pen-to-square btn btn-outline-warning" title="Actualizar"></a>
-                                                            <a href="/finca/delete?IdFinca=<?php echo $finca->IdFinca ?>" class="fa-solid fa-trash-can btn btn-outline-danger" title="Eliminar"></a>
+                                                            <a href="/finca/details?IdAnimal=<?php echo $finca->IFinca ?>" class="btn btn-outline-info" title="Detalles"><i class="fa-regular fa-eye"></i></a>
+                                                            <a href="/finca/update?IdAnimal=<?php echo $finca->IdFinca ?>" class="btn btn-outline-warning" title="Actualizar"><i class="fa-regular fa-pen-to-square"></i></a>
+                                                            <a href="/finca/delete?IdAnimal=<?php echo $finca->IdFinca ?>" class="btn btn-outline-danger" title="Eliminar"><i class="fa-solid fa-trash-can"></i>
+                                                            </a>
                                                         </div>
                                                     </td>
+
                                                 </tr>
                                             <?php endforeach; ?>
                                         </tbody>

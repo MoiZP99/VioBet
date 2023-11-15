@@ -37,9 +37,6 @@ include_once 'public/build/Sidebar.php';
                                         <div class="col col-auto mb-3">
                                             <a href="/fichamedica/create" class="btn btn-outline-primary"> <i class="fas fa-plus-circle"></i> <strong>Nueva Ficha Medica</strong></a>
                                         </div>
-                                        <div class="col col-auto mb-3">
-                                            <a  class="btn btn-outline-warning"> <i class="fas fa-file-medical"></i> <strong>Historial</strong></a>
-                                        </div>
                                         <div class="col col-auto d-flex justify-content-center justify-content-xl-start justify-content-xxl-start justify-content-lg-start justify-content-md-start justify-content-sm-start">
                                             <div class="form-group mb-3">
                                                 <form action="report_excel" method="POST">
@@ -69,10 +66,9 @@ include_once 'public/build/Sidebar.php';
                                         </div>
                                     </div>
                                     <table id="example1" class="table table-bordered table-hover">
-                                        <thead>
+                                        <thead class="table-light">
                                             <tr>
                                                 <th>Vacuna</th>
-                                                <th>Tipo de Sangre</th>
                                                 <th>Antecedentes</th>
                                                 <th>Sintomas</th>
                                                 <th>Animal</th>
@@ -84,7 +80,6 @@ include_once 'public/build/Sidebar.php';
                                             <?php foreach ($fichamedica as $fichamedica) : ?>
                                                 <tr>
                                                     <td><?php echo $fichamedica->TipoMedicamento ?></td>
-                                                    <td><?php echo $fichamedica->TipoSangre ?></td>
                                                     <td><?php echo $fichamedica->Antecedentes ?></td>
                                                     <td><?php echo $fichamedica->Sintomas ?></td>
                                                     <td><?php echo $fichamedica->Nombre ?></td>
