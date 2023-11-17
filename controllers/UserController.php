@@ -157,4 +157,19 @@ class UserController
             }
         }
     }
+
+
+    //Metodo pagos
+    public static function indexpay(Router $router)
+    {
+        $usuarios = User::innerJoin();
+
+        $router->render('/payment/payment', [
+            'usuarios' => $usuarios
+        ]);
+    }
+
 }
+
+
+

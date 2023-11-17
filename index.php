@@ -71,12 +71,14 @@ $router->post('/users/update', [UserController::class, 'update']);
 $router->get('/users/update-pass', [UserController::class, 'update_pass']);
 $router->post('/users/update-pass', [UserController::class, 'update_pass']);
 $router->post('/users/delete', [UserController::class, 'delete']);
+//Pago
+$router->get('/payment/payment', [UserController::class, 'indexpay']);
+$router->post('/payment/payment', [UserController::class, 'indexpay']);
 
 //PAGES
 $router->get('/', [PagesController::class, 'index']);
 $router->get('/register', [PagesController::class, 'register']);
 $router->post('/register', [PagesController::class, 'register']);
-$router->post('/payment', [PagesController::class, 'payment']);
 
 //LOGIN
 $router->get('/login', [LoginController::class, 'login']);
