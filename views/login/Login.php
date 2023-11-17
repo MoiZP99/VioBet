@@ -12,11 +12,10 @@
 </head>
 
 <body>
-<button type="submit" class="button login__submit2" id="login">
-						<i class="button__icon2 fas fa-chevron-left"></i>
-						<span class="button__text" href="../paginas/index.php">Atrás</span>
-						
-</button>
+	<a href="/" style="text-decoration: none;" class="button login__submit2" id="login">
+		<i class="button__icon2 fas fa-chevron-left"></i>
+		<span class="button__text">Atrás</span>
+	</a>
 	<div class="container">
 		<?php foreach ($errores as $error) : ?>
 			<div class="alert alert-warning d-flex align-items-center justify-content-center p-1" role="alert">
@@ -29,7 +28,7 @@
 			</div>
 		<?php endforeach; ?>
 		<div class="screen">
-			
+
 			<div class="screen__content">
 				<h1 id="Welcome">Bienvenido</h1>
 				<form class="login" method="POST" action="/login" id="form1">

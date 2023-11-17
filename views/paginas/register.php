@@ -163,7 +163,7 @@
             </div>
             <div class="card-footer">
                 <div class="btn-spinner">
-                    <button class="btn btn-info mt-1 mb-1" type="button" id="submit_data" onclick="enviarFormulario()"> <b>Registrarse</b> <i class="fas fa-save"></i> </button>
+                    <button class="btn btn-info mt-1 mb-1" type="button" id="submit_data" onclick="enviarFormulario()"> <b>Registrarse</b></button>
                 </div>
             </div>
         </form>
