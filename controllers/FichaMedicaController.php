@@ -79,7 +79,7 @@ class FichaMedicaController
         $IdFichaMedica = validarORedireccionarFichaMedica('/fichamedica/index');
 
         $fichamedica = FichaMedica::find($IdFichaMedica);
-        $animal = Animal::all();
+        $animal = Animal::all1();
 
         $errores = FichaMedica::getErrores();
         $ErrVac = FichaMedica::getErrVac();
@@ -130,7 +130,7 @@ class FichaMedicaController
         $IdFichaMedica = validarORedireccionarFichaMedica('/fichamedica/index');
 
         $fichamedica = FichaMedica::find($IdFichaMedica);
-        $animal = Animal::all();
+        $animal = Animal::all1();
 
         $router->render('/fichamedica/details', [
             'fichamedica' => $fichamedica,

@@ -76,6 +76,7 @@ $router->post('/users/delete', [UserController::class, 'delete']);
 $router->get('/', [PagesController::class, 'index']);
 $router->get('/register', [PagesController::class, 'register']);
 $router->post('/register', [PagesController::class, 'register']);
+$router->post('/payment', [PagesController::class, 'payment']);
 
 //LOGIN
 $router->get('/login', [LoginController::class, 'login']);

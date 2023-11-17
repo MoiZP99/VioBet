@@ -35,21 +35,19 @@ use Model\Animal;
                                 </section>
                                 <div class="card-body">
                                     <div class="row d-flex justify-content-center justify-content-xl-start justify-content-xxl-start justify-content-lg-start justify-content-md-start justify-content-sm-start mb-xxl-n2 mb-xl-n2 mb-lg-n2 mb-md-n2 mb-sm-n2">
-                                        <?php if(Animal::contar() >= 10): ?>
+                                        <?php if (Animal::contar() >= 10) : ?>
                                             <div class="col col-auto mb-3">
-                                            <a href="" class="btn btn-outline-primary"> <i class="fas fa-plus-circle"></i> <strong>suscribase a Premium</strong></a>     
+                                                <a class="btn btn-outline-secondary"> <strong>Suscribase a Premium </strong> <i class="fas fa-dollar-sign"></i></a>
                                             </div>
-                                            <?php else: ?>
-                        
-                                                <div class="col col-auto mb-3">
-                                                <a href="/animal/create" class="btn btn-outline-primary"> <i class="fas fa-plus-circle"></i> <strong>Nuevo Animal</strong></a>
-                                                </div>
-                                            <?php endif; ?>
-                                            
+                                        <?php else : ?>
+                                            <div class="col col-auto mb-3">
+                                                <a href="/animal/create" class="btn btn-outline-primary"> <i class="fas fa-plus-circle"></i> <strong>Nuevo animal</strong></a>
+                                            </div>
+                                        <?php endif; ?>
                                         <div class="col col-auto d-flex justify-content-center justify-content-xl-start justify-content-xxl-start justify-content-lg-start justify-content-md-start justify-content-sm-start">
                                             <div class="form-group mb-3">
                                                 <form action="report_excel" method="POST">
-                                                    <button type="submit" class="btn btn-outline-success"><i class="fas fa-file-excel"></i><b> Excel</b> </button>
+                                                    <button type="submit" disabled class="btn btn-outline-success"><i class="fas fa-file-excel"></i><b> Excel</b> </button>
                                                 </form>
                                             </div>
                                         </div>
@@ -57,11 +55,11 @@ use Model\Animal;
                                             <div class="form-group mb-3">
                                                 <form action="report_pdf" method="POST" id="myForm">
                                                     <div class="btn-group dropend">
-                                                        <button type="button" id="PDFButton" class="btn btn-outline-danger dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+                                                        <button disabled type="button" id="PDFButton" class="btn btn-outline-danger dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
                                                             <i class="fas fa-print"></i><b> PDF</b>
                                                             <span id="spinner" class="spinner-border spinner-border-sm" role="status" aria-hidden="true" style="visibility: hidden;"></span>
                                                         </button>
-                                                        <ul class="dropdown-menu">
+                                                        <ul class="dropdown-menu" >
                                                             <li><button class="dropdown-item submitButton" type="submit" name="opcion" value="activo">Activos</button></li>
                                                             <li><button class="dropdown-item submitButton" type="submit" name="opcion" value="inactivo">Inactivos</button></li>
                                                             <li>
@@ -75,7 +73,7 @@ use Model\Animal;
                                         </div>
                                     </div>
                                     <table id="example1" class="table table-bordered table-hover">
-                                        <thead>
+                                        <thead class="table-light">
                                             <tr>
                                                 <th>Nombre</th>
                                                 <th>Tipo</th>
@@ -95,7 +93,7 @@ use Model\Animal;
                                                     <td><?php echo $animal->Raza ?></td>
                                                     <td><?php echo $animal->Numero ?></td>
                                                     <td><?php echo $animal->NombreFinca ?></td>
-   
+
                                                     <td>
                                                         <div class="d-grid gap-2 d-inline-flex">
                                                             <a href="/animal/details?IdAnimal=<?php echo $animal->IdAnimal ?>" class="btn btn-outline-info" title="Detalles"><i class="fa-regular fa-eye"></i></a>
