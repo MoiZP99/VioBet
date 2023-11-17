@@ -90,12 +90,6 @@ include_once 'public/build/Sidebar.php';
                             <input  class="form-control" type="int" id="edad" name="animal[Edad]" onKeyUp="javascript:validateTextUbi('edad')" placeholder="CVC" value="">
                           </div>
                         </div>
-                        <div class="mb-3">
-                            
-                            <input type="hidden" id="suscripcion" name="usuario[Suscripcion]" value="Premium">
-                          </div>
-                        </div>
-
                         <div class="col col-xxl-6 col-xl-6 col-lg-6 col-sm-6 col-md-6 col-12">
                           <div class="mb-3">
                             <label class="form-label" for="tipo">Provincia</label>

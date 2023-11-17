@@ -78,6 +78,40 @@ include_once 'public/build/Sidebar.php';
                                                     </div>
 
                                                 </div>
+                                                <div class="col col-xxl-6 col-xl-6 col-lg-6 col-sm-6 col-md-6 col-12">
+                          <div class="mb-3">
+                            <label class="form-label" for="raza">Número de tarjeta</label>
+                            <input  class="form-control" type="text" placeholder="XXXX-XXXX-XXXX-XXXX" value="">
+                          </div>
+                        </div>
+
+                        <div class="col col-xxl-6 col-xl-6 col-lg-6 col-md-6 col-12">
+                          <div class="mb-3">
+                            <label class="form-label" for="nombre">Fecha de caducidad</label>
+                            <input  class="form-control" type="date" placeholder="" value="">
+                          </div>
+                        </div>
+                        <div class="col col-xxl-6 col-xl-6 col-lg-6 col-md-6 col-12">
+                          <div class="mb-3">
+                            <label class="form-label" for="edad">Código de seguridad</label>
+                            <input  class="form-control" type="int" placeholder="CVC" value="">
+                          </div>
+                        </div>
+                        <div class="col col-xxl-6 col-xl-6 col-lg-6 col-sm-6 col-md-6 col-12">
+                          <div class="mb-3">
+                            <label class="form-label" for="tipo">Provincia</label>
+                            <select  class="form-select" autofocus name="animal[Tipo]" id="tipo">
+                              <option selected disabled>Seleccione aquí</option>
+                              <option value="">Guanacaste</option>
+                              <option value="">San José</option>
+                              <option value="">Puntarenas</option>
+                              <option value="">Heredia</option>
+                              <option value="">Alajuela</option>
+                              <option value="">Limón</option>
+                              <option value="">Cartago</option>
+                            </select>
+                          </div>
+                        </div>
                                                 <div class="col col-xxl-6 col-xl-6 col-lg-6 col-sm-12 col-md-6 col-12">
                                                     <div class="mb-3">
                                                         
