@@ -7,7 +7,8 @@ class User
 
   //Base de datos
   protected static $db;
-  protected static $tblUsuario = ['IdUsuario', 'NombreUser', 'Apellido1', 'Apellido2', 'Telefono', 'Email', 'Contrasena'];
+  protected static $tblUsuario = ['IdUsuario', 'NombreUser', 'Apellido1', 'Apellido2', 'Telefono', 'Email', 'Contrasena', 'Suscripcion'];
+  
 
   //Errores
   public static $errores;
@@ -17,6 +18,7 @@ class User
   public static $ErrContraseña;
   public static $ErrTelefono;
   public static $ErrEmail;  // Alertas y Mensajes
+  public static $ErrSuscripcion;
   public static $alertas = [];
 
   public $IdUsuario;
@@ -27,6 +29,7 @@ class User
   public $Contrasena;
   public $Email;
   public $Password2;
+  public $Suscripcion;
   
   public function __construct($args = [])
   {
@@ -38,6 +41,7 @@ class User
     $this->Contrasena = $args['Contrasena'] ?? '';
     $this->Password2 = $args['Password2'] ?? '';
     $this->Email = $args['Email'] ?? '';
+    $this->Suscrpcion = $args['Suscripcion'] ?? '';
   }
 
 
@@ -126,12 +130,39 @@ class User
 
     return $atributos;
   }
+  public function atributos2()
+  {
+    //De esta manera los atributos se va a ir mapeando con las columnas de la BDs
+    $atributos = [];
+    foreach (self::$tblUsuariopay as $columna) {
+      if ($columna === 'IdUsuario') continue;
+      $atributos[$columna] = $this->$columna;
+    }
+
+    return $atributos;
+  }
 
 
   public function sanitizarAtributos()
   {
     //Se obtienen los atributos
     $atributos = $this->atributos();
+
+    //Se recorren
+    $sanitizado = [];
+
+    //Sanitiza los atributos identificados
+    //El foreach es porque es un arreglo asociativo
+    foreach ($atributos as $key => $value) {
+      $sanitizado[$key] = self::$db->escape_string($value); //Este escape es antes de que se guarde en la base de datos
+    }
+
+    return $sanitizado;
+  }
+  public function sanitizarAtributos2()
+  {
+    //Se obtienen los atributos
+    $atributos = $this->atributos2();
 
     //Se recorren
     $sanitizado = [];
@@ -192,6 +223,10 @@ class User
   {
     return self::$ErrEmail;
   }
+  public static function getErrSuscripcion()
+  {
+    return self::$ErrSuscripcion;
+  }
   
 
   public function validaNombre()
@@ -203,6 +238,10 @@ class User
     }
 
     return self::$ErrNomb;
+  }
+  public function validaSuscripcion()
+  {
+    return self::$ErrSuscripcion;
   }
 
   public function validaApel()
@@ -388,5 +427,28 @@ class User
   public function hashPassword(): void
   {
     $this->Contrasena = password_hash($this->Contrasena, PASSWORD_BCRYPT);
+  }
+//payment
+
+
+  public function actualizar2()
+  {
+    $idUsuarioSesion = $_SESSION['idUsuario'];
+    // Sanitizar los datos
+    $atributos = $this->sanitizarAtributos2();
+
+    $valores = [];
+    foreach ($atributos as $key => $value) {
+      $valores[] = "{$key}='{$value}'";
+    }
+
+    $query = "UPDATE usuario SET ";
+    $query .=  join(', ', $valores);
+    $query .= " WHERE IdUsuario = '" . $idUsuarioSesion . "' ";
+    $query .= " LIMIT 1 ";
+
+    $resultado = self::$db->query($query);
+
+    return $resultado;
   }
 }

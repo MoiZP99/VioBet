@@ -57,6 +57,7 @@ include_once 'public/build/Sidebar.php';
                             <div class="d-grid gap-2 d-inline-flex">
                               <a href="/users/update?IdUsuario=<?php echo $usuario->IdUsuario ?>" class="btn btn-outline-warning" title="Editar Usuario"> <i class="fas fa-user-edit"></i> <b style="color:#000000;">Editar Usuario</b> </a>
                               <a href="/users/update-pass?IdUsuario=<?php echo $usuario->IdUsuario ?>" class="btn btn-outline-warning" title="Editar Contraseña"><i class="fas fa-user-shield"></i> <b style="color:#000000;">Editar Contraseña</b> </a>
+                              <a href="/users/update-sub?IdUsuario=<?php echo $usuario->IdUsuario ?>" class="btn btn-outline-success" title="Premium"><i class="bi bi-cash"></i> <b style="color:#000000;">Premium</b> </a>
                             </div>
                           </td>
                         </tr>
