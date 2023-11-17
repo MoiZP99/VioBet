@@ -40,85 +40,45 @@ include_once 'public/build/Sidebar.php';
                                     <div class="card-body">
                                         <fieldset>
                                             <div class="row">
-                                                <div class="col col-xxl-4 col-xl-4 col-lg-4 col-sm-12 col-md-6 col-12">
+                                                <div class="col col-auto">
                                                     <div class="mb-3">
-                                                        <label class="form-label" for="nombre">Nombre</label>
+                                                        <label class="form-label" for="nombre">Nombre de usuario</label>
                                                         <input class="form-control" autofocus type="text" id="nombre" name="usuario[NombreUser]" onKeyUp="javascript:validateText('nombre')" placeholder="Esriba en este espacio" value="<?php echo s($usuario->NombreUser); ?>" readonly>
-                                                        
                                                     </div>
                                                 </div>
-                                                <div class="col col-xxl-4 col-xl-4 col-lg-4 col-sm-12 col-md-6 col-12">
+                                                <div class="col col-auto">
                                                     <div class="mb-3">
-                                                        <label class="form-label" for="correo">Correo electrónico</label>
-                                                        <input class="form-control" type="email" id="correo" name="usuario[Email]" placeholder="Escriba en este espacio" value="<?php echo s($usuario->Email); ?>" readonly>
-                                                        
-                                                    </div>
-                                                </div>
-                                                <div class="col col-xxl-4 col-xl-4 col-lg-4 col-sm-12 col-md-6 col-12">
-                                                    <div class="mb-3">
-                                                        <label class="form-label" for="telefono">Teléfono</label>
-                                                        <input class="form-control" type="tel" id="telefono" name="usuario[Telefono]" placeholder="Escriba en este espacio" value="<?php echo s($usuario->Telefono); ?>" readonly>
-                                                        
+                                                        <label class="form-label" for="tipo">Provincia</label>
+                                                        <select class="form-select" autofocus name="animal[Tipo]" id="tipo">
+                                                            <option selected disabled>Seleccione aquí</option>
+                                                            <option value="">Guanacaste</option>
+                                                            <option value="">San José</option>
+                                                            <option value="">Puntarenas</option>
+                                                            <option value="">Heredia</option>
+                                                            <option value="">Alajuela</option>
+                                                            <option value="">Limón</option>
+                                                            <option value="">Cartago</option>
+                                                        </select>
                                                     </div>
                                                 </div>
                                             </div>
                                             <div class="row">
-                                                <div class="col col-xxl-6 col-xl-6 col-lg-6 col-sm-12 col-md-6 col-12">
+                                                <div class="col col-xxl-6 col-xl-6 col-lg-6 col-md-6 col-12">
                                                     <div class="mb-3">
-                                                        <label class="form-label" for="apell1">Primer apellido</label>
-                                                        <input class="form-control" type="text" id="apell1" name="usuario[Apellido1]" onKeyUp="javascript:validateText('apell1')" placeholder="Escriba en este espacio" value="<?php echo s($usuario->Apellido1); ?>" readonly>
-                                                        
+                                                        <label class="form-label" for="nombre">Fecha de caducidad</label>
+                                                        <input class="form-control" type="date" placeholder="" value="">
+                                                    </div>
+                                                </div>
+                                                <div class="col col-xxl-6 col-xl-6 col-lg-6 col-md-6 col-12">
+                                                    <div class="mb-3">
+                                                        <label class="form-label" for="edad">Código de seguridad</label>
+                                                        <input class="form-control" type="int" placeholder="CVC" value="">
                                                     </div>
                                                 </div>
                                                 <div class="col col-xxl-6 col-xl-6 col-lg-6 col-sm-12 col-md-6 col-12">
                                                     <div class="mb-3">
-                                                        <label class="form-label" for="apell2">Segundo apellido</label>
-                                                        <input class="form-control" type="text" id="apell2" name="usuario[Apellido2]" onKeyUp="javascript:validateText('apell2')" placeholder="Escriba en este espacio" value="<?php echo s($usuario->Apellido2); ?>" readonly>
-                                                        
+                                                        <input class="form-control" type="hidden" id="suscripcion" name="usuario[Suscripcion]" value="Premium">
                                                     </div>
-
-                                                </div>
-                                                <div class="col col-xxl-6 col-xl-6 col-lg-6 col-sm-6 col-md-6 col-12">
-                          <div class="mb-3">
-                            <label class="form-label" for="raza">Número de tarjeta</label>
-                            <input  class="form-control" type="text" placeholder="XXXX-XXXX-XXXX-XXXX" value="">
-                          </div>
-                        </div>
-
-                        <div class="col col-xxl-6 col-xl-6 col-lg-6 col-md-6 col-12">
-                          <div class="mb-3">
-                            <label class="form-label" for="nombre">Fecha de caducidad</label>
-                            <input  class="form-control" type="date" placeholder="" value="">
-                          </div>
-                        </div>
-                        <div class="col col-xxl-6 col-xl-6 col-lg-6 col-md-6 col-12">
-                          <div class="mb-3">
-                            <label class="form-label" for="edad">Código de seguridad</label>
-                            <input  class="form-control" type="int" placeholder="CVC" value="">
-                          </div>
-                        </div>
-                        <div class="col col-xxl-6 col-xl-6 col-lg-6 col-sm-6 col-md-6 col-12">
-                          <div class="mb-3">
-                            <label class="form-label" for="tipo">Provincia</label>
-                            <select  class="form-select" autofocus name="animal[Tipo]" id="tipo">
-                              <option selected disabled>Seleccione aquí</option>
-                              <option value="">Guanacaste</option>
-                              <option value="">San José</option>
-                              <option value="">Puntarenas</option>
-                              <option value="">Heredia</option>
-                              <option value="">Alajuela</option>
-                              <option value="">Limón</option>
-                              <option value="">Cartago</option>
-                            </select>
-                          </div>
-                        </div>
-                                                <div class="col col-xxl-6 col-xl-6 col-lg-6 col-sm-12 col-md-6 col-12">
-                                                    <div class="mb-3">
-                                                        
-                                                        <input class="form-control" type="hidden" id="suscripcion" name="usuario[Suscripcion]"  value="Premium">
-                                                        
-                                                    </div>
-                                                    
                                                 </div>
                                             </div>
                                         </fieldset>
@@ -126,7 +86,7 @@ include_once 'public/build/Sidebar.php';
                                     <div class="card-footer">
                                         <div class="btn-spinner">
                                             <a type="button" class="btn btn-outline-danger col-auto me-2 col-xl-2 col-lg-2 col-md-2 col-sm-3 mt-1 mb-1" href="/users/index"> <i class="fas fa-times-circle"></i> <b>Cerrar</b> </a>
-                                            <button type="submit" class="btn btn-outline-dark col-auto me-2 col-xl-2 col-lg-2 col-md-2 col-sm-3 mt-1 mb-1" id="submit_data"> <b>Guardar</b> <i class="fas fa-save"></i> </button>
+                                            <button type="submit" class="btn btn-outline-dark col-auto me-2 col-xl-2 col-lg-2 col-md-2 col-sm-3 mt-1 mb-1" id="submit_data"> <b>Pagar</b> <i class="fas fa-money-check" style="color:#008f39;"></i> </button>
                                         </div>
                                     </div>
                                 </form>

@@ -32,21 +32,9 @@ include_once 'public/build/Sidebar.php';
                                             <div class="row">
                                                 <div class="col col-xxl-6 col-12">
                                                     <div class="mb-3">
-                                                        <label class="form-label" for="RazaMadre">Raza de la madre</label>
+                                                        <label class="form-label" for="RazaMadre">Raza del padre</label>
                                                         <select required class="form-select" autofocus name="dtCruce[RazaMadre]" id="RazaMadre">
                                                             <option selected disabled>Seleccione aquí</option>
-                                                            <!-- <option value="Holstein">Holstein</option>
-                                                            <option value="Angus">Angus</option>
-                                                            <option value="Hereford">Hereford</option>
-                                                            <option value="Charolais">Charolais</option>
-                                                            <option value="Brahman">Brahman</option>
-                                                            <option value="Limousin">Limousin</option>
-                                                            <option value="Simmental">Simmental</option>
-                                                            <option value="RedAngus">Red Angus</option>
-                                                            <option value="Jersey">Jersey</option>
-                                                            <option value="Guernsey">Guernsey</option>
-                                                            <option value="Ayrshire">Ayrshire</option>
-                                                            <option value="Gyr">Gyr</option> -->
                                                             <option value="Angus" <?php echo ($selectedRazaPadre == 'Angus') ? 'selected' : ''; ?>>Angus</option>
                                                             <option value="Holstein" <?php echo ($selectedRazaPadre == 'Holstein') ? 'selected' : ''; ?>>Holstein</option>
                                                             <option value="Charolais" <?php echo ($selectedRazaPadre == 'Charolais') ? 'selected' : ''; ?>>Charolais</option>
@@ -58,18 +46,6 @@ include_once 'public/build/Sidebar.php';
                                                         <label class="form-label" for="RazaPadre">Raza de la madre</label>
                                                         <select required class="form-select" autofocus name="dtCruce[RazaPadre]" id="RazaPadre">
                                                             <option selected disabled>Seleccione aquí</option>
-                                                            <!-- <option value="Holstein">Holstein</option>
-                                                            <option value="Angus">Angus</option>
-                                                            <option value="Hereford">Hereford</option>
-                                                            <option value="Charolais">Charolais</option>
-                                                            <option value="Brahman">Brahman</option>
-                                                            <option value="Limousin">Limousin</option>
-                                                            <option value="Simmental">Simmental</option>
-                                                            <option value="RedAngus">Red Angus</option>
-                                                            <option value="Jersey">Jersey</option>
-                                                            <option value="Guernsey">Guernsey</option>
-                                                            <option value="Ayrshire">Ayrshire</option>
-                                                            <option value="Gyr">Gyr</option> -->
                                                             <option value="Angus" <?php echo ($selectedRazaMadre == 'Angus') ? 'selected' : ''; ?>>Angus</option>
                                                             <option value="Holstein" <?php echo ($selectedRazaMadre == 'Holstein') ? 'selected' : ''; ?>>Holstein</option>
                                                             <option value="Charolais" <?php echo ($selectedRazaMadre == 'Charolais') ? 'selected' : ''; ?>>Charolais</option>
@@ -104,7 +80,7 @@ include_once 'public/build/Sidebar.php';
                                                             <option value="25" <?php echo ($selectedPurezaMadre == '25') ? 'selected' : ''; ?>>25</option>
                                                             <option value="50" <?php echo ($selectedPurezaMadre == '50') ? 'selected' : ''; ?>>50</option>
                                                             <option value="75" <?php echo ($selectedPurezaMadre == '75') ? 'selected' : ''; ?>>75</option>
-                                                            <option value="110" <?php echo ($selectedPurezaMadre == '110') ? 'selected' : ''; ?>>110</option>
+                                                            <option value="100" <?php echo ($selectedPurezaMadre == '100') ? 'selected' : ''; ?>>100</option>
                                                         </select>
                                                     </div>
                                                 </div>
@@ -129,13 +105,13 @@ include_once 'public/build/Sidebar.php';
                                     <div class="card-body">
                                         <div class="col col-12">
                                         <div class="mb-3">
-                                            <label class="form-label" for="Resultado1">Resultado 1</label>
-                                            <input type="text" class="form-control" id="Resultado1" name="resultado1" value="<?php echo $resultado1; ?>" disabled>
+                                            <label class="form-label" for="Resultado1">Aporte sanguíneo del padre</label>
+                                            <input type="text" class="form-control" id="Resultado1" name="resultado1" value="<?php echo $resultado1; ?>%" disabled>
                                         </div>
 
                                         <div class="mb-3">
-                                            <label class="form-label" for="Resultado2">Resultado 2</label>
-                                            <input type="text" class="form-control" id="Resultado2" name="resultado2" value="<?php echo $resultado2; ?>" disabled>
+                                            <label class="form-label" for="Resultado2">Aporte sanguíneo de la madre</label>
+                                            <input type="text" class="form-control" id="Resultado2" name="resultado2" value="<?php echo $resultado2; ?>%" disabled>
                                         </div>
 
                                         </div>

@@ -95,23 +95,6 @@
               <a href="#" class="nav-link ">
                 <i class="nav-icon fas fa-arrow-circle-right"></i>
                 <p>
-                  Premium
-                  <i class="right fas fa-angle-left"></i>
-                </p>
-              </a>
-              <ul class="nav nav-treeview">
-                <li class="nav-item">
-                  <a href="/payment/payment" class="nav-link">
-                    <i class="far fa-edit nav-icon"></i>
-                    <p>Realizar el pago</p>
-                  </a>
-                </li>
-              </ul>
-            </li>
-            <li class="nav-item menu-open">
-              <a href="#" class="nav-link ">
-                <i class="nav-icon fas fa-arrow-circle-right"></i>
-                <p>
                   Gestión de animales
                   <i class="right fas fa-angle-left"></i>
                 </p>

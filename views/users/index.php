@@ -33,6 +33,11 @@ include_once 'public/build/Sidebar.php';
                 </section>
                 <div class="card-body">
                   <div class="row d-block mb-xxl-n2 mb-xl-n2 mb-lg-n2 mb-md-n2 mb-sm-n2 mb-1">
+                      <?php foreach ($usuarios as $usuario) : ?>
+                        <div class="col-auto mb-3">  
+                          <a href="/users/update-sub?IdUsuario=<?php echo $usuario->IdUsuario ?>" class="btn btn-success" title="Premium"><i class="bi bi-cash"></i> <b style="color:#000000;">Pasarse a Premium</b> </a>
+                        </div>
+                      <?php endforeach; ?>
                     <?php
                     if ($usuarios > 0) : ?>
                       <div class="d-none col col-auto mb-1 d-flex justify-content-center justify-content-xl-start justify-content-xxl-start justify-content-lg-start justify-content-md-start justify-content-sm-start">
@@ -57,7 +62,6 @@ include_once 'public/build/Sidebar.php';
                             <div class="d-grid gap-2 d-inline-flex">
                               <a href="/users/update?IdUsuario=<?php echo $usuario->IdUsuario ?>" class="btn btn-outline-warning" title="Editar Usuario"> <i class="fas fa-user-edit"></i> <b style="color:#000000;">Editar Usuario</b> </a>
                               <a href="/users/update-pass?IdUsuario=<?php echo $usuario->IdUsuario ?>" class="btn btn-outline-warning" title="Editar Contraseña"><i class="fas fa-user-shield"></i> <b style="color:#000000;">Editar Contraseña</b> </a>
-                              <a href="/users/update-sub?IdUsuario=<?php echo $usuario->IdUsuario ?>" class="btn btn-outline-success" title="Premium"><i class="bi bi-cash"></i> <b style="color:#000000;">Premium</b> </a>
                             </div>
                           </td>
                         </tr>
