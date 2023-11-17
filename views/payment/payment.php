@@ -47,7 +47,7 @@ include_once 'public/build/Sidebar.php';
           <div class="row">
             <div class="col-md-12">
               <div class="card" style="border-radius: 7px; background: #F8F8FF;">
-                <form method="POST" action="create" id="regiration_form">
+                <form method="POST" action="updatepay" id="regiration_form">
                   <div class="card-header" style="background-color: #D6EAF8;">
                     <h2 class="card-title" style="font-size: 23px;"><strong>Subscribirse</strong></h2>
                   </div>
@@ -68,33 +68,38 @@ include_once 'public/build/Sidebar.php';
                         <div class="col col-xxl-6 col-xl-6 col-lg-6 col-sm-6 col-md-6 col-12">
                           <div class="mb-3">
                             <label class="form-label" for="tiposangre">Nombre del titular</label>
-                            <input required class="form-control" type="text" id="tiposangre" name="animal[TipoSangre]" onKeyUp="javascript:validateTextUbi('tiposangre')" placeholder="Escriba aquí el nombre del titular" value="">
+                            <input  class="form-control" type="text" id="tiposangre" name="animal[TipoSangre]" onKeyUp="javascript:validateTextUbi('tiposangre')" placeholder="Escriba aquí el nombre del titular" value="">
                           </div>
                         </div>
                         <div class="col col-xxl-6 col-xl-6 col-lg-6 col-sm-6 col-md-6 col-12">
                           <div class="mb-3">
                             <label class="form-label" for="raza">Número de tarjeta</label>
-                            <input required class="form-control" type="text" id="raza" name="animal[Raza]" onKeyUp="javascript:validateTextUbi('raza')" placeholder="XXXX-XXXX-XXXX-XXXX" value="">
+                            <input  class="form-control" type="text" id="raza" name="animal[Raza]" onKeyUp="javascript:validateTextUbi('raza')" placeholder="XXXX-XXXX-XXXX-XXXX" value="">
                           </div>
                         </div>
 
                         <div class="col col-xxl-6 col-xl-6 col-lg-6 col-md-6 col-12">
                           <div class="mb-3">
                             <label class="form-label" for="nombre">Fecha de caducidad</label>
-                            <input required class="form-control" type="date" id="nombre" name="animal[Nombre]" onKeyUp="javascript:validateText('nombre')" placeholder="" value="">
+                            <input  class="form-control" type="date" id="nombre" name="animal[Nombre]" onKeyUp="javascript:validateText('nombre')" placeholder="" value="">
                           </div>
                         </div>
                         <div class="col col-xxl-6 col-xl-6 col-lg-6 col-md-6 col-12">
                           <div class="mb-3">
                             <label class="form-label" for="edad">Código de seguridad</label>
-                            <input required class="form-control" type="int" id="edad" name="animal[Edad]" onKeyUp="javascript:validateTextUbi('edad')" placeholder="CVC" value="">
+                            <input  class="form-control" type="int" id="edad" name="animal[Edad]" onKeyUp="javascript:validateTextUbi('edad')" placeholder="CVC" value="">
+                          </div>
+                        </div>
+                        <div class="mb-3">
+                            
+                            <input type="hidden" id="suscripcion" name="usuario[Suscripcion]" value="Premium">
                           </div>
                         </div>
 
                         <div class="col col-xxl-6 col-xl-6 col-lg-6 col-sm-6 col-md-6 col-12">
                           <div class="mb-3">
                             <label class="form-label" for="tipo">Provincia</label>
-                            <select required class="form-select" autofocus name="animal[Tipo]" id="tipo">
+                            <select  class="form-select" autofocus name="animal[Tipo]" id="tipo">
                               <option selected disabled>Seleccione aquí</option>
                               <option value="">Guanacaste</option>
                               <option value="">San José</option>

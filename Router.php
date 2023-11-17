@@ -29,7 +29,7 @@ class Router
                 '/animal/index', '/animal/create', '/animal/update', '/animal/details', '/animal/delete',
                 '/fichamedica/index', '/fichamedica/create', '/fichamedica/update', '/fichamedica/details', '/fichamedica/delete',
                 '/finca/index', '/finca/create', '/finca/update', '/finca/delete', '/finca/details',
-                '/users/index', '/users/create', '/users/update', '/users/update-pass', '/users/delete', '/payment/payment'
+                '/users/index', '/users/create', '/users/update', '/users/update-pass', '/users/delete', '/user/update-sub'
             ];
 
 

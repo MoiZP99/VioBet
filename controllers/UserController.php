@@ -139,6 +139,40 @@ class UserController
             'ErrContraseña' => $ErrContraseña
         ]);
     }
+    public static function update_sub(Router $router)
+    {
+        $IdUsuario = validarORedireccionarUser('/users/index');
+
+        $usuario = User::find($IdUsuario);
+
+        $ErrSuscripcion = User::getErrSuscripcion();
+
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+            $args = $_POST['usuario'];
+
+            $usuario->sincronizar($args);
+
+            $ErrSuscripcion = $usuario->validaSuscripcion();
+
+            if (empty(($ErrSuscripcion))) {
+
+                
+                $usuario->guardar();
+            }
+            
+
+            
+
+                
+                $usuario->guardar();
+            
+        }
+
+        $router->render('/users/update-sub', [
+            'usuario' => $usuario,
+            'ErrSuscripcion' => $ErrSuscripcion
+        ]);
+    }
 
 
     public static function eliminar(Router $router)
@@ -168,6 +202,8 @@ class UserController
             'usuarios' => $usuarios
         ]);
     }
+
+    
 
 }
 

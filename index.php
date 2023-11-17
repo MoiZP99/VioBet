@@ -70,10 +70,13 @@ $router->get('/users/update', [UserController::class, 'update']);
 $router->post('/users/update', [UserController::class, 'update']);
 $router->get('/users/update-pass', [UserController::class, 'update_pass']);
 $router->post('/users/update-pass', [UserController::class, 'update_pass']);
+$router->get('/users/update-sub', [UserController::class, 'update_sub']);
+$router->post('/users/update-sub', [UserController::class, 'update_sub']);
 $router->post('/users/delete', [UserController::class, 'delete']);
 //Pago
 $router->get('/payment/payment', [UserController::class, 'indexpay']);
-$router->post('/payment/payment', [UserController::class, 'indexpay']);
+$router->post('/payment/updatepay', [UserController::class, 'updatepay']);
+
 
 //PAGES
 $router->get('/', [PagesController::class, 'index']);
