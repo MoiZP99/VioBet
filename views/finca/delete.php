@@ -1,5 +1,5 @@
 <?php
-include_once 'public/build/Sidebar.php';
+include_once '/build/Sidebar.php';
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -8,11 +8,11 @@ include_once 'public/build/Sidebar.php';
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Somos Hojancha</title>
-    <link rel="stylesheet" href="/public/build/FontFamily_admin_section/fontfamily.css">
+    <link rel="stylesheet" href="//build/FontFamily_admin_section/fontfamily.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css">
-    <link rel="stylesheet" href="/public/build/bootstrap/css/bootstrap.min.css">
-    <link rel="stylesheet" href="/public/build/assets/css/stl_AllReadonly.css">
-    <link rel="stylesheet" href="/public/build/sweetalert2@11.1.4/sweetalert2.css">
+    <link rel="stylesheet" href="//build/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="//build/assets/css/stl_AllReadonly.css">
+    <link rel="stylesheet" href="//build/sweetalert2@11.1.4/sweetalert2.css">
 </head>
 
 <body class="hold-transition sidebar-mini">
@@ -86,10 +86,10 @@ include_once 'public/build/Sidebar.php';
         </div>
     </div>
 
-    <script src="/public/build/assets/js/stl_AllDelete.js"></script>
-    <script src="/public/build/bootstrap/js/bootstrap.bundle.min.js"></script>
-    <script src="/public/build/jquery/jquery-3.3.1.min.js"></script>
-    <script src="/public/build/sweetalert2@11.1.4/sweetalert2.js"></script>
+    <script src="//build/assets/js/stl_AllDelete.js"></script>
+    <script src="//build/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="//build/jquery/jquery-3.3.1.min.js"></script>
+    <script src="//build/sweetalert2@11.1.4/sweetalert2.js"></script>
 </body>
 
 </html>

@@ -342,7 +342,7 @@ class Animal
   public static function all()
   {
     $idUsuarioSesion = $_SESSION['idUsuario'];
-    $query = "SELECT f.IdFinca, f.NombreFinca, f.Ubicacion, f.Tamano, f.FKUsuario, u.IdUsuario, u.NombreUser, a.IdAnimal, a.Nombre, a.Tipo, a.Raza, a.Edad, a.Sexo, a.Peso, a.Numero, a.FKFinca
+    $query = "SELECT a.IdAnimal, a.Nombre
               FROM finca f
               INNER JOIN Usuario u 
               ON f.FKUsuario = u.IdUsuario
@@ -350,7 +350,7 @@ class Animal
               ON a.FKFinca = f.IdFinca
               LEFT JOIN fichamedica fm 
               ON a.IdAnimal = fm.FKAnimal
-              WHERE f.FKUsuario = $idUsuarioSesion AND fm.IdFichaMedica IS NULL";
+              WHERE f.FKUsuario = $idUsuarioSesion";
 
     $resultado = self::consultarSQL($query);
 

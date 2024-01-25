@@ -1,5 +1,5 @@
 {
-    "name": "proyecto/biovet",
+    "name": "proyecto/viobet",
     "description": "Curso Aplicaciones Informáticas Globales",
     "type": "project",
     "autoload": {
@@ -17,6 +17,7 @@
     ],
     "require": {
         "intervention/image": "^2.7",
-        "phpoffice/phpspreadsheet": "^1.27"
+        "phpoffice/phpspreadsheet": "^1.27",
+        "vlucas/phpdotenv": "^5.6"
     }
 }

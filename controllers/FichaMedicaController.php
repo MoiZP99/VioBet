@@ -22,8 +22,6 @@ class FichaMedicaController
 
     public static function create(Router $router)
     {
-        session_start();
-
         $fichamedica = new FichaMedica();
         $animal = Animal::all();
         $errores = FichaMedica::getErrores();

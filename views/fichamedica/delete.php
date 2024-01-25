@@ -1,6 +1,6 @@
 <?php
 session_start();
-include_once 'public/build/Sidebar.php';
+include_once '/build/Sidebar.php';
 ?>
 <!DOCTYPE html>
 <html lang="es">
@@ -126,10 +126,10 @@ include_once 'public/build/Sidebar.php';
       </section>
     </div>
   </div>
-  <script src="/public/build/assets/js/stl_AllDelete.js"></script>
-    <script src="/public/build/bootstrap/js/bootstrap.bundle.min.js"></script>
-    <script src="/public/build/jquery/jquery-3.3.1.min.js"></script>
-    <script src="/public/build/sweetalert2@11.1.4/sweetalert2.js"></script>
+  <script src="//build/assets/js/stl_AllDelete.js"></script>
+    <script src="//build/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="//build/jquery/jquery-3.3.1.min.js"></script>
+    <script src="//build/sweetalert2@11.1.4/sweetalert2.js"></script>
 </body>
 
 </html>
