@@ -281,9 +281,18 @@ class Finca
     return array_shift($resultado);
   }
   public static function contar(){
-    $query = "SELECT * FROM finca ";
+    $idUsuarioSesion = $_SESSION['idUsuario'];
+    // $query = "SELECT DISTINCT f.IdFinca, f.NombreFinca, f.Ubicacion, f.Tamano, f.FKUsuario, u.IdUsuario, u.NombreUser
+    //           FROM finca f
+    //           INNER JOIN Usuario u
+    //           ON f.FKUsuario = u.IdUsuario
+    //           WHERE FKUsuario = $idUsuarioSesion";
+              
+    $query = "SELECT * FROM finca WHERE FKUsuario = $idUsuarioSesion";
     $resultado = self::$db->query($query);
     $numero_de_registros = mysqli_num_rows($resultado);
     return $numero_de_registros;
+    // echo $numero_de_registros;
+    // die();
   }
 }

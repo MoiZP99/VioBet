@@ -1,5 +1,5 @@
 <?php
-include('public/build/plugins/TCPDF-library/tcpdf.php');
+include('/build/plugins/TCPDF-library/tcpdf.php');
 class MyPDF extends TCPDF {
 public function Header() {
 	$this->SetFont('helvetica', 'B', 12);
@@ -28,7 +28,7 @@ $pdf->Write(75, 'Fecha: ' . date('d-m-Y h:i:s A'));
 
 
 
-$pdf->Image('public/build/assets/images/logo.jpg', 15, 15, 30, 0, 'JPG', '', 'T', false, 300, '', false, false, 0, false, false, false);
+$pdf->Image('/build/assets/images/logo.jpg', 15, 15, 30, 0, 'JPG', '', 'T', false, 300, '', false, false, 0, false, false, false);
 $pdf->Ln(7);
 $pdf->SetFont('Helvetica', '', 19);
 $pdf->Cell(190, 5, "Listado de Lugares Turísticos", 0, 1, 'C');

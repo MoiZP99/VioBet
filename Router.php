@@ -33,12 +33,13 @@ class Router
             ];
 
 
-        $currentUrl = $_SERVER['PATH_INFO'] ?? '/';
-        $method = $_SERVER['REQUEST_METHOD'];
+        // $currentUrl = $_SERVER['PATH_INFO'] ?? '/';
+        // $method = $_SERVER['REQUEST_METHOD'];
 
         //Metodo para deploy
         // $currentUrl = $_SERVER['REQUEST_URI'] === '' ? '/': $_SERVER['REQUEST_URI'];
-        // $method = $_SERVER['REQUEST_METHOD'];
+        $currentUrl = strtok($_SERVER['REQUEST_URI'], '?') ?? '/';
+        $method = $_SERVER['REQUEST_METHOD'];
 
         if ($method === 'GET') {
             $fn = $this->getRoutes[$currentUrl] ?? null;

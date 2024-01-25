@@ -1,6 +1,6 @@
 <?php
 session_start();
-include_once 'public/build/Sidebar.php';
+include_once '/build/Sidebar.php';
 ?>
 <!DOCTYPE html>
 <html lang="es">
@@ -68,32 +68,32 @@ include_once 'public/build/Sidebar.php';
                         <div class="col col-xxl-6 col-xl-6 col-lg-6 col-sm-6 col-md-6 col-12">
                           <div class="mb-3">
                             <label class="form-label" for="tiposangre">Nombre del titular</label>
-                            <input  class="form-control" type="text" id="tiposangre" name="animal[TipoSangre]" onKeyUp="javascript:validateTextUbi('tiposangre')" placeholder="Escriba aquí el nombre del titular" value="">
+                            <input  class="form-control" type="text" id="tiposangre" onKeyUp="javascript:validateTextUbi('tiposangre')" placeholder="Escriba aquí el nombre del titular" value="">
                           </div>
                         </div>
                         <div class="col col-xxl-6 col-xl-6 col-lg-6 col-sm-6 col-md-6 col-12">
                           <div class="mb-3">
                             <label class="form-label" for="raza">Número de tarjeta</label>
-                            <input  class="form-control" type="text" id="raza" name="animal[Raza]" onKeyUp="javascript:validateTextUbi('raza')" placeholder="XXXX-XXXX-XXXX-XXXX" value="">
+                            <input  class="form-control" type="text" id="raza" onKeyUp="javascript:validateTextUbi('raza')" placeholder="XXXX-XXXX-XXXX-XXXX" value="">
                           </div>
                         </div>
 
                         <div class="col col-xxl-6 col-xl-6 col-lg-6 col-md-6 col-12">
                           <div class="mb-3">
                             <label class="form-label" for="nombre">Fecha de caducidad</label>
-                            <input  class="form-control" type="date" id="nombre" name="animal[Nombre]" onKeyUp="javascript:validateText('nombre')" placeholder="" value="">
+                            <input  class="form-control" type="date" id="nombre" onKeyUp="javascript:validateText('nombre')" placeholder="" value="">
                           </div>
                         </div>
                         <div class="col col-xxl-6 col-xl-6 col-lg-6 col-md-6 col-12">
                           <div class="mb-3">
                             <label class="form-label" for="edad">Código de seguridad</label>
-                            <input  class="form-control" type="int" id="edad" name="animal[Edad]" onKeyUp="javascript:validateTextUbi('edad')" placeholder="CVC" value="">
+                            <input  class="form-control" type="int" id="edad" onKeyUp="javascript:validateTextUbi('edad')" placeholder="CVC" value="">
                           </div>
                         </div>
                         <div class="col col-xxl-6 col-xl-6 col-lg-6 col-sm-6 col-md-6 col-12">
                           <div class="mb-3">
                             <label class="form-label" for="tipo">Provincia</label>
-                            <select  class="form-select" autofocus name="animal[Tipo]" id="tipo">
+                            <select  class="form-select" autofocus id="tipo">
                               <option selected disabled>Seleccione aquí</option>
                               <option value="">Guanacaste</option>
                               <option value="">San José</option>
@@ -103,6 +103,13 @@ include_once 'public/build/Sidebar.php';
                               <option value="">Limón</option>
                               <option value="">Cartago</option>
                             </select>
+                          </div>
+                        </div>
+
+                        <div class="col col-auto">
+                          <div class="mb-3">
+                            <label class="form-label" for="total">Total a pagar</label>
+                            <input  class="form-control" type="tel" id="total">
                           </div>
                         </div>
                       </div>

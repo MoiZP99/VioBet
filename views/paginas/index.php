@@ -17,7 +17,7 @@
 
                         </div>
 
-                        <img src="public/build/assets/images/Ganadero.webp" class="custom-block-image img-fluid" alt="">
+                        <img src="/build/assets/images/Ganadero.webp" class="custom-block-image img-fluid" alt="">
                     </a>
                 </div>
             </div>
@@ -25,7 +25,7 @@
             <div class="col-lg-6 col-12">
                 <div class="custom-block custom-block-overlay">
                     <div class="d-flex flex-column h-100">
-                        <img src="public/build/assets/images/Vaca.jpg" class="custom-block-image img-fluid" alt="">
+                        <img src="/build/assets/images/Vaca.jpg" class="custom-block-image img-fluid" alt="">
 
                         <div class="custom-block-overlay-text d-flex">
                             <div>
@@ -100,7 +100,7 @@
                                             <span class="badge bg-design rounded-pill ms-auto">4</span>
                                         </div>
 
-                                        <img src="../../public/build/assets/images/topics/vaca-animada.png" class="custom-block-image img-fluid" alt="">
+                                        <img src="../..//build/assets/images/topics/vaca-animada.png" class="custom-block-image img-fluid" alt="">
                                     </a>
                                 </div>
                             </div>
@@ -118,7 +118,7 @@
                                             <span class="badge bg-design rounded-pill ms-auto">5</span>
                                         </div>
 
-                                        <img src="../../public/build/assets/images/topics/pantalla.png" class="custom-block-image img-fluid" alt="">
+                                        <img src="../..//build/assets/images/topics/pantalla.png" class="custom-block-image img-fluid" alt="">
                                     </a>
                                 </div>
                             </div>
@@ -136,7 +136,7 @@
                                             <span class="badge bg-design rounded-pill ms-auto">6</span>
                                         </div>
 
-                                        <img src="../../public/build/assets/images/topics/expediente.png" class="custom-block-image img-fluid" alt="">
+                                        <img src="../..//build/assets/images/topics/expediente.png" class="custom-block-image img-fluid" alt="">
                                     </a>
                                 </div>
                             </div>
@@ -158,7 +158,7 @@
                                             <span class="badge bg-advertising rounded-pill ms-auto">1</span>
                                         </div>
 
-                                        <img src="../../public/build/assets/images/topics/registro.png"  class="custom-block-image img-fluid" alt="">
+                                        <img src="../..//build/assets/images/topics/registro.png"  class="custom-block-image img-fluid" alt="">
                                     </a>
                                 </div>
                             </div>
@@ -176,7 +176,7 @@
                                             <span class="badge bg-advertising rounded-pill ms-auto">2</span>
                                         </div>
 
-                                        <img src="../../public/build/assets/images/topics/datos.png" class="custom-block-image img-fluid" alt="">
+                                        <img src="../..//build/assets/images/topics/datos.png" class="custom-block-image img-fluid" alt="">
                                     </a>
                                 </div>
                             </div>
@@ -194,7 +194,7 @@
                                             <span class="badge bg-advertising rounded-pill ms-auto">3</span>
                                         </div>
 
-                                        <img src="../../public/build/assets/images/topics/login.JPG" class="custom-block-image img-fluid" alt="">
+                                        <img src="../..//build/assets/images/topics/login.JPG" class="custom-block-image img-fluid" alt="">
                                     </a>
                                 </div>
                             </div>
@@ -216,7 +216,7 @@
                                             <span class="badge bg-finance rounded-pill ms-auto">7</span>
                                         </div>
 
-                                        <img src="../../public/build/assets/images/topics/Mapa2.jpg" class="custom-block-image img-fluid" alt="">
+                                        <img src="../..//build/assets/images/topics/Mapa2.jpg" class="custom-block-image img-fluid" alt="">
                                     </a>
                                 </div>
                             </div>
@@ -234,7 +234,7 @@
                                             <span class="badge bg-finance rounded-pill ms-auto">8</span>
                                         </div>
 
-                                        <img src="../../public/build/assets/images/topics/varios.jpg" class="custom-block-image img-fluid" alt="">
+                                        <img src="../..//build/assets/images/topics/varios.jpg" class="custom-block-image img-fluid" alt="">
                                     </a>
                                 </div>
                             </div>
@@ -257,7 +257,7 @@
                                             <span class="badge bg-music rounded-pill ms-auto">9</span>
                                         </div>
 
-                                        <img src="../../public/build/assets/images/topics/lechera.png" class="custom-block-image img-fluid" alt="">
+                                        <img src="../..//build/assets/images/topics/lechera.png" class="custom-block-image img-fluid" alt="">
                                     </a>
                                 </div>
                             </div>
@@ -275,7 +275,7 @@
                                             <span class="badge bg-music rounded-pill ms-auto">10</span>
                                         </div>
 
-                                        <img src="../../public/build/assets/images/topics/gene.jpg" class="custom-block-image img-fluid" alt="">
+                                        <img src="../..//build/assets/images/topics/gene.jpg" class="custom-block-image img-fluid" alt="">
                                     </a>
                                 </div>
                             </div>
@@ -293,7 +293,7 @@
                                             <span class="badge bg-music rounded-pill ms-auto">11</span>
                                         </div>
 
-                                        <img src="../../public/build/assets/images/topics/Resu.jpg" class="custom-block-image img-fluid" alt="">
+                                        <img src="../..//build/assets/images/topics/Resu.jpg" class="custom-block-image img-fluid" alt="">
                                     </a>
                                 </div>
                             </div>
@@ -370,7 +370,7 @@
             <div class="clearfix"></div>
 
             <div class="col-lg-5 col-12">
-                <img src="public/build/assets/images/faq_graphic.jpg" class="img-fluid" alt="FAQs">
+                <img src="/build/assets/images/faq_graphic.jpg" class="img-fluid" alt="FAQs">
             </div>
 
             <div class="col-lg-6 col-12 m-auto">

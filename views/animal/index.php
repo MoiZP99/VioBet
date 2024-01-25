@@ -1,5 +1,5 @@
 <?php
-include_once 'public/build/Sidebar.php';
+include_once '/build/Sidebar.php';
 // session_start();
 use Model\Animal;
 ?>

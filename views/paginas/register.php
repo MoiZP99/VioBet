@@ -2,8 +2,8 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>BioVet</title>
-    <link rel="stylesheet" href="/public/build/assets/css/stl_AllCreate.css">
-    <link rel="stylesheet" href="/public/build/sweetalert2@11.1.4/sweetalert2.css">
+    <link rel="stylesheet" href="/build/assets/css/stl_AllCreate.css">
+    <link rel="stylesheet" href="/build/sweetalert2@11.1.4/sweetalert2.css">
     <script defer src="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/js/all.min.js"></script>
     <style>
         .btn-spinner {
@@ -148,22 +148,12 @@
                                 <?php endif; ?>
                             </div>
                         </div>
-                        <div class="col col-12 mt-1">
-                            <div class='row'>
-                                <div class='col-12 d-flex justify-content-center'>
-                                    <div class='g-recaptcha' data-sitekey='6LcEqsgUAAAAAGjjcvoWY_H0O4_IiFfvUcgpmSy0'></div>
-                                </div>
-                                <div class="col-12 text-center">
-                                    <span class="form-text">Debe completar este campo.<span style="color:red;"><b>*</b></span></span>
-                                </div>
-                            </div>
-                        </div>
                     </div>
                 </fieldset>
             </div>
             <div class="card-footer">
                 <div class="btn-spinner">
-                    <button class="btn btn-info mt-1 mb-1" type="button" id="submit_data" onclick="enviarFormulario()"> <b>Registrarse</b></button>
+                    <button class="btn btn-info mt-1 mb-1" type="submit"> <b>Registrarse</b></button>
                 </div>
             </div>
         </form>
@@ -171,10 +161,9 @@
 </div>
 
 
-<script src="/public/build/assets/js/recaptcha.js" async defer></script>
-<script src="/public/build/sweetalert2@11.1.4/sweetalert2.js"></script>
-<script src="/public/build/assets/js/stl_AllCreateUser.js"></script>
-<script src="/public/build/bootstrap/js/bootstrap.bundle.min.js"></script>
+<script src="/build/sweetalert2@11.1.4/sweetalert2.js"></script>
+<script src="/build/assets/js/stl_AllCreateUser.js"></script>
+<script src="/build/bootstrap/js/bootstrap.bundle.min.js"></script>
 <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
 <?php if (isset($_SESSION['success_message'])) : ?>
     <script>

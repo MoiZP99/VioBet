@@ -1,5 +1,5 @@
 <?php
-include_once 'public/build/Sidebar.php';
+include_once '/build/Sidebar.php';
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -8,11 +8,11 @@ include_once 'public/build/Sidebar.php';
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Somos Hojancha</title>
-    <link rel="stylesheet" href="/public/build/FontFamily_admin_section/fontfamily.css">
+    <link rel="stylesheet" href="//build/FontFamily_admin_section/fontfamily.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css">
-    <link rel="stylesheet" href="/public/build/FontAwesome_6.2.0/FontAwesome_6.2.0.css">
-    <link rel="stylesheet" href="/public/build/bootstrap/css/bootstrap.min.css">
-    <link rel="stylesheet" href="/public/build/assets/css/stl_AllCreate.css">
+    <link rel="stylesheet" href="//build/FontAwesome_6.2.0/FontAwesome_6.2.0.css">
+    <link rel="stylesheet" href="//build/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="//build/assets/css/stl_AllCreate.css">
 </head>
 
 <body class="hold-transition sidebar-mini">
@@ -43,13 +43,13 @@ include_once 'public/build/Sidebar.php';
                                                 <div class="col col-auto">
                                                     <div class="mb-3">
                                                         <label class="form-label" for="nombre">Nombre de usuario</label>
-                                                        <input class="form-control" autofocus type="text" id="nombre" name="usuario[NombreUser]" onKeyUp="javascript:validateText('nombre')" placeholder="Esriba en este espacio" value="<?php echo s($usuario->NombreUser); ?>" readonly>
+                                                        <input class="form-control" type="text" id="nombre" onKeyUp="javascript:validateText('nombre')" placeholder="Esriba en este espacio" value="<?php echo s($usuario->NombreUser); ?>" readonly>
                                                     </div>
                                                 </div>
                                                 <div class="col col-auto">
                                                     <div class="mb-3">
                                                         <label class="form-label" for="tipo">Provincia</label>
-                                                        <select class="form-select" autofocus name="animal[Tipo]" id="tipo">
+                                                        <select class="form-select" autofocus id="tipo">
                                                             <option selected disabled>Seleccione aquí</option>
                                                             <option value="">Guanacaste</option>
                                                             <option value="">San José</option>
@@ -63,10 +63,22 @@ include_once 'public/build/Sidebar.php';
                                                 </div>
                                             </div>
                                             <div class="row">
+                                            <div class="col col-xxl-6 col-xl-6 col-lg-6 col-sm-6 col-md-6 col-12">
+                                                <div class="mb-3">
+                                                    <label class="form-label" for="tiposangre">Nombre del titular</label>
+                                                    <input  class="form-control" type="text" id="tiposangre" onKeyUp="javascript:validateTextUbi('tiposangre')" placeholder="Escriba aquí el nombre del titular" value="">
+                                                </div>
+                                                </div>
+                                                <div class="col col-xxl-6 col-xl-6 col-lg-6 col-sm-6 col-md-6 col-12">
+                                                <div class="mb-3">
+                                                    <label class="form-label" for="raza">Número de tarjeta</label>
+                                                    <input  class="form-control" type="text" id="raza" onKeyUp="javascript:validateTextUbi('raza')" placeholder="XXXX-XXXX-XXXX-XXXX" value="">
+                                                </div>
+                                                </div>
                                                 <div class="col col-xxl-6 col-xl-6 col-lg-6 col-md-6 col-12">
                                                     <div class="mb-3">
                                                         <label class="form-label" for="nombre">Fecha de caducidad</label>
-                                                        <input class="form-control" type="date" placeholder="" value="">
+                                                        <input class="form-control" type="date">
                                                     </div>
                                                 </div>
                                                 <div class="col col-xxl-6 col-xl-6 col-lg-6 col-md-6 col-12">
@@ -79,6 +91,13 @@ include_once 'public/build/Sidebar.php';
                                                     <div class="mb-3">
                                                         <input class="form-control" type="hidden" id="suscripcion" name="usuario[Suscripcion]" value="Premium">
                                                     </div>
+                                                </div>
+                                            </div>
+
+                                            <div class="col col-4">
+                                                <div class="mb-3">
+                                                    <label class="form-label" for="total">Total a pagar</label>
+                                                    <label style="background-color: #D9D9D9;" class="form-control" for="total">$30</label>
                                                 </div>
                                             </div>
                                         </fieldset>
@@ -98,9 +117,9 @@ include_once 'public/build/Sidebar.php';
         </div>
     </div>
 
-    <script src="/public/build/assets/js/stl_AllCreate.js"></script>
-    <script src="/public/build/bootstrap/js/bootstrap.bundle.min.js"></script>
-    <script src="/public/build/jquery/jquery-3.3.1.min.js"></script>
+    <script src="//build/assets/js/stl_AllCreate.js"></script>
+    <script src="//build/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="//build/jquery/jquery-3.3.1.min.js"></script>
     <script type="text/javascript">
         //-----VER CONTRASEÑA inicio-----------------------------------------------------------|
         window.addEventListener("load", function() {

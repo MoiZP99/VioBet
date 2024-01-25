@@ -4,17 +4,17 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <!-- <link rel="shortcut icon" href="/public/build/assets/images/LogoS.webp">
-    <meta name="image" content="/public/build/assets/images/LogoS.webp"> -->
+    <!-- <link rel="shortcut icon" href="//build/assets/images/LogoS.webp">
+    <meta name="image" content="//build/assets/images/LogoS.webp"> -->
     <meta name="description" content="">
     <meta name="author" content="Desarrollado por estudiantes de la Universidad Nacional de Costa Rica">
     <title>BioVet</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;600;700&family=Open+Sans&display=swap" rel="stylesheet">
-    <link href="/public/build/assets/css/bootstrap.min.css" rel="stylesheet">
-    <link href="public/build/assets/css/bootstrap-icons.css" rel="stylesheet">
-    <link href="public/build/plugins/templatemo-topic-listing.css" rel="stylesheet">
+    <link href="/build/assets/css/bootstrap.min.css" rel="stylesheet">
+    <link href="/build/assets/css/bootstrap-icons.css" rel="stylesheet">
+    <link href="/build/plugins/templatemo-topic-listing.css" rel="stylesheet">
 </head>
 
 <body id="top">
@@ -135,11 +135,11 @@
         </div>
     </footer>
 
-    <script src="/public/build/assets/js/jquery.min.js"></script>
-    <script src="/public/build/assets/js/bootstrap.bundle.min.js"></script>
-    <script src="/public/build/assets/js/jquery.sticky.js"></script>
-    <script src="/public/build/assets/js/click-scroll.js"></script>
-    <script src="/public/build/assets/js/custom.js"></script>
+    <script src="/build/assets/js/jquery.min.js"></script>
+    <script src="/build/assets/js/bootstrap.bundle.min.js"></script>
+    <script src="/build/assets/js/jquery.sticky.js"></script>
+    <script src="/build/assets/js/click-scroll.js"></script>
+    <script src="/build/assets/js/custom.js"></script>
 
 </body>
 
