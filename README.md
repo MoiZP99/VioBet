@@ -1,6 +1,6 @@
 # VioBet
 
-Este es un sistema que se creó con el fin de facilitar a ganaderos de la província de Guanacaste en el manejo administrativo de su finca ganadera, el sistema permite agregar 1 finca, agregar animales (vacas, toros, yeguas, caballos), un control médico de los animales así con un historial médico, por último se le permite realizar cálculos o estimaciones de cruces entre animales. Este sistema podría contar con un sistema de pago para parse a premium y tener así la oportunidad de ingresar más fincas y más cantidad de animales ya que esto está liminado.
+Este es un sistema que se creó con el fin de facilitar a ganaderos, inicialmente de la província de Guanacaste en el manejo administrativo de su finca ganadera, el sistema permite agregar 1 finca, agregar animales (vacas, toros, yeguas, caballos), un control médico de los animales así con un historial médico, por último se le permite realizar cálculos o estimaciones de cruces entre animales. Este sistema podría contar con un sistema de pago para parse a premium y tener así la oportunidad de ingresar más fincas y más cantidad de animales ya que esto está liminado.
 
 ## Installation
 
