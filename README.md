@@ -15,7 +15,7 @@ Este es un sistema que se creó con el fin de facilitar a ganaderos, inicialment
 - [@Veasba01](https://github.com/Veasba01)
 - [@JRlopez77](https://github.com/JRlopez77)
 
-## Estadísticas de Contribución
+## Contribution Statistics
 [![Contribuidores](https://img.shields.io/github/contributors/MoiZP99/VioBet)](https://github.com/MoiZP99/VioBet/graphs/contributors)
 
 
